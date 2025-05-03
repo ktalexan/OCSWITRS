@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"r.rpath.windows": "C:\\Program Files\\R\\R-4.4.3\\bin\\x64\\R.exe",
+		"r.rterm.windows": "C:\\Program Files\\R\\R-4.4.3\\bin\\x64\\R.exe",
+		"cSpell.words": [
+			"OCSWITRS"
+		]
+	}
+}
