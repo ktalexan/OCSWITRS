@@ -26,8 +26,8 @@ flowchart TB
    e("Analyze Crashes Data") -->f("Time Series Data Analysis")
    end
    Preparation --> Processing --> Analyzing
-   style Preparation fill:#002e63
-   style Processing fill:#004040
+   style Preparation fill:#004040
+   style Processing fill:#002e63
    style Analyzing fill:#4b0082
 ```
 
