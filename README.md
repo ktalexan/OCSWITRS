@@ -1,6 +1,10 @@
-# :vertical_traffic_light: OCSWITRS
+# :vertical_traffic_light: OCSWITRS: Orange County Traffic Collisions Analysis (OCSWITRS)
 
-Orange County Traffic Collisions Analysis (OCSWITRS)
+This repository contains the analysis of traffic collisions in Orange County, California, using the SWITRS (Statewide Integrated Traffic Records System) data. The analysis includes data cleaning, visualization, and modeling to understand the factors contributing to traffic collisions in the region.
+The analysis is conducted using Python, R, and Stata, and the results are presented in Jupyter notebooks and scripts. The repository also includes metadata files, graphics, and presentation content.
+The resulting OCSWITRS data are spatially geocoded, imported into ArcGIS project geodatabase, and used for spatial analysis and visualization. Furthermore, the data are published as feature services and maps and shared publicly both on ArcGIS online, and in the Orange County Open GIS Portal: https://ocgis.com.
+
+Below the main project folder structure is provided and described. The project is organized into several folders, each containing specific types of files related to the analysis.
 
 ## Folder Structure
 
@@ -30,3 +34,8 @@ Orange County Traffic Collisions Analysis (OCSWITRS)
 - :file_folder: **maps**: Contains the maps generated in the ArcGIS Pro project.
 - :file_folder: **layouts**: Contains the layouts used in the ArcGIS Pro project.
 - :file_folder: **styles**: Contains the styles used in the ArcGIS Pro project.
+
+## Getting Started
+
+To understand the project process and analysis, please review the documentation in this project. The starting point is the [**R Scripts**](scripts/rScripts) folder, where the data is cleaned and prepared for analysis. The [README.md](scripts/rScripts/README.md) file in this folder provides an overview of the data processing steps, and the sequence of the scripts to be applied. The scripts are organized in a way that allows for easy navigation and understanding of the data processing steps.
+
