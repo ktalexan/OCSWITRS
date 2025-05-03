@@ -1,0 +1,57 @@
+% latex table generated in R 4.4.2 by xtable 1.8-4 package
+% Sat Mar  1 11:47:54 2025
+\begin{table}[h]
+\centering
+\caption{Summary total values for monthly time series of traffic accidents in Orange County (2013-2024)} 
+\label{Tbl3}
+\begin{tabular}{lrrrrrrr}
+  \toprule
+  Factor (Count or Bin) & Total\footnotemark[2] & Min\footnotemark[1] & Max\footnotemark[1] & Mean\footnotemark[1] & SD\footnotemark[1] & SE\footnotemark[1] & CI\footnotemark[1] \\ 
+ \midrule
+Crashes & 166,974 & 460 & 1,446 & 1,091.33 & 170.15 & 13.76 & 27.18 \\ 
+  Parties & 360,554 & 921 & 3,151 & 2,356.56 & 389.68 & 31.50 & 62.24 \\ 
+  Victims & 238,388 & 634 & 2,083 & 1,558.09 & 251.08 & 20.30 & 40.10 \\ 
+  Fatal Crashes & 2,259 &   4 &  29 & 14.76 & 4.94 & 0.40 & 0.79 \\ 
+  Severe Crashes & 8,664 &  36 &  87 & 56.63 & 10.38 & 0.84 & 1.66 \\ 
+  Multiple Victim Crashes & 752 &   0 &  10 & 4.92 & 2.22 & 0.18 & 0.36 \\ 
+   \midrule 
+Pedestrian Accident & 9,844 &  20 &  95 & 64.34 & 14.74 & 1.19 & 2.35 \\ 
+  Bicycle Accident & 12,486 &  27 & 149 & 81.61 & 23.84 & 1.93 & 3.81 \\ 
+  Motorcycle Accident & 11,650 &  33 & 128 & 76.14 & 20.70 & 1.67 & 3.31 \\ 
+  Truck Accident & 4,608 &  14 &  48 & 30.12 & 6.82 & 0.55 & 1.09 \\ 
+   \midrule 
+Killed & 2,385 &   4 &  31 & 15.59 & 5.33 & 0.43 & 0.85 \\ 
+  Injured & 236,003 & 623 & 2,061 & 1,542.50 & 250.55 & 20.26 & 40.02 \\ 
+  Fatal or Severe Injuries & 12,161 &  51 & 127 & 79.48 & 13.80 & 1.12 & 2.20 \\ 
+  Minor or Pain Injuries & 226,227 & 576 & 1,985 & 1,478.61 & 247.28 & 19.99 & 39.50 \\ 
+  Severe Injuries & 9,776 &  39 & 103 & 63.90 & 11.45 & 0.93 & 1.83 \\ 
+  Visible Injuries & 64,267 & 194 & 556 & 420.05 & 64.03 & 5.18 & 10.23 \\ 
+  Complaint of Pain & 161,960 & 382 & 1,494 & 1,058.56 & 210.18 & 16.99 & 33.57 \\ 
+   \midrule 
+Killed in Cars & 1,033 &   0 &  17 & 6.75 & 3.36 & 0.27 & 0.54 \\ 
+  Killed Pedestrians & 792 &   0 &  13 & 5.18 & 2.63 & 0.21 & 0.42 \\ 
+  Killed Bicyclists & 172 &   0 &   8 & 1.12 & 1.16 & 0.09 & 0.19 \\ 
+  Killed Motorcyclists & 388 &   0 &   9 & 2.54 & 1.64 & 0.13 & 0.26 \\ 
+  Injured in Cars & 202,691 & 547 & 1,813 & 1,324.78 & 213.91 & 17.29 & 34.17 \\ 
+  Injured Pedestrians & 9,483 &  15 &  95 & 61.98 & 14.94 & 1.21 & 2.39 \\ 
+  Injured Bicyclists & 12,454 &  27 & 152 & 81.40 & 24.02 & 1.94 & 3.84 \\ 
+  Injured Motorcyclists & 11,375 &  32 & 123 & 74.35 & 20.58 & 1.66 & 3.29 \\ 
+   \midrule 
+At Fault & 157,035 & 431 & 1,364 & 1,026.37 & 163.14 & 13.19 & 26.06 \\ 
+  Hit and Run & 14,194 &  41 & 149 & 92.77 & 16.21 & 1.31 & 2.59 \\ 
+  Alcohol Involved & 16,160 &  49 & 139 & 105.62 & 16.62 & 1.34 & 2.65 \\ 
+  DUI Alcohol & 12,665 &  38 & 112 & 82.78 & 13.09 & 1.06 & 2.09 \\ 
+  DUI Drugs & 2,788 &   4 &  33 & 18.22 & 5.34 & 0.43 & 0.85 \\ 
+   \midrule 
+Rush Hours & 63,095 & 150 & 632 & 412.39 & 86.90 & 7.03 & 13.88 \\ 
+  Intersection & 49,493 & 135 & 443 & 323.48 & 52.25 & 4.22 & 8.35 \\ 
+  State Highway & 58,078 & 162 & 519 & 379.59 & 63.26 & 5.11 & 10.10 \\ 
+  Tow Away & 104,784 & 334 & 947 & 684.86 & 126.03 & 10.19 & 20.13 \\ 
+   \bottomrule
+\end{tabular}
+\end{table}
+footnotes \\ 
+  \midrule
+\footnotetext[1]{Monthly generated cumulative summary time series from 01/01/2012 through 09/30/2024 (n = 153)} \\ 
+  \footnotetext[2]{Over the entire time period (2013-2024)} \\ 
+   \bottomrule

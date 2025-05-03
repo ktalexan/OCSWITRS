@@ -1,0 +1,29 @@
+% latex table generated in R 4.4.2 by xtable 1.8-4 package
+% Sat Mar  1 11:47:46 2025
+\begin{table}[h]
+\centering
+\caption{Ranked collision severity ordinal classification, related parameters, and OCSWITRS dataset counts} 
+\label{Tbl2}
+\begin{tabular}{lllllrrr}
+  \toprule
+  \multicolumn{2}{c}{Rank and Level} & Fatalities & Injuries & Type & Crashes & Parties & Victims \\ 
+ \midrule
+0 & None or Minor Injuries & None & None & Minor & 156,052 & 338,599 & 272,894 \\ 
+  1 & Single Injury (Severe) & None & Single & Severe & 8,082 & 15,933 & 13,298 \\ 
+  2 & Multiple Injuries (Severe) & None & Multiple & Severe & 583 & 1,385 & 1,836 \\ 
+  3 & Single Fatality, No Injuries (Fatal) & Single & None & Fatal & 1,888 & 3,760 & 2,873 \\ 
+  4 & Single Fatality, Single Injury (Fatal) & Single & Single & Fatal & 202 & 461 & 569 \\ 
+  5 & Single Fatality, Multiple Injuries (Fatal) & Single & Multiple & Fatal & 68 & 186 & 296 \\ 
+  6 & Multiple Fatalities, No Injuries (Fatal) & Multiple & None & Fatal & 61 & 150 & 186 \\ 
+  7 & Multiple Fatalities, Single Injury (Fatal) & Multiple & Single & Fatal & 29 & 59 & 118 \\ 
+  8 & Multiple Fatalities, Multiple Injuries (Fatal) & Multiple & Multiple & Fatal & 11 & 25 & 63 \\ 
+   \midrule 
+Total &  &  &  &  & 166,976 & 360,558 & 292,133 \\ 
+   \textit{p-value}\footnotemark[1] &  &  &  &  & $<0.001$ & $<0.001$ & $<0.001$ \\ 
+ \bottomrule
+\end{tabular}
+\end{table}
+footnotes \\ 
+  \midrule
+\footnotetext[1]{Pearson's Chi-Squared test} \\ 
+   \bottomrule
