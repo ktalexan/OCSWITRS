@@ -692,7 +692,7 @@ crashes <- crashes %>% relocate(dtDst, .after = dtMinute)
 crashes <- crashes %>% relocate(dtZone, .after = dtDst)
 
 
-## 6.5. Collision Time Intervals ####
+## 6.4. Collision Time Intervals ####
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Create a new column in the crashes data frame called collTimeIntervals
@@ -715,7 +715,7 @@ val_labels(crashes$collTimeIntervals) <- cb$collTimeIntervals$labels[cb$collTime
 crashes <- crashes %>% relocate(collTimeIntervals, .after = collTime)
 
 
-## 6.6. Rush Hours ####
+## 6.5. Rush Hours ####
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ### Rush Hours Intervals ####
