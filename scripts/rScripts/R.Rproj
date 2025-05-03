@@ -1,0 +1,18 @@
+Version: 1.0
+ProjectId: b71f28a5-a840-4ec5-9220-5575c205035f
+
+RestoreWorkspace: Default
+SaveWorkspace: Default
+AlwaysSaveHistory: Default
+
+EnableCodeIndexing: Yes
+UseSpacesForTab: Yes
+NumSpacesForTab: 4
+Encoding: UTF-8
+
+RnwWeave: Sweave
+LaTeX: pdfLaTeX
+
+AutoAppendNewline: Yes
+
+ProjectName: OCSWITRS
