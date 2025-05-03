@@ -9,24 +9,28 @@ This file provides instructions for implementing and running the R scripts in th
 - Information on where the input data is located and where the output results will be stored.
 - Any additional notes or dependencies required for the scripts to function correctly.
 
-The sequence of scripts execution is provided below.
+The following mermaid diagram illustrates the sequence of the scripts and their interdependencies:
+
+<div style="text-align: center;">
 
 ```mermaid
 flowchart TB
    a & b & c & d & e & f
    subgraph Preparation
-   a[["createProjectFunctions"]] --> b[["part0MergeRawData"]]
+   a("Project Functions") --> b("Merging Raw Data")
    end
    subgraph Processing
-   c[["part1ImportRawData"]] --> d[["part2CreateTimeSeries"]]
+   c("Import Raw Data") --> d("Create Time Series")
    end
    subgraph Analyzing
-   e[["part3AnalyzeCrashesData"]] -->f[["part4TimeSeriesDataAnalysis"]]
+   e("Analyze Crashes Data") -->f("Time Series Data Analysis")
    end
    Preparation --> Processing --> Analyzing
-
 ```
 
+</div>
+
+The detailed sequence of scripts execution is provided below.
 
 ## Project Functions Script
 
