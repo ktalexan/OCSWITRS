@@ -11,7 +11,24 @@ This file provides instructions for implementing and running the R scripts in th
 
 The sequence of scripts execution is provided below.
 
-## 1. Project Functions Script
+```mermaid
+flowchart TB
+   a & b & c & d & e & f
+   subgraph Preparation
+   a[["createProjectFunctions"]] --> b[["part0MergeRawData"]]
+   end
+   subgraph Processing
+   c[["part1ImportRawData"]] --> d[["part2CreateTimeSeries"]]
+   end
+   subgraph Analyzing
+   e[["part3AnalyzeCrashesData"]] -->f[["part4TimeSeriesDataAnalysis"]]
+   end
+   Preparation --> Processing --> Analyzing
+
+```
+
+
+## Project Functions Script
 
 ### :scroll: File: [`createProjectFunctions.R`](createProjectFunctions.R)
 
@@ -33,7 +50,7 @@ There are a number of functions to be created in this script. The functions are 
 
 </details>
 
-## 2. Merging Raw Data Files Script (Part 0)
+## Merging Raw Data Files Script (Part 0)
 
 ### :scroll: File: [`part0MergeRawData.R`](part0MergeRawData.R)
 
@@ -44,21 +61,21 @@ This is the preliminary step script (Part 0). This script merges the raw data fi
 
 The following are the steps involved in this script:
 
-1. **Preliminaries**
-   1. *Environmental Setup*: Clears the environment and sets up new script execution.
-   2. *Import Libraries*: Loads the necessary libraries for the script.
-2. **Definitions**
+1. #### Preliminaries
+   1. **Environmental Setup**: Clears the environment and sets up new script execution.
+   2. **Import Libraries**: Loads the necessary libraries for the script.
+2. #### Definitions
    1. *Load Project Functions*: Loads the project functions created in the `createProjectFunctions.R` script.
    2. *Load Metadata and Directories*: Loads the project metadata and directiories from the `projectMetadata()` and `projectDirectories()` functions.
    3. *Set the working directory*: Sets the working directory to the `rawData` folder.
-3. **Import Raw Data (Initialization)**
+3. #### Import Raw Data (Initialization)
    1. *Import Raw Data from Disk*: creates a dictionary data frame for the data years and the count of observations in each year for each data file.
    2. *Merge Raw Data*: Merges the raw data files of each year into a single data frame for each of the crashes, parties and victims datasets.
    3. *Save Merged Data*: Saves the three merged data frames (crashes, parties, and victims) to disk in the `rData` folder.
 
 </details>
 
-## 3. Import Raw Data Files Script (Part 1)
+## Import Raw Data Files Script (Part 1)
 
 ### :scroll: File: [`part1ImportRawData.R`](part1ImportRawData.R)
 
@@ -102,7 +119,7 @@ This script imports the raw data files from the `rawData` folder into R. It uses
 
 </details>
 
-## 4. Create Time Series Data Frames Script
+## Create Time Series Data Frames Script (Part 2)
 
 ### :scroll: File: [`part2CreateTimeSeries.R`](part2CreateTimeSeries.R)
 
@@ -113,7 +130,7 @@ This script creates time series data frames from the imported raw data. It uses 
 
 </details>
 
-## 5. Analyzing Crashes Data Script
+## Analyzing Crashes Data Script (Part 3)
 
 ### :scroll: File: [`part3AnalyzeCrashesData.R`](part3AnalyzeCrashesData.R)
 
@@ -124,7 +141,7 @@ This script analyzes the crashes data using various statistical methods. It uses
 
 </details>
 
-## 6. Time Series Data Analysis Script
+## Time Series Data Analysis Script (Part 4)
 
 ### :scroll: File: [`part4TimeSeriesDataAnalysis.R`](part4TimeSeriesDataAnalysis.R)
 
