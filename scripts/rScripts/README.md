@@ -9,11 +9,14 @@ This file provides instructions for implementing and running the R scripts in th
 - Information on where the input data is located and where the output results will be stored.
 - Any additional notes or dependencies required for the scripts to function correctly.
 
-The sequence of scripts execution is provide below.
+The sequence of scripts execution is provided below.
 
-----
-## 1. Project Functions Script 
-#### :scroll: File: [`createProjectFunctions.R`](createProjectFunctions.R)
+## 1. Project Functions Script
+
+### :scroll: File: [`createProjectFunctions.R`](createProjectFunctions.R)
+
+<details>
+<summary>Script Details:</summary> 
 
 Start with the `createProjectFunctions.R` script, which sets up the project environment and loads necessary libraries. The script generates a list of functions that will be used in the subsequent scripts. This script should be run first to ensure that all functions are available for use, being loaded into the global environment, and stored in the `rData` folder for easy recall and retrieval without needing to re-run the script.
 
@@ -28,10 +31,14 @@ There are a number of functions to be created in this script. The functions are 
 - **`createStlPlot(tsdata, tscale = "month", type = "stlplus", lcolors, tcolors)`**: Creates and returns STL decomposition plots (raw, seasonal, trend, remainder) for time series data.
 - **`saveToDisk()`**: Saves various data frames, codebooks, and project functions to disk in specified directories.
 
-----
+</details>
 
 ## 2. Merging Raw Data Files Script (Part 0)
-#### :scroll: File: [`part0MergeRawData.R`](part0MergeRawData.R)
+
+### :scroll: File: [`part0MergeRawData.R`](part0MergeRawData.R)
+
+<details>
+<summary>Script Details:</summary> 
 
 This is the preliminary step script (Part 0). This script merges the raw data files from the `rawData` folder into a single data frame. It uses the `mergeRawData()` function to combine the data files based on a common key. The merged data frame is then saved to disk for further processing.
 
@@ -49,10 +56,14 @@ The following are the steps involved in this script:
    2. *Merge Raw Data*: Merges the raw data files of each year into a single data frame for each of the crashes, parties and victims datasets.
    3. *Save Merged Data*: Saves the three merged data frames (crashes, parties, and victims) to disk in the `rData` folder.
 
-----
+</details>
 
-## 3 Import Raw Data Files Script (Part 1)
-#### :scroll: File: [`part1ImportRawData.R`](part1ImportRawData.R)
+## 3. Import Raw Data Files Script (Part 1)
+
+### :scroll: File: [`part1ImportRawData.R`](part1ImportRawData.R)
+
+<details>
+<summary>Script Details:</summary> 
 
 This script imports the raw data files from the `rawData` folder into R. It uses the `importRawData()` function to read the data files and create a data frame. The imported data is then saved to disk for further processing.
 
@@ -89,27 +100,38 @@ This script imports the raw data files from the `rawData` folder into R. It uses
    5. *Collision Severity Indicators*: Recoding the ranked collision severity variable into a set of binary indicator variables (severe, fatal, multiple). This is done to facilitate the analysis of severe collisions.
 8. **Generate New Counts**
 
-----
+</details>
 
 ## 4. Create Time Series Data Frames Script
-#### :scroll: File: [`part2CreateTimeSeries.R`](part2CreateTimeSeries.R)
+
+### :scroll: File: [`part2CreateTimeSeries.R`](part2CreateTimeSeries.R)
+
+<details>
+<summary>Script Details:</summary> 
 
 This script creates time series data frames from the imported raw data. It uses the `createTimeSeries()` function to generate time series data based on specified parameters. The time series data is then saved to disk for further analysis.
 
-----
+</details>
 
 ## 5. Analyzing Crashes Data Script
-#### :scroll: File: [`part3AnalyzeCrashesData.R`](part3AnalyzeCrashesData.R)
+
+### :scroll: File: [`part3AnalyzeCrashesData.R`](part3AnalyzeCrashesData.R)
+
+<details>
+<summary>Script Details:</summary> 
 
 This script analyzes the crashes data using various statistical methods. It uses the `analyzeCrashesData()` function to perform the analysis and generate results. The analysis results are then saved to disk for further review.
 
-----
+</details>
 
 ## 6. Time Series Data Analysis Script
-#### :scroll: File: [`part4TimeSeriesDataAnalysis.R`](part4TimeSeriesDataAnalysis.R)
+
+### :scroll: File: [`part4TimeSeriesDataAnalysis.R`](part4TimeSeriesDataAnalysis.R)
+
+<details>
+<summary>Script Details:</summary> 
 
 This script performs time series data analysis using various statistical methods. It uses the `
 timeSeriesDataAnalysis()` function to perform the analysis and generate results. The analysis results are then saved to disk for further review.
 
-----
-<p align="right">Last Update: May 2, 2025</p>
+</details>
