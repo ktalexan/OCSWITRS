@@ -473,6 +473,40 @@ This script creates time series data frames from the imported raw data. It uses 
 
 This script analyzes the crashes data using various statistical methods. It uses the `analyzeCrashesData()` function to perform the analysis and generate results. The analysis results are then saved to disk for further review.
 
+1. #### Preliminaries (Crashes Data Analysis)
+
+    1.1. ***Environmental Setup***: Clears the environment and sets up new script execution.
+
+    1.2. ***Import Libraries***: Loads the necessary libraries for the script.
+
+    1.3. ***Load Project Functions***: Loads the project functions created in the `createProjectFunctions.R` script.
+
+    1.4. ***Load Metadata and Directories***: Loads the project metadata and directories from the `projectMetadata()` and `projectDirectories()` functions.
+
+    1.5. ***Set the working directory***: Sets the working directory to the `rDataPath` folder.
+
+    1.6. ***Load Data Frames***: Loads the OCSWIRTRS data from the RData files: collisions, collisions.agp, crashes, crashes.agp, parties, parties.agp, victims, victims.agp, cities, cities.agp, roads, roads.agp, boundaries, boundaries.agp. Load the time series RData files: tsYear, tsQuarter, tsMonth, tsWee, tsDay. Also load `cb` codebook data.
+
+2. #### Data Analysis
+
+    2.1. ***Table 1 - Collision Severity Stats***: Generates a table with the collision severity statistics. It contains key statistics of the collision severity variable, specifically, collision serverity ordinal classification and OCSWITRS dataset counts. It uses the gtsummary method, and outputs the results to a RData file in a LaTeX format for Overleaf integration.
+
+    2.2. ***Table 2 - Ranked Collision Severity Stats***: Generates a table with the ranked collision severity statistics. It contains key classification and statistics of the collision severity rank variable. Specifically ranked collision severity ordinal classification, related parameters and OCSWITRS dataset counts. It uses the gtsummary method, and outputs the results to a RData file in a LaTeX format for Overleaf integration.
+
+    2.3. ***Figure 1 - Histogram - Victim Count***: Generates a histogram of the victim count variable. It creates a histogram plot of the number of victims in crash incidents. Specifically, the top-10 victim frequency counts of the number of victims in collision accidents. It uses the ggplot2 frequency plot, and outputs the results to a png file format.
+
+    2.4. ***Figure 2 - Bar Chart - Type of Collision***: Generates a bar chart of the type of collision types. It creates a bar graph of the number of collisions by type of collision. Specifically, number of collisions by collision type. It uses the ggplot2 distribution plot, and outputs the results to a png file format.
+
+    2.5. ***Figure 3 - Bar Chart - Fatal Accidents***: Generates a bar chart of the fatal accidents. It creates a cumulative bar chart of the number of fatal collisions by type. Specifically, number of fatal collisions by type of fatality. It uses the ggplot2 distribution plot, and outputs the results to a png file format.
+
+    2.6. ***Tables 3-4 - Monthly Collisions Stats***: Generates tables with the monthly collisions statistics. It contains (a) key accident statistics for the summary variables in the OCSWITRS datasets (Table 3). Specifically, summary total values for monthly time series of traffic accidents in Orange County (2013-2024); (b) key statistics for the average and median variable values in the OCSWITRS datasets (Table 4). Specifically, average and median values for montly time series of traffic accidents in Orange County (2013-2024). Both tables use the sta.desc method, and outputs the results to a RData file in a LaTeX format for Overleaf integration.
+
+    2.7. ***Table 5 - Collision Incidents by Year***: Generates a table with the collision incidents by year statistics. It contains key statistics for the collision incidents by year in the OCSWITRS datasets. Specifically, collision incidents categorization by year in the OCSWITRS datasets. It uses the collap method, and outputs the results to a RData file in a LaTeX format for Overleaf integration.
+
+3. #### Saving the Data and Graphics
+    
+    Saves the data frames (collisions, crashes, parties, victims, cities, roads), the time-series variables, and the graph data variables to disk in the `rData` folder. The function also saves the codebook and project functions
+
 </details>
 
 ## :six: Time Series Data Analysis Script (Part 4)
