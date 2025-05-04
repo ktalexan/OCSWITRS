@@ -366,7 +366,101 @@ This script creates time series data frames from the imported raw data. It uses 
 
     1.2. ***Import Libraries***: Loads the necessary libraries for the script.
 
+    1.3. ***Load Project Functions***: Loads the project functions created in the `createProjectFunctions.R` script.
 
+    1.4. ***Load Metadata and Directories***: Loads the project metadata and directories from the `projectMetadata()` and `projectDirectories()` functions.
+
+    1.5. ***Set the working directory***: Sets the working directory to the `rDataPath` folder.
+
+    1.6. ***Load Data Frames***: Loads the OCSWIRTRS data from the RData files: collisions, collisions.agp, crashes, crashes.agp, parties, parties.agp, victims, victims.agp, cities, cities.agp, roads, roads.agp, boundaries, boundaries.agp. Also load `cb` codebook data.
+
+2. #### Aggregate Variable List
+    
+    2.1. ***Lists By Statistic***: Create lists of variables for each statistic (sum, nin, max, mean, sd, median). The lists are used to create time series data aggregates.
+
+    2.2. ***Collisions Aggregation List***: Combining the lists into a single list for the collision time series aggregation.
+
+    2.3. ***Crashes Aggregation List***: Combining the lists into a single list for the crashes time series aggregation.
+
+    2.4. ***Parties Aggregation List***: Combining the lists into a single list for the parties time series aggregation.
+
+    2.5. ***Victims Aggregation List***: Combining the lists into a single list for the victims time series aggregation.
+
+    2.6. ***Cities Aggregation List***: Combining the lists into a single list for the cities time series aggregation.
+
+    2.7. ***Roads Aggregation List***: Combining the lists into a single list for the roads time series aggregation.
+
+    2.8. ***Cleaning Aggregation Lists***: Cleaning some elements in each list, and removing the individual stats lists.
+
+    2.9. ***Prepare Aggregation Temp Dataset***: Creating temporary datasets (collisions, crashes, parties, victims) for the time series aggregation. The temporary datasets are used to create the time series data frames.
+
+3. #### Aggregation by Year
+
+    Before staging steps, create a new function `tmerge()` that combines temporary time series data steps by different time scales (year, month, day, etc.). The function is used to merge the temporary datasets into a single dataset for each time series. Returns a merged dataset.
+
+    3.1. ***Aggregations by data frame***: Aggregating columns of each of the data frames (crashes, parties, victims, cities, roads) by year.
+
+    3.2. ***Compile Year Time Series*** combines adn compiles all aggregates into a single year time series data frame (using the `tmerge()` function).
+
+    3.3. ***Add new variables***: Generates and orders (a) combined fatal and severe collision counts; (b) combined minor and pain collision counts.
+
+    3.4. ***General operations***: Adds a data frame label.
+
+4. #### Aggregation by Quarter
+   
+    4.1. ***Aggregations by data frame***: Aggregating columns of each of the data frames (crashes, parties, victims, cities, roads) by quarter.
+   
+    4.2. ***Compile Quarter Time Series*** combines adn compiles all aggregates into a single quarter time series data frame (using the `tmerge()` function).
+   
+    4.3. ***Add new variables***: Generates and orders (a) combined fatal and severe collision counts; (b) combined minor and pain collision counts.
+   
+    4.4. ***General operations***: Adds a data frame label.
+
+5. #### Aggregation by Month
+
+    5.1. ***Aggregations by data frame***: Aggregating columns of each of the data frames (crashes, parties, victims, cities, roads) by month.
+
+    5.2. ***Compile Month Time Series*** combines adn compiles all aggregates into a single month time series data frame (using the `tmerge()` function).
+
+    5.3. ***Add new variables***: Generates and orders (a) combined fatal and severe collision counts; (b) combined minor and pain collision counts.
+
+    5.4. ***General operations***: Adds a data frame label.
+
+6. #### Aggregation by Week
+   
+    6.1. ***Aggregations by data frame***: Aggregating columns of each of the data frames (crashes, parties, victims, cities, roads) by week.
+
+    6.2. ***Compile Week Time Series*** combines adn compiles all aggregates into a single week time series data frame (using the `tmerge()` function).
+
+    6.3. ***Add new variables***: Generates and orders (a) combined fatal and severe collision counts; (b) combined minor and pain collision counts.
+
+    6.4. ***General operations***: Adds a data frame label.
+
+7. #### Aggregation by Day
+   
+    7.1. ***Aggregations by data frame***: Aggregating columns of each of the data frames (crashes, parties, victims, cities, roads) by day.
+   
+    7.2. ***Compile Day Time Series*** combines adn compiles all aggregates into a single day time series data frame (using the `tmerge()` function).
+   
+    7.3. ***Add new variables***: Generates and orders (a) combined fatal and severe collision counts; (b) combined minor and pain collision counts.
+   
+    7.4. ***General operations***: Adds a data frame label.
+
+8. #### Remove Temp time series data
+   
+   Removes all the temporary time series data frames created in the previous steps. This is done to free up memory and avoid confusion with the final time series data frames.
+
+9. #### Sort the Time Series Data
+    
+    Sorts each of the time series data frames (year, quarter, month, week, day) by the date column. This is done to ensure that the data is in chronological order.
+
+10. #### Add Time Series Attributes
+
+    Adds the time series attributes to each of the time series data frames (year, quarter, month, week, day). The attributes are based on the codebook imported in the previous step, and the `attTSAttributes()` function is used to add the attributes.
+
+11. #### Save Time Series Data
+
+    Saves the time series data frames (year, quarter, month, week, day) to disk in the `rData` folder. The function also saves the codebook and project functions to disk for future reference.
 
 </details>
 
