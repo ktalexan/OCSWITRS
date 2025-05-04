@@ -2090,7 +2090,7 @@ st_crs(boundaries)$proj4string
 # 16. Wrapping Up ####
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-## 16.1. Sort the Daraframes by Datetime ####
+## 16.1. Sort the Dataframes by Datetime ####
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Sort the rows of the crashes data frame by the cid column
