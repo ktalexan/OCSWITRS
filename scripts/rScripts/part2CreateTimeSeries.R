@@ -19,10 +19,6 @@ rm(list = ls())
 # Set the plot size for the R graphics device
 #dev.new(width = 6, height = 4, unit="in")
 
-# Set the initial working directory
-setwd(file.path(Sys.getenv("OneDriveCommercial"), "Documents", "OCSWITRS", "Data", "R"))
-getwd()
-
 # Open the R Libraries master file (located in Obsidian's library folder) - Already defined in the project_directories function
 #libmaster = file.path(Sys.getenv("HOME"), "Knowledge Management", "Documents", "Data Science", "RPackagesInstallation.R")
 #file.edit(libmaster)
@@ -31,14 +27,14 @@ getwd()
 ## 1.2. Import Libraries ####
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# Define the list of libraries to be loaded
-liblist <- c("RColorBrewer", "lubridate", "jsonlite", "dplyr", "magrittr", "R6", "haven", "labelr", "plyr", "stringr", "purrr", "glue", "Hmisc", "psych", "tibble", "here", "tidyr", "chattr", "knitr", "labelled", "collapse", "formattable", "sf", "sp", "ggthemes", "arcgisutils")
+# Load the pacman library. If not installed, install it first.
+if (!requireNamespace("pacman", quietly = TRUE)) {
+    install.packages("pacman")
+}
+library(pacman)
 
-# Load the libraries
-sapply(liblist, require, character.only = TRUE)
-
-# Set the initial working directory to the R data directory
-setwd(file.path(Sys.getenv("OneDriveCommercial"), "Documents", "OCSWITRS", "Data", "R"))
+# Load the required libraries using pacman
+pacman::p_load(RColorBrewer, lubridate, jsonlite, dplyr, magrittr, R6, haven, labelr, plyr, stringr, purrr, glue, Hmisc, psych, tibble, here, tidyr, chattr, knitr, labelled, collapse, formattable, sf, sp, ggthemes, arcgisutils)
 
 
 ## 1.3. Load Project functions ####

@@ -87,7 +87,6 @@ load(file = file.path(prjDirs$rDataPath, "parties.RData"))
 # import victims raw data from disk
 load(file = file.path(prjDirs$rDataPath, "victims.RData"))
 
-
 # import cities from ArcGIS pro geodatabase
 cities.agp <- arc.open(file.path(prjDirs$agpPath, "AGPSWITRS.gdb", "SupportingData", "cities"))
 cities <- arc.data2sf(arc.select(object = cities.agp))

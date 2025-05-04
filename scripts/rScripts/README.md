@@ -33,9 +33,11 @@ flowchart TB
 
 </div>
 
-The detailed sequence of scripts execution is provided below.
+:ledger: NOTE: If any of the scripts need to be re-run, the whole sequence of scripts should be re-run from the beginning. This is because the scripts are interdependent, and running them out of order may lead to errors or incomplete results.  
 
-## Project Functions Script
+The detailed sequence of scripts execution is provided below. The scripts are designed to run in the following order:
+
+## :one: Project Functions Script
 
 ### :scroll: File: [`createProjectFunctions.R`](createProjectFunctions.R)
 
@@ -57,7 +59,7 @@ There are a number of functions to be created in this script. The functions are 
 
 </details>
 
-## Merging Raw Data Files Script (Part 0)
+## :two: Merging Raw Data Files Script (Part 0)
 
 ### :scroll: File: [`part0MergeRawData.R`](part0MergeRawData.R)
 
@@ -92,7 +94,7 @@ The following are the steps involved in this script:
 
 </details>
 
-## Import Raw Data Files Script (Part 1)
+## :three: Import Raw Data Files Script (Part 1)
 
 ### :scroll: File: [`part1ImportRawData.R`](part1ImportRawData.R)
 
@@ -349,7 +351,7 @@ This script imports the raw data files from the `rawData` folder into R. It uses
 
 </details>
 
-## Create Time Series Data Frames Script (Part 2)
+## :four: Create Time Series Data Frames Script (Part 2)
 
 ### :scroll: File: [`part2CreateTimeSeries.R`](part2CreateTimeSeries.R)
 
@@ -360,7 +362,7 @@ This script creates time series data frames from the imported raw data. It uses 
 
 </details>
 
-## Analyzing Crashes Data Script (Part 3)
+## :five: Analyzing Crashes Data Script (Part 3)
 
 ### :scroll: File: [`part3AnalyzeCrashesData.R`](part3AnalyzeCrashesData.R)
 
@@ -371,7 +373,7 @@ This script analyzes the crashes data using various statistical methods. It uses
 
 </details>
 
-## Time Series Data Analysis Script (Part 4)
+## :six: Time Series Data Analysis Script (Part 4)
 
 ### :scroll: File: [`part4TimeSeriesDataAnalysis.R`](part4TimeSeriesDataAnalysis.R)
 
