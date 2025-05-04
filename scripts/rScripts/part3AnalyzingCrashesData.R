@@ -16,10 +16,6 @@
 # Empty the R environment before running the code
 rm(list = ls())
 
-# Set the initial working directory
-setwd(file.path(Sys.getenv("OneDriveCommercial"), "Documents", "OCSWITRS", "Data", "R"))
-getwd()
-
 # Open the R Libraries master file (located in Obsidian's library folder) - Already defined in the project_directories function
 #libmaster = file.path(Sys.getenv("HOME"), "Knowledge Management", "Documents", "Data Science", "RPackagesInstallation.R")
 #file.edit(libmaster)
@@ -28,21 +24,23 @@ getwd()
 ## 1.2. Import Libraries ####
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# Define the list of libraries to be loaded
-liblist <- c("RColorBrewer", "lubridate", "jsonlite", "dplyr", "magrittr", "R6", "haven", "labelr", "plyr", "stringr", "purrr", "glue", "Hmisc", "psych", "tibble", "here", "tidyr", "chattr", "knitr", "labelled", "ggplot2", "ggthemes", "gtsummary", "gt", "vtable", "stargazer", "scales", "pastecs", "collapse", "formattable", "xtable", "sf", "sp", "arcgisutils")
+# Load the pacman library. If not installed, install it first.
+if (!requireNamespace("pacman", quietly = TRUE)) {
+    install.packages("pacman")
+}
+library(pacman)
 
-# Load the libraries
-sapply(liblist, require, character.only = TRUE)
-
-# Set the initial working directory to the R data directory
-setwd(file.path(Sys.getenv("OneDriveCommercial"), "Documents", "OCSWITRS", "Data", "R"))
+# Load the required libraries using pacman
+pacman::p_load(RColorBrewer, lubridate, jsonlite, dplyr, magrittr, R6, haven, labelr, plyr, stringr, purrr, glue, Hmisc, psych, tibble, here, tidyr, chattr, knitr, labelled, ggplot2, ggthemes, gtsummary, gt, vtable, stargazer, scales, pastecs, collapse, formattable, xtable, sf, sp, arcgisutils)
 
 
 ## 1.3. Load Project functions ####
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# Load the project functions from the RData file
-load(file = "projectFunctions.RData")
+getwd()
+
+# Load the project functions from the RData file located in the /Data/R directory
+load(file = file.path(getwd(), "scripts", "rData", "projectFunctions.RData"))
 
 
 ## 1.4. Load Metadata and Directories ####
@@ -73,7 +71,7 @@ sapply(c("collisions.RData", "collisions.agp.RData", "crashes.RData", "crashes.a
 sapply(c("tsYear.RData", "tsQuarter.RData", "tsMonth.RData", "tsWeek.RData", "tsDay.RData"), load, .GlobalEnv)
 
 # load the codebook file
-load(file = "cb.RData")
+load(file = file.path(prjDirs$codebookPath, "cb.RData"))
 
 ### Set Graphics Directory ####
 
@@ -256,7 +254,6 @@ print(
     comment = FALSE,
     timestamp = NULL
 )
-
 
 # Save the table data frame to the rDataPath directory
 save(tbl1data, tbl1tests, tbl1addtorow, tbl1footnotes, file = file.path(prjDirs$rDataPath, "tbl1data.RData"))
@@ -1009,6 +1006,8 @@ save(tbl5data, tbl5addtorow, tbl5footnotes, file = file.path(prjDirs$rDataPath, 
 # Save the data and graphics list to the R data directory
 saveToDisk()
 
+setwd(prjDirs$prjPath)
+getwd()
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # END OF SCRIPT ####
