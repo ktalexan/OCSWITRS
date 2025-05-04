@@ -16,10 +16,6 @@
 # Empty the R environment before running the code
 rm(list = ls())
 
-# Set the initial working directory
-setwd(file.path(Sys.getenv("OneDriveCommercial"), "Documents", "OCSWITRS", "Data", "R"))
-getwd()
-
 
 ## 1.2. Import Libraries ####
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -28,22 +24,23 @@ getwd()
 #libmaster = file.path(Sys.getenv("HOME"), "Knowledge Management", "Documents", "Data Science", "RPackagesInstallation.R")
 #file.edit(libmaster)
 
+# Load the pacman library. If not installed, install it first.
+if (!requireNamespace("pacman", quietly = TRUE)) {
+    install.packages("pacman")
+}
+library(pacman)
 
-# Define the list of libraries to be loaded
-liblist <- c("RColorBrewer", "lubridate", "jsonlite", "dplyr", "magrittr", "R6", "haven", "labelr", "plyr", "stringr", "purrr", "glue", "Hmisc", "psych", "tibble", "here", "tidyr", "chattr", "knitr", "labelled", "ggplot2", "ggthemes", "gtsummary", "gt", "vtable", "stargazer", "scales", "pastecs", "collapse", "formattable", "xtable", "forecast", "ggpubr", "stlplus", "sf", "sp", "leaflet", "rnaturalearth", "rnaturalearthdata", "reshape2", "gridExtra", "arcgisutils", "cowplot")
-
-# Load the libraries
-sapply(liblist, require, character.only = TRUE)
-
-# Set the initial working directory to the R data directory
-setwd(file.path(Sys.getenv("OneDriveCommercial"), "Documents", "OCSWITRS", "Data", "R"))
+# Load the required libraries using pacman
+pacman::p_load(RColorBrewer, lubridate, jsonlite, dplyr, magrittr, R6, haven, labelr, plyr, stringr, purrr, glue, Hmisc, psych, tibble, here, tidyr, chattr, knitr, labelled, ggplot2, ggthemes, gtsummary, gt, vtable, stargazer, scales, pastecs, collapse, formattable, xtable, forecast, ggpubr, stlplus, sf, sp, leaflet, rnaturalearth, rnaturalearthdata, reshape2, gridExtra, arcgisutils, cowplot)
 
 
 ## 1.3. Load Project functions ####
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# Load the project functions from the RData file
-load(file = "projectFunctions.RData")
+getwd()
+
+# Load the project functions from the RData file located in the /Data/R directory
+load(file = file.path(getwd(), "scripts", "rData", "projectFunctions.RData"))
 
 
 ## 1.4. Load Metadata and Directories ####
@@ -77,13 +74,13 @@ sapply(c("tsYear.RData", "tsQuarter.RData", "tsMonth.RData", "tsWeek.RData", "ts
 load(file = "graphicsList.RData")
 
 # load the codebook file
-load(file = "cb.RData")
+load(file = file.path(prjDirs$codebookPath, "cb.RData"))
 
 ### Set Graphics Directory ####
 
 # Set the working directory to the graphics folder
 setwd(prjDirs$graphicsPath)
-
+getwd()
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # 2. Seasonal Time Series Analysis ####
@@ -732,6 +729,17 @@ fig9
 
 # Save Figure 9 (weekly median age for parties and victims) to disk
 ggsave(filename = file.path(graphicsList$graphics$fig9$path, paste0(graphicsList$graphics$fig9$file, ".", graphicsList$graphics$fig9$fileformat)), plot = fig9, width = graphicsList$graphics$fig9$width, height = graphicsList$graphics$fig9$height, units = "in", dpi = graphicsList$graphics$fig9$resolution)
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# 3. Saving the Data and Graphics ####
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# Save the data and graphics list to the R data directory
+saveToDisk()
+
+setwd(prjDirs$prjPath)
+getwd()
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
