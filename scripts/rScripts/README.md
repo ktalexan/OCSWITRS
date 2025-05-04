@@ -360,6 +360,14 @@ This script imports the raw data files from the `rawData` folder into R. It uses
 
 This script creates time series data frames from the imported raw data. It uses the `createTimeSeries()` function to generate time series data based on specified parameters. The time series data is then saved to disk for further analysis.
 
+1. #### Preliminaries (Time Series Creation)
+
+    1.1. ***Environmental Setup***: Clears the environment and sets up new script execution.
+
+    1.2. ***Import Libraries***: Loads the necessary libraries for the script.
+
+
+
 </details>
 
 ## :five: Analyzing Crashes Data Script (Part 3)

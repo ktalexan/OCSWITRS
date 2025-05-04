@@ -40,8 +40,10 @@ pacman::p_load(RColorBrewer, lubridate, jsonlite, dplyr, magrittr, R6, haven, la
 ## 1.3. Load Project functions ####
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# Load the project functions from the RData file
-load(file = "projectFunctions.RData")
+getwd()
+
+# Load the project functions from the RData file located in the /Data/R directory
+load(file = file.path(getwd(), "scripts", "rData", "projectFunctions.RData"))
 
 
 ## 1.4. Load Metadata and Directories ####
@@ -72,7 +74,7 @@ getwd()
 sapply(c("collisions.RData", "collisions.agp.RData", "crashes.RData", "crashes.agp.RData", "parties.RData", "parties.agp.RData", "victims.RData", "victims.agp.RData", "cities.RData", "cities.agp.RData", "roads.RData", "roads.agp.RData", "boundaries.RData", "boundaries.agp.RData"), load, .GlobalEnv)
 
 # load the codebook file
-load(file = "cb.RData")
+load(file = file.path(prjDirs$codebookPath, "cb.RData"))
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -721,8 +723,8 @@ tsDay <- addTsAttributes(tsDay, cb)
 # 11. Save Time Series Data ####
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# Set the working directory to the data path
-setwd(prjDirs$rDataPath)
+# Set the working directory to the root project directory
+setwd(prjDirs$prjPath)
 
 # Save the data
 saveToDisk()
