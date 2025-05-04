@@ -284,7 +284,7 @@ stl.w.sev <- createStlPlot(
 ### Metadata ####
 
 # Add graphics metadata for Figure 4 (monthly fatalities time series)
-graphicsList <- graphicsEntry(listname = "graphicsList", type = 2, eid = 4, listattr = list(category = "time series", name = "Monthly Fatalities Time Series", description = "Time series plot of the number of fatal accidents in monthly data", caption = paste("Display of the monthly time series data for the number of killed victims, along with a local LOESS regression trend fit with its 95% confidence intervals. The data are reported over", nrow(tsMonth), "months time period, between", format(min(as.Date(collisions$dateDatetime)), "%B %d, %Y"), "and", format(max(as.Date(collisions$dateDatetime)), "%B %d, %Y")), type = "time series", method = "ggplot2", fileformat = "png", file = "Time Series Monthly Fatalities", status = "final"))
+graphicsList <- graphicsEntry(listname = "graphicsList", type = 2, eid = 4, listattr = list(category = "time series", name = "Monthly Fatalities Time Series", description = "Time series plot of the number of fatal accidents in monthly data", caption = paste("Display of the monthly time series data for the number of killed victims, along with a local LOESS regression trend fit with its 95% confidence intervals. The data are reported over", nrow(tsMonth), "months time period, between", format(min(as.Date(collisions$dateDatetime)), "%B %d, %Y"), "and", format(max(as.Date(collisions$dateDatetime)), "%B %d, %Y")), type = "time series", method = "ggplot2", fileformat = ".png", file = "Time Series Monthly Fatalities", status = "final"))
 
 
 ### Definition ####
@@ -373,13 +373,13 @@ fig4
 ggsave(filename = file.path(graphicsList$graphics$fig4$path, paste0(graphicsList$graphics$fig4$file, ".", graphicsList$graphics$fig4$fileformat)), plot = fig4, width = graphicsList$graphics$fig4$width, height = graphicsList$graphics$fig4$height, units = "in", dpi = graphicsList$graphics$fig4$resolution)
 
 
-## 2.3. Figure 5 - Weekly Crashes Decomposition Plots ####
+## 2.4. Figure 5 - Weekly Crashes Decomposition Plots ####
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ### Metadata ####
 
 # Add graphics metadata for Figure 4 (weekly crashes STL decomposition)
-graphicsList <- graphicsEntry(listname = "graphicsList", type = 2, eid = 5, listattr = list(category = "stl decomposition", name = "STL decomposition of the number of crashes weekly data", description = "STL decomposition plot of the number of crash incidents in weekly time series data", caption = "STL decomposition of the number of collision incidents in the weekly time series data for Orange County, California", type = "decomposition", method = "ggplot2", fileformat = "png", file = "STL Plot Weekly Crashes", status = "final"))
+graphicsList <- graphicsEntry(listname = "graphicsList", type = 2, eid = 5, listattr = list(category = "stl decomposition", name = "STL decomposition of the number of crashes weekly data", description = "STL decomposition plot of the number of crash incidents in weekly time series data", caption = "STL decomposition of the number of collision incidents in the weekly time series data for Orange County, California", type = "decomposition", method = "ggplot2", fileformat = ".png", file = "STL Plot Weekly Crashes", status = "final"))
 
 
 ### Definition ####
@@ -397,13 +397,13 @@ fig5
 ggsave(filename = file.path(graphicsList$graphics$fig5$path, paste0(graphicsList$graphics$fig5$file, ".", graphicsList$graphics$fig5$fileformat)), plot = fig5, width = graphicsList$graphics$fig5$width, height = graphicsList$graphics$fig5$height, units = "in", dpi = graphicsList$graphics$fig5$resolution)
 
 
-## 2.4. Figure 6 - Weekly Fatal Accidents Decomposition Plots ####
+## 2.5. Figure 6 - Weekly Fatal Accidents Decomposition Plots ####
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ### Metadata ####
 
 # Add graphics metadata for Figure 5 (weekly fatal accidents STL decomposition)
-graphicsList <- graphicsEntry(listname = "graphicsList", type = 2, eid = 6, listattr = list(category = "stl decomposition", name = "STL decomposition of the number of fatal accidents weekly data", description = "STL decomposition plot of the number of fatal accidents in weekly time series data", caption = "STL decomposition of the number of fatal accidents in the weekly time series data for Orange County, California", type = "decomposition", method = "ggplot2", fileformat = "png", file = "STL Plot Weekly Fatalities", status = "final"))
+graphicsList <- graphicsEntry(listname = "graphicsList", type = 2, eid = 6, listattr = list(category = "stl decomposition", name = "STL decomposition of the number of fatal accidents weekly data", description = "STL decomposition plot of the number of fatal accidents in weekly time series data", caption = "STL decomposition of the number of fatal accidents in the weekly time series data for Orange County, California", type = "decomposition", method = "ggplot2", fileformat = ".png", file = "STL Plot Weekly Fatalities", status = "final"))
 
 
 ### Definition ####
@@ -421,13 +421,13 @@ fig6
 ggsave(filename = file.path(graphicsList$graphics$fig6$path, paste0(graphicsList$graphics$fig6$file, ".", graphicsList$graphics$fig6$fileformat)), plot = fig6, width = graphicsList$graphics$fig6$width, height = graphicsList$graphics$fig6$height, units = "in", dpi = graphicsList$graphics$fig6$resolution)
 
 
-## 2.5. Figure 7 - Mean Monthly Collision Severity Decomposition Plots ####
+## 2.6. Figure 7 - Mean Monthly Collision Severity Decomposition Plots ####
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ### Metadata ####
 
 # Add graphics metadata for Figure 6 (weekly mean collision severity STL decomposition)
-graphicsList <- graphicsEntry(listname = "graphicsList", type = 2, eid = 7, listattr = list(category = "stl decomposition", name = "STL decomposition of the mean collision severity weekly data", description = "STL decomposition plot of the mean collision severity in weekly time series data", caption = "STL decomposition of the mean collision severity in the weekly time series data for Orange County, California", type = "decomposition", method = "ggplot2", fileformat = "png", file = "STL Plot Weekly Severity", status = "final"))
+graphicsList <- graphicsEntry(listname = "graphicsList", type = 2, eid = 7, listattr = list(category = "stl decomposition", name = "STL decomposition of the mean collision severity weekly data", description = "STL decomposition plot of the mean collision severity in weekly time series data", caption = "STL decomposition of the mean collision severity in the weekly time series data for Orange County, California", type = "decomposition", method = "ggplot2", fileformat = ".png", file = "STL Plot Weekly Severity", status = "final"))
 
 
 ### Definition ####
@@ -445,13 +445,13 @@ fig7
 ggsave(filename = file.path(graphicsList$graphics$fig7$path, paste0(graphicsList$graphics$fig7$file, ".", graphicsList$graphics$fig7$fileformat)), plot = fig7, width = graphicsList$graphics$fig7$width, height = graphicsList$graphics$fig7$height, units = "in", dpi = graphicsList$graphics$fig7$resolution)
 
 
-## 2.6. Figure 8 - Number of Victims vs. Mean Severity ####
+## 2.7. Figure 8 - Number of Victims vs. Mean Severity ####
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ### Metadata ####
 
 # Add graphics metadata for Figure 7 (weekly mean collision severity vs. number of victims)
-graphicsList <- graphicsEntry(listname = "graphicsList", type = 2, eid = 8, listattr = list(category = "time series overlap", name = "", description = "Overlap plot of the number of victims vs. the mean severity rank in weekly time series data", caption = paste("Overlapping display of the weekly time series data for (a) the number of victims along with a Loess local regression trend line fit, and (b) the mean collision severity ordinal rank along with its Loess local regression trend line fit. Data was reported over 138 months of weekly time intervals, from", format(min(as.Date(collisions$dateDatetime)), "%m/%d/%Y"), "to", format(max(as.Date(collisions$dateDatetime)), "%m/%d/%Y")), type = "time series", method = "ggplot2", fileformat = "png", file = "Overlap Victims vs Severity", status = "final"))
+graphicsList <- graphicsEntry(listname = "graphicsList", type = 2, eid = 8, listattr = list(category = "time series overlap", name = "", description = "Overlap plot of the number of victims vs. the mean severity rank in weekly time series data", caption = paste("Overlapping display of the weekly time series data for (a) the number of victims along with a Loess local regression trend line fit, and (b) the mean collision severity ordinal rank along with its Loess local regression trend line fit. Data was reported over", nrow(tsMonth), " months of weekly time intervals, from", format(min(as.Date(collisions$dateDatetime)), "%m/%d/%Y"), "to", format(max(as.Date(collisions$dateDatetime)), "%m/%d/%Y")), type = "time series", method = "ggplot2", fileformat = ".png", file = "Overlap Victims vs Severity", status = "final"))
 
 
 ### Definition ####
@@ -558,13 +558,13 @@ fig8
 ggsave(filename = file.path(graphicsList$graphics$fig8$path, paste0(graphicsList$graphics$fig8$file, ".", graphicsList$graphics$fig8$fileformat)), plot = fig8, width = graphicsList$graphics$fig8$width, height = graphicsList$graphics$fig8$height, units = "in", dpi = graphicsList$graphics$fig8$resolution)
 
 
-## 2.7. Figure 9 - Median Age for Parties and Victims ####
+## 2.8. Figure 9 - Median Age for Parties and Victims ####
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ### Metadata ####
 
 # Add graphics metadata for Figure 8 (weekly median age for parties and victims)
-graphicsList <- graphicsEntry(listname = "graphicsList", type = 2, eid = 9, listattr = list(category = "Median Age Pyramid", name = "Median Age Pyramid and Correlation for Parties and Victims", description = "Pyramid plot and correlation matrix for median age for parties and victims in collision incidents", caption = "Visual representation of median age distribution for parties and victims of collision incidents. Left subgraph (a): median age pyramid plot for parties and victims of collision accidents. Right subgraph (b): Pearson correlation matrix between party and victim age groups in the collision incident data.", type = "time series", method = "ggplot2", fileformat = "png", file = "Median Age Distribution", status = "final"))
+graphicsList <- graphicsEntry(listname = "graphicsList", type = 2, eid = 9, listattr = list(category = "Median Age Pyramid", name = "Median Age Pyramid and Correlation for Parties and Victims", description = "Pyramid plot and correlation matrix for median age for parties and victims in collision incidents", caption = "Visual representation of median age distribution for parties and victims of collision incidents. Left subgraph (a): median age pyramid plot for parties and victims of collision accidents. Right subgraph (b): Pearson correlation matrix between party and victim age groups in the collision incident data.", type = "time series", method = "ggplot2", fileformat = ".png", file = "Median Age Distribution", status = "final"))
 
 
 ### Definition ####

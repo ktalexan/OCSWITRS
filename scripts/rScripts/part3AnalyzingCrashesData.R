@@ -265,7 +265,7 @@ save(tbl1data, tbl1tests, tbl1addtorow, tbl1footnotes, file = file.path(prjDirs$
 ### Metadata ####
 
 # Add graphics metadata for Table 2
-graphicsList <- graphicsEntry(listname = "graphicsList", type = 1, eid = 2, listattr =  list(name = "Collision severity rank classification statistics", description = "Key classification and statistics of the collision severity rank variable", caption = "Ranked collision severity ordinal classification, related parameters, and OCSWITRS dataset counts", method = "gtsummary", fileformat = "latex", file = "Collision Severity Rank Stats", status = "final"))
+graphicsList <- graphicsEntry(listname = "graphicsList", type = 1, eid = 2, listattr =  list(name = "Collision severity rank classification statistics", description = "Key classification and statistics of the collision severity rank variable", caption = "Ranked collision severity ordinal classification, related parameters, and OCSWITRS dataset counts", method = "gtsummary", fileformat = ".tex", file = "Collision Severity Rank Stats", status = "final"))
 
 
 ### Definition ####
@@ -455,7 +455,7 @@ save(tbl2data, tbl2tests, tbl2addtorow, tbl2footnotes, file = file.path(prjDirs$
 ### Metadata ####
 
 # Add graphics metadata for Figure 1
-graphicsList <- graphicsEntry(listname = "graphicsList", type = 2, eid = 1, listattr = list(category = "histogram", name = "Histogram of victim count in crashes", description = "Histogram plot of the number of victims in crash incidents", caption = "Top-10 victim frequency counts of the number of victims in collision accidents", type = "frequency", method = "ggplot2", fileformat = "png", file = "Histogram Victim Count", status = "final"))
+graphicsList <- graphicsEntry(listname = "graphicsList", type = 2, eid = 1, listattr = list(category = "histogram", name = "Histogram of victim count in crashes", description = "Histogram plot of the number of victims in crash incidents", caption = "Top-10 victim frequency counts of the number of victims in collision accidents", type = "frequency", method = "ggplot2", fileformat = ".png", file = "Histogram Victim Count", status = "final"))
 
 
 ### Definition ####
@@ -619,10 +619,10 @@ ggsave(filename = file.path(graphicsList$graphics$fig3$path, paste0(graphicsList
 ### Metadata ####
 
 # Add graphics metadata for Table 3
-graphicsList <- graphicsEntry(listname = "graphicsList", type = 1, eid = 3, listattr = list(name = "Monthly Accident Summary Statistics", description = "Key accident statistics for the summary variables in the OCSWITRS datasets", caption = "Summary total values for monthly time series of traffic accidents in Orange County (2013-2024)", method = "stat.desc", fileformat = "data frame", file = "Monthly Summary Stats", status = "final"))
+graphicsList <- graphicsEntry(listname = "graphicsList", type = 1, eid = 3, listattr = list(name = "Monthly Accident Summary Statistics", description = "Key accident statistics for the summary variables in the OCSWITRS datasets", caption = "Summary total values for monthly time series of traffic accidents in Orange County (2013-2024)", method = "stat.desc", fileformat = ".tex", file = "Monthly Summary Stats", status = "final"))
 
 # Add graphics metadata for Table 4
-graphicsList <- graphicsEntry(listname = "graphicsList", type = 1, eid = 4, listattr = list(name = "Monthly Accident Average and Median Statistics", description = "Key statistics for the average and median variable values in the OCSWITRS datasets", caption = "Average and median values for monthly time series of traffic accidents in Orange County (2013-2024)", method = "stat.desc", fileformat = "data frame", file = "Monthly Average Stats", status = "final"))
+graphicsList <- graphicsEntry(listname = "graphicsList", type = 1, eid = 4, listattr = list(name = "Monthly Accident Average and Median Statistics", description = "Key statistics for the average and median variable values in the OCSWITRS datasets", caption = "Average and median values for monthly time series of traffic accidents in Orange County (2013-2024)", method = "stat.desc", fileformat = ".tex", file = "Monthly Average Stats", status = "final"))
 
 
 ### Definition ####
@@ -911,7 +911,7 @@ save(tbl4data, tbl4addtorow, tbl4footnotes, file = file.path(prjDirs$rDataPath, 
 ### Metadata ####
 
 # Add graphics metadata for Table 5
-graphicsList <- graphicsEntry(listname = "graphicsList", type = 1, eid = 5, listattr = list(name = "Collision Incidents by Year", description = "Key statistics for the collision incidents by year in the OCSWITRS datasets", caption = "Collision Incidents Categorization by Year in the OCSWITRS datasets", method = "collap", fileformat = "data frame", file = "Collision Incidents by Year", status = "final"))
+graphicsList <- graphicsEntry(listname = "graphicsList", type = 1, eid = 5, listattr = list(name = "Collision Incidents by Year", description = "Key statistics for the collision incidents by year in the OCSWITRS datasets", caption = "Collision Incidents Categorization by Year in the OCSWITRS datasets", method = "collap", fileformat = ".tex", file = "Collision Incidents by Year", status = "final"))
 
 
 ### Definition ####
