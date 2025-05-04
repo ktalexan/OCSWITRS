@@ -489,7 +489,7 @@ fig1
 ### Storage ####
 
 # Save the histogram to a PNG file
-ggsave(filename = file.path(graphicsList$graphics$fig1$path, paste0(graphicsList$graphics$fig1$file, ".", graphicsList$graphics$fig1$fileformat)), plot = fig1, width = graphicsList$graphics$fig1$width, height = graphicsList$graphics$fig1$height, units = "in", dpi = graphicsList$graphics$fig1$resolution)
+ggsave(filename = file.path(graphicsList$graphics$fig1$path, paste0(graphicsList$graphics$fig1$file, graphicsList$graphics$fig1$fileformat)), plot = fig1, width = graphicsList$graphics$fig1$width, height = graphicsList$graphics$fig1$height, units = "in", dpi = graphicsList$graphics$fig1$resolution)
 
 
 ## 2.4. Figure 2 - Bar Chart-Type of Collision ####

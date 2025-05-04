@@ -370,7 +370,7 @@ fig4
 ### Storage ####
 
 # Save Figure 4 (monthly fatalities time series) to disk
-ggsave(filename = file.path(graphicsList$graphics$fig4$path, paste0(graphicsList$graphics$fig4$file, ".", graphicsList$graphics$fig4$fileformat)), plot = fig4, width = graphicsList$graphics$fig4$width, height = graphicsList$graphics$fig4$height, units = "in", dpi = graphicsList$graphics$fig4$resolution)
+ggsave(filename = file.path(graphicsList$graphics$fig4$path, paste0(graphicsList$graphics$fig4$file, graphicsList$graphics$fig4$fileformat)), plot = fig4, width = graphicsList$graphics$fig4$width, height = graphicsList$graphics$fig4$height, units = "in", dpi = graphicsList$graphics$fig4$resolution)
 
 
 ## 2.4. Figure 5 - Weekly Crashes Decomposition Plots ####
@@ -394,7 +394,7 @@ fig5
 ### Storage ####
 
 # Save Figure 5 (weekly crashes STL decomposition) to disk
-ggsave(filename = file.path(graphicsList$graphics$fig5$path, paste0(graphicsList$graphics$fig5$file, ".", graphicsList$graphics$fig5$fileformat)), plot = fig5, width = graphicsList$graphics$fig5$width, height = graphicsList$graphics$fig5$height, units = "in", dpi = graphicsList$graphics$fig5$resolution)
+ggsave(filename = file.path(graphicsList$graphics$fig5$path, paste0(graphicsList$graphics$fig5$file, graphicsList$graphics$fig5$fileformat)), plot = fig5, width = graphicsList$graphics$fig5$width, height = graphicsList$graphics$fig5$height, units = "in", dpi = graphicsList$graphics$fig5$resolution)
 
 
 ## 2.5. Figure 6 - Weekly Fatal Accidents Decomposition Plots ####
@@ -418,7 +418,7 @@ fig6
 ### Storage ####
 
 # Save Figure 6 (weekly fatal accidents STL decomposition) to disk
-ggsave(filename = file.path(graphicsList$graphics$fig6$path, paste0(graphicsList$graphics$fig6$file, ".", graphicsList$graphics$fig6$fileformat)), plot = fig6, width = graphicsList$graphics$fig6$width, height = graphicsList$graphics$fig6$height, units = "in", dpi = graphicsList$graphics$fig6$resolution)
+ggsave(filename = file.path(graphicsList$graphics$fig6$path, paste0(graphicsList$graphics$fig6$file, graphicsList$graphics$fig6$fileformat)), plot = fig6, width = graphicsList$graphics$fig6$width, height = graphicsList$graphics$fig6$height, units = "in", dpi = graphicsList$graphics$fig6$resolution)
 
 
 ## 2.6. Figure 7 - Mean Monthly Collision Severity Decomposition Plots ####
@@ -442,7 +442,7 @@ fig7
 ### Storage ####
 
 # Save Figure 7 (weekly mean collision severity STL decomposition) to disk
-ggsave(filename = file.path(graphicsList$graphics$fig7$path, paste0(graphicsList$graphics$fig7$file, ".", graphicsList$graphics$fig7$fileformat)), plot = fig7, width = graphicsList$graphics$fig7$width, height = graphicsList$graphics$fig7$height, units = "in", dpi = graphicsList$graphics$fig7$resolution)
+ggsave(filename = file.path(graphicsList$graphics$fig7$path, paste0(graphicsList$graphics$fig7$file, graphicsList$graphics$fig7$fileformat)), plot = fig7, width = graphicsList$graphics$fig7$width, height = graphicsList$graphics$fig7$height, units = "in", dpi = graphicsList$graphics$fig7$resolution)
 
 
 ## 2.7. Figure 8 - Number of Victims vs. Mean Severity ####
@@ -555,7 +555,7 @@ fig8
 ### Storage ####
 
 # Save Figure 8 (weekly mean collision severity vs. number of victims) to disk
-ggsave(filename = file.path(graphicsList$graphics$fig8$path, paste0(graphicsList$graphics$fig8$file, ".", graphicsList$graphics$fig8$fileformat)), plot = fig8, width = graphicsList$graphics$fig8$width, height = graphicsList$graphics$fig8$height, units = "in", dpi = graphicsList$graphics$fig8$resolution)
+ggsave(filename = file.path(graphicsList$graphics$fig8$path, paste0(graphicsList$graphics$fig8$file, graphicsList$graphics$fig8$fileformat)), plot = fig8, width = graphicsList$graphics$fig8$width, height = graphicsList$graphics$fig8$height, units = "in", dpi = graphicsList$graphics$fig8$resolution)
 
 
 ## 2.8. Figure 9 - Median Age for Parties and Victims ####
@@ -728,7 +728,7 @@ fig9
 ### Storage ####
 
 # Save Figure 9 (weekly median age for parties and victims) to disk
-ggsave(filename = file.path(graphicsList$graphics$fig9$path, paste0(graphicsList$graphics$fig9$file, ".", graphicsList$graphics$fig9$fileformat)), plot = fig9, width = graphicsList$graphics$fig9$width, height = graphicsList$graphics$fig9$height, units = "in", dpi = graphicsList$graphics$fig9$resolution)
+ggsave(filename = file.path(graphicsList$graphics$fig9$path, paste0(graphicsList$graphics$fig9$file, graphicsList$graphics$fig9$fileformat)), plot = fig9, width = graphicsList$graphics$fig9$width, height = graphicsList$graphics$fig9$height, units = "in", dpi = graphicsList$graphics$fig9$resolution)
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
