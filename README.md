@@ -3,12 +3,16 @@
 
 :label: Historical Traffic Collisions in Orange County, California. Analysis of the SWITRS (Statewide Integrated Traffic Records System) data.
 
+<div align="center">
+
 **:bust_in_silhouette: Kostas Alexandridis, PhD, GISP** | *:label: v.2.1, May 2025*
 
 ![Static Badge](https://img.shields.io/badge/OCSWITRS-GitHub?style=plastic&logo=github&logoSize=auto&label=GitHub&labelColor=navy) 
 ![GitHub License](https://img.shields.io/github/license/ktalexan/PolicyAnalysis?style=plastic&labelColor=black) 
 ![Shield Badge: Language-R](https://img.shields.io/static/v1?style=plastic&label=language&message=R&logo=R&color=blue&logoColor=blue&labelColor=black)
 ![Shield Badge: Language-Python](https://img.shields.io/static/v1?style=plastic&label=language&message=Python&logo=python&color=forestgreen&logoColor=blue&labelColor=black)
+
+</div>
 
 ----
 
