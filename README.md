@@ -1,4 +1,17 @@
-# :vertical_traffic_light: Orange County Traffic Collisions Analysis (OCSWITRS)
+# :vertical_traffic_light: OCSWITRS: Orange County Traffic Collisions Analysis
+
+
+:label: Historical Traffic Collisions in Orange County, California. Analysis of the SWITRS (Statewide Integrated Traffic Records System) data.
+
+**:bust_in_silhouette: Kostas Alexandridis, PhD, GISP** | *:label: v.2.1, May 2025*
+
+![Static Badge](https://img.shields.io/badge/OCSWITRS-GitHub?style=plastic&logo=github&logoSize=auto&label=GitHub&labelColor=navy) 
+![GitHub License](https://img.shields.io/github/license/ktalexan/PolicyAnalysis?style=plastic&labelColor=black) 
+![Shield Badge: Language-R](https://img.shields.io/static/v1?style=plastic&label=language&message=R&logo=R&color=blue&logoColor=blue&labelColor=black)
+![Shield Badge: Language-Python](https://img.shields.io/static/v1?style=plastic&label=language&message=Python&logo=python&color=forestgreen&logoColor=blue&labelColor=black)
+
+----
+
 
 This repository contains the analysis of traffic collisions in Orange County, California, using the SWITRS (Statewide Integrated Traffic Records System) data. The analysis includes data cleaning, visualization, and modeling to understand the factors contributing to traffic collisions in the region.
 The analysis is conducted using Python, R, and Stata, and the results are presented in Jupyter notebooks and scripts. The repository also includes metadata files, graphics, and presentation content.
