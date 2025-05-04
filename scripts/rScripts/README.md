@@ -489,15 +489,15 @@ This script analyzes the crashes data using various statistical methods. It uses
 
 2. #### Data Analysis
 
-    2.1. ***Table 1 - Collision Severity Stats***: Generates a table with the collision severity statistics. It contains key statistics of the collision severity variable, specifically, collision serverity ordinal classification and OCSWITRS dataset counts. It uses the gtsummary method, and outputs the results to a RData file in a LaTeX format for Overleaf integration.
+    2.1. ***Table 1 - Collision Severity Stats***: Generates a table with the collision severity statistics. It contains key statistics of the collision severity variable, specifically, collision serverity ordinal classification and OCSWITRS dataset counts. It uses the gtsummary method, and outputs the results to a RData file in a LaTeX format for Overleaf integration. The table is saved in the `analysis/graphics` folder as [`Tbl1-Collision Severity Stats.tex`](../../analysis/graphics/Tbl1-Collision%20Severity%20Stats.tex).
 
-    2.2. ***Table 2 - Ranked Collision Severity Stats***: Generates a table with the ranked collision severity statistics. It contains key classification and statistics of the collision severity rank variable. Specifically ranked collision severity ordinal classification, related parameters and OCSWITRS dataset counts. It uses the gtsummary method, and outputs the results to a RData file in a LaTeX format for Overleaf integration.
+    2.2. ***Table 2 - Ranked Collision Severity Stats***: Generates a table with the ranked collision severity statistics. It contains key classification and statistics of the collision severity rank variable. Specifically ranked collision severity ordinal classification, related parameters and OCSWITRS dataset counts. It uses the gtsummary method, and outputs the results to a RData file in a LaTeX format for Overleaf integration. The table is saved in the `analysis/graphics` folder as [`Tbl2-Collision Severity Rank Stats.tex`](../../analysis/graphics/Tbl2-Collision%20Severity%20Rank%20Stats.tex).
 
-    2.3. ***Figure 1 - Histogram - Victim Count***: Generates a histogram of the victim count variable. It creates a histogram plot of the number of victims in crash incidents. Specifically, the top-10 victim frequency counts of the number of victims in collision accidents. It uses the ggplot2 frequency plot, and outputs the results to a png file format.
+    2.3. ***Figure 1 - Histogram - Victim Count***: Generates a histogram of the victim count variable. It creates a histogram plot of the number of victims in crash incidents. Specifically, the top-10 victim frequency counts of the number of victims in collision accidents. It uses the ggplot2 frequency plot, and outputs the results to a png file format. The histogram is saved in the `analysis/graphics` folder as [`Fig1-Histogram Victim Count.png`](../../analysis/graphics/Fig1-Histogram%20Victim%20Count.png).
 
-    2.4. ***Figure 2 - Bar Chart - Type of Collision***: Generates a bar chart of the type of collision types. It creates a bar graph of the number of collisions by type of collision. Specifically, number of collisions by collision type. It uses the ggplot2 distribution plot, and outputs the results to a png file format.
+    2.4. ***Figure 2 - Bar Chart - Type of Collision***: Generates a bar chart of the type of collision types. It creates a bar graph of the number of collisions by type of collision. Specifically, number of collisions by collision type. It uses the ggplot2 distribution plot, and outputs the results to a png file format. The bar chart is saved in the `analysis/graphics` folder as [`Fig2-Bar Type of Collision.png`](../../analysis/graphics/Fig2-Bar%20Type%20of%20Collision.png).
 
-    2.5. ***Figure 3 - Bar Chart - Fatal Accidents***: Generates a bar chart of the fatal accidents. It creates a cumulative bar chart of the number of fatal collisions by type. Specifically, number of fatal collisions by type of fatality. It uses the ggplot2 distribution plot, and outputs the results to a png file format.
+    2.5. ***Figure 3 - Bar Chart - Fatal Accidents***: Generates a bar chart of the fatal accidents. It creates a cumulative bar chart of the number of fatal collisions by type. Specifically, number of fatal collisions by type of fatality. It uses the ggplot2 distribution plot, and outputs the results to a png file format. The bar chart is saved in the `analysis/graphics` folder as [`Fig3-Cumulative Number of Fatalities.png`](../../analysis/graphics/Fig3-Cumulative%20Number%20of%20Fatalities.png).
 
     2.6. ***Tables 3-4 - Monthly Collisions Stats***: Generates tables with the monthly collisions statistics. It contains (a) key accident statistics for the summary variables in the OCSWITRS datasets (Table 3). Specifically, summary total values for monthly time series of traffic accidents in Orange County (2013-2024); (b) key statistics for the average and median variable values in the OCSWITRS datasets (Table 4). Specifically, average and median values for montly time series of traffic accidents in Orange County (2013-2024). Both tables use the sta.desc method, and outputs the results to a RData file in a LaTeX format for Overleaf integration.
 
@@ -518,5 +518,41 @@ This script analyzes the crashes data using various statistical methods. It uses
 
 This script performs time series data analysis using various statistical methods. It uses the `
 timeSeriesDataAnalysis()` function to perform the analysis and generate results. The analysis results are then saved to disk for further review.
+
+1. #### Preliminaries (Time Series Data Analysis)
+
+    1.1. ***Environmental Setup***: Clears the environment and sets up new script execution.
+
+    1.2. ***Import Libraries***: Loads the necessary libraries for the script.
+
+    1.3. ***Load Project Functions***: Loads the project functions created in the `createProjectFunctions.R` script.
+
+    1.4. ***Load Metadata and Directories***: Loads the project metadata and directories from the `projectMetadata()` and `projectDirectories()` functions.
+
+    1.5. ***Set the working directory***: Sets the working directory to the `rDataPath` folder.
+
+    1.6. ***Load Data Frames***: Loads the OCSWIRTRS data from the RData files: collisions, collisions.agp, crashes, crashes.agp, parties, parties.agp, victims, victims.agp, cities, cities.agp, roads, roads.agp, boundaries, boundaries.agp. Load the time series RData files: tsYear, tsQuarter, tsMonth, tsWee, tsDay. Also load `cb` codebook data, and the `graphicsList` data frame.
+
+2. ### Seasonal Time Series Analysis
+
+    2.1. ***Create Time Series Objects***: Create time series objects (quarter, month, week, day) for selected varieables: number of crashes, number of victims, number of fatal accidents, fatal or severe accidents, number of injuries, mean collision severity.
+
+    2.2. ***Decompose Time Series***: Decompose the time series objects into seasonal, trend, and random components. This is done to analyze the underlying patterns in the data. Uses the STL (Seasonal-Trend decomposition using Loess) method (R library: `stlplus`) for decomposition. STL decomposition applied to the number of crashes, number of victims, fatal accidents, fatal or severe accidents, number of injuries, and mean collision severity.
+
+    2.3. ***Figure 4 - Monthly Fatalities Time Series***: Generates a time series plot of the monthly fatalities. It creates a time series plot of the number of fatal accidents in montly data. Specifically, display of the montly time series data for the number of killed victims, along with a LOESS regression trend fit with its 95% confidence intervals. It uses the ggplot2 time series plot, and outputs the results to a png file format.
+
+    2.4. ***Figure 5 - Weekly Crashes Decomposition Plots***: Generates decomposition plots of the weekly crashes. It creates an STL decomposition plot of the number of crash incidents in weekly time series data. Specifically, STL decomposition of the number of collision incidents in the weekly time series data for Orange County, California. It uses the ggplot2 time series plot, and outputs the results to a png file format.
+
+    2.5. ***Figure 6 - Weekly Fatal Accidents Decomposition Plots***: Generates decomposition plots of the weekly fatal accidents. It creates an STL decomposition plot of the number of fatal accidents in weekly time series data. Specifically, STL decomposition of the number of fatal accidents in the weekly time series data for Orange County, California. It uses the ggplot2 time series plot, and outputs the results to a png file format.
+
+    2.6. ***Figure 7 - Mean Montly Collision Severity Decomposition Plots***: Generates decomposition plots of the mean monthly collision severity. It creates an STL decomposition plot of the mean collision severity in weekly time series data. Specifically, STL decomposition of the mean collision severity in the weekly time series data for Orange County, California. It uses the ggplot2 time series plot, and outputs the results to a png file format.
+
+    2.7. ***Figure 8 - Number of Victims vs. Mean Severity***: Generates an overlap plot of the number of victims vs. mean severity. It creates an overlap plot of the number of victims versus the mean severity rank in weekly time series data. Specifically, overlapping display of the weekly time series data for (a) the number of victims along with a Loess local regression trend line fit, and (b) the mean collision severity ordinal rank along with its Loess local regression trend line fit. It uses the ggplot2 scatter plot, and outputs the results to a png file format.
+
+    2.8. ***Figure 9 - Median Age for Parties and Vicims***: Generates a median age pyramid and correlation graph for parties and victims. It creates pyramid plot and correlation matrix for median age for parties and victims in collision incidents. Specifically, provides a visual representation of median age distribution for parties and victims of collision incidents, with left subgraph (a) representing the median age pyramid plot, and right subgraph (b) the Pearson correlation matrix between party and victim age groups in the collision incident data. It uses the ggplot2 time series plot, and outputs the results to a png file format.
+
+3. #### Saving the Data and Graphics
+    
+    Saves the data frames (collisions, crashes, parties, victims, cities, roads), the time-series variables, and the graph data variables to disk in the `rData` folder. The function also saves the codebook and project functions to disk for future reference.
 
 </details>
