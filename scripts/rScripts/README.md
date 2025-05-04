@@ -234,116 +234,117 @@ This script imports the raw data files from the `rawData` folder into R. It uses
    9.31. ***Primary and Secondary Ramp***: Recoding the primary and secondary ramp variables to numeric. Using the codebook to assign labels to the variable.
 
 10. #### Party Characteristics
+    
+    10.1. ***Party Type***: Recoding the party type variable to numeric. Using the codebook to assign labels to the variable.
+    
+    10.2. ***At Fault***: Recoding the at fault variable to numeric. Using the codebook to assign labels to the variable (binary, 0/1).
+    
+    10.3. ***Party Sex***: Recoding the party gender variable to numeric. Using the codebook to assign labels to the variable (M/F/X).
+    
+    10.4. ***Party Age***: Recoding the party age variable to numeric. Using the codebook to assign labels to the variable. Also creating and recoding the party age group variable to numeric. Using the codebook to assign labels to the variable (0-10, 11-18, 19-25, 26-35, 36-45, 46-55, 56-65, 66-80, 81-100, >100).
+    
+    10.5 ***Party Race***: Recoding the party race variable to numeric. Using the codebook to assign labels to the variable (W/B/A/L).
+    
+    10.6. ***Inattention***: Recoding the inattentioin variable to numeric. Using the codebook to assign labels to the variable.
 
-   10.1. ***Party Type***: Recoding the party type variable to numeric. Using the codebook to assign labels to the variable.
+    10.7. ***Party Sobriety***: Recoding the party sobriety variable to numeric. Using the codebook to assign labels to the variable. Also, creating and recoding the party sobriety indicator (dui alcohol indicator) variable to numeric. Using the codebook to assign labels to the variable.
 
-   10.2. ***At Fault***: Recoding the at fault variable to numeric. Using the codebook to assign labels to the variable (binary, 0/1).
+    10.8. ***Party Drug Phyisical***: Recoding the party drug physical variable to numeric. Using the codebook to assign labels to the variable. Also, creating and recoding the party drug physical indicator (dui drug indicator) variable to numeric. Using the codebook to assign labels to the variable.
 
-   10.3. ***Party Sex***: Recoding the party gender variable to numeric. Using the codebook to assign labels to the variable (M/F/X).
+    10.9. ***Direction of Travel***: Recoding the direction of travel variable to numeric. Using the codebook to assign labels to the variable (N,S,E,W).
 
-   10.4. ***Party Age***: Recoding the party age variable to numeric. Using the codebook to assign labels to the variable. Also creating and recoding the party age group variable to numeric. Using the codebook to assign labels to the variable (0-10, 11-18, 19-25, 26-35, 36-45, 46-55, 56-65, 66-80, 81-100, >100).
+    10.10. ***Party Safety Equipment***: Recoding the party safety equipment variables to numeric. Two variables recoded: (a) party safety equipment 1, and (b) party safety equipment 2. Using the codebook to assign labels to the variable.
 
-   10.5 ***Party Race***: Recoding the party race variable to numeric. Using the codebook to assign labels to the variable (W/B/A/L).
+    10.11. ***Financial Responsibility***: Recoding the financial responsibility variable to numeric. Using the codebook to assign labels to the variable.
 
-   10.6. ***Inattention***: Recoding the inattentioin variable to numeric. Using the codebook to assign labels to the variable.
+    10.12. ***Party Special Information***: Recoding the party special information variable to numeric. Three variables recoded: (a) party special information 1, (b) party special information 2, and (c) party special information 3. Using the codebook to assign labels to the variable.
 
-   10.7. ***Party Sobriety***: Recoding the party sobriety variable to numeric. Using the codebook to assign labels to the variable. Also, creating and recoding the party sobriety indicator (dui alcohol indicator) variable to numeric. Using the codebook to assign labels to the variable.
+    10.13. ***OAF Violation Code***: Recoding the OAF violation code variable to numeric. Using the codebook to assign labels to the variable.
 
-   10.8. ***Party Drug Phyisical***: Recoding the party drug physical variable to numeric. Using the codebook to assign labels to the variable. Also, creating and recoding the party drug physical indicator (dui drug indicator) variable to numeric. Using the codebook to assign labels to the variable.
+    10.14. ***OAF Violation Category***: Recoding the OAF violation category variable to numeric. Using the codebook to assign labels to the variable.
 
-   10.9. ***Direction of Travel***: Recoding the direction of travel variable to numeric. Using the codebook to assign labels to the variable (N,S,E,W).
+    10.15. ***OAF Violation Section***: Recoding the OAF violation section variable to numeric. Two variables recoded: (a) OAF violation section 1, and (b) OAF violation section 2. Using the codebook to assign labels to the variable.
 
-   10.10. ***Party Safety Equipment***: Recoding the party safety equipment variables to numeric. Two variables recoded: (a) party safety equipment 1, and (b) party safety equipment 2. Using the codebook to assign labels to the variable.
+    10.16. ***Movement Preceeding Accident***: Recoding the movement preceeding accident variable to numeric. Using the codebook to assign labels to the variable.
 
-   10.11. ***Financial Responsibility***: Recoding the financial responsibility variable to numeric. Using the codebook to assign labels to the variable.
+    10.17. ***Vehicle Year***: Recoding the vehicle year variable to numeric. Using the codebook to assign labels to the variable. Also creating and recoding the vehicle year group variable to numeric. Using the codebook to assign labels to the variable.
 
-   10.12. ***Party Special Information***: Recoding the party special information variable to numeric. Three variables recoded: (a) party special information 1, (b) party special information 2, and (c) party special information 3. Using the codebook to assign labels to the variable.
+    10.18. ***Vehicle Type***: Recoding the vehicle type variable to numeric. Using the codebook to assign labels to the variable.
 
-   10.13. ***OAF Violation Code***: Recoding the OAF violation code variable to numeric. Using the codebook to assign labels to the variable.
+    10.19. ***CHP Vehicle Towing***: Recoding the CHP vehicle towing variable to numeric. Using the codebook to assign labels to the variable.
 
-   10.14. ***OAF Violation Category***: Recoding the OAF violation category variable to numeric. Using the codebook to assign labels to the variable.
+    10.20. ***CHP Vehicle Type Towed***: Recoding the CHP vehicle type towed variable to numeric. Using the codebook to assign labels to the variable.
 
-   10.15. ***OAF Violation Section***: Recoding the OAF violation section variable to numeric. Two variables recoded: (a) OAF violation section 1, and (b) OAF violation section 2. Using the codebook to assign labels to the variable.
-
-   10.16. ***Movement Preceeding Accident***: Recoding the movement preceeding accident variable to numeric. Using the codebook to assign labels to the variable.
-
-   10.17. ***Vehicle Year***: Recoding the vehicle year variable to numeric. Using the codebook to assign labels to the variable. Also creating and recoding the vehicle year group variable to numeric. Using the codebook to assign labels to the variable.
-
-   10.18. ***Vehicle Type***: Recoding the vehicle type variable to numeric. Using the codebook to assign labels to the variable.
-
-   10.19. ***CHP Vehicle Towing***: Recoding the CHP vehicle towing variable to numeric. Using the codebook to assign labels to the variable.
-
-   10.20. ***CHP Vehicle Type Towed***: Recoding the CHP vehicle type towed variable to numeric. Using the codebook to assign labels to the variable.
-
-   10.21. ***Special Info***: Recoding the special info variable to numeric. Two variables recoded: (a) special info F, and (b) special info G. Using the codebook to assign labels to the variable.
+    10.21. ***Special Info***: Recoding the special info variable to numeric. Two variables recoded: (a) special info F, and (b) special info G. Using the codebook to assign labels to the variable.
 
 11. #### Victim Characteristics
 
-   11.1. ***Victim Role***: Recoding the victim role variable to numeric. Using the codebook to assign labels to the variable.
+    11.1. ***Victim Role***: Recoding the victim role variable to numeric. Using the codebook to assign labels to the variable.
 
-   11.2. ***Victim Sex***: Recoding the victim sex variable to numeric. Using the codebook to assign labels to the variable (M/F/X).
+    11.2. ***Victim Sex***: Recoding the victim sex variable to numeric. Using the codebook to assign labels to the variable (M/F/X).
 
-   11.3. ***Victim Age***: Recoding the victim age variable to numeric. Using the codebook to assign labels to the variable. Also creating and recoding the victim age group variable to numeric. Using the codebook to assign labels to the variable (0-10, 11-18, 19-25, 26-35, 36-45, 46-55, 56-65, 66-80, 81-100, >100).
+    11.3. ***Victim Age***: Recoding the victim age variable to numeric. Using the codebook to assign labels to the variable. Also creating and recoding the victim age group variable to numeric. Using the codebook to assign labels to the variable (0-10, 11-18, 19-25, 26-35, 36-45, 46-55, 56-65, 66-80, 81-100, >100).
 
-   11.4. ***Victim Degree of Injury***: Recoding the victim degree of injury variable to numeric. Using the codebook to assign labels to the variable. Also creating and recoding a binary variable that indicates if the victim is injured (1) or not (0).
+    11.4. ***Victim Degree of Injury***: Recoding the victim degree of injury variable to numeric. Using the codebook to assign labels to the variable. Also creating and recoding a binary variable that indicates if the victim is injured (1) or not (0).
 
-   11.5. ***Victim Seating Position***: Recoding the victim seating position variable to numeric. Using the codebook to assign labels to the variable.
+    11.5. ***Victim Seating Position***: Recoding the victim seating position variable to numeric. Using the codebook to assign labels to the variable.
 
-   11.6. ***Victim Safety Equipment***: Recoding the victim safety equipment variable to numeric. Two variables recoded: (a) victim safety equipment 1, and (b) victim safety equipment 2. Using the codebook to assign labels to the variable.
+    11.6. ***Victim Safety Equipment***: Recoding the victim safety equipment variable to numeric. Two variables recoded: (a) victim safety equipment 1, and (b) victim safety equipment 2. Using the codebook to assign labels to the variable.
 
-   11.7. ***Victim Ejected***: Recoding the victim ejected variable to numeric. Using the codebook to assign labels to the variable.
+    11.7. ***Victim Ejected***: Recoding the victim ejected variable to numeric. Using the codebook to assign labels to the variable.
 
 12. #### City Characteristics
 
-   Adding new double variable in the cities data frame that divides the travel time by the number of vehicles in the city. This is done to facilitate the analysis of severe collisions.
+    Adding new double variable in the cities data frame that divides the travel time by the number of vehicles in the city. This is done to facilitate the analysis of severe collisions.
 
 13. #### Add Column Attributes
 
-   Adding the column attributes using the `addAttributes()` function. Applied to the crashes, parties, victims, cities and roads data frames. The attributes are based on the codebook imported in the previous step.
+    Adding the column attributes using the `addAttributes()` function. Applied to the crashes, parties, victims, cities and roads data frames. The attributes are based on the codebook imported in the previous step.
 
 14. #### Merge Datasets
 
-   14.1. ***Preparing Roads Dataset for Merging***: The roads dataset is prepared for merging with the crashes dataset. This includes creating a table of road categories, agrregating the road length by road category, and creating an aggregated dataset with the road category and road length for merging.
+    14.1. ***Preparing Roads Dataset for Merging***: The roads dataset is prepared for merging with the crashes dataset. This includes creating a table of road categories, agrregating the road length by road category, and creating an aggregated dataset with the road category and road length for merging.
 
-   14.2. ***Merging Datasets***: The crashes, parties, and victims datasets are merged into a single dataset. First, merging the crashes and parties based on common (CaseId, CID) columns. Then merging this dataset with the victims, based on common (caseID, CID, PID, partyNumber) columns. Thirdly, merging the resulting dataset with the cities and roads datasets based on common (city) columns. Finally, merging the resulting dataset with the aggregated roads dataset from previous step based on common (city) columns. Date and time variables from the crashes, parties and victims dataset are also merged into the final dataset.
+    14.2. ***Merging Datasets***: The crashes, parties, and victims datasets are merged into a single dataset. First, merging the crashes and parties based on common (CaseId, CID) columns. Then merging this dataset with the victims, based on common (caseID, CID, PID, partyNumber) columns. Thirdly, merging the resulting dataset with the cities and roads datasets based on common (city) columns. Finally, merging the resulting dataset with the aggregated roads dataset from previous step based on common (city) columns. Date and time variables from the crashes, parties and victims dataset are also merged into the final dataset.
 
-   14.3. ***Formatting and Ordering the Collisions Data Frame***: The merged dataset is formatted and ordered as a new derrivative dataset named `collisions`. 
+    14.3. ***Formatting and Ordering the Collisions Data Frame***: The merged dataset is formatted and ordered as a new derrivative dataset named `collisions`. 
 
-   14.4. ***Update the tag variables***: The tag variables in the merged dataset are updated to indicate the source of the observation (crashes, parties, victims, cities, roads). In this dataset, any duplicate tags (crashTag, partyTag, victimTag) are removed.
+    14.4. ***Update the tag variables***: The tag variables in the merged dataset are updated to indicate the source of the observation (crashes, parties, victims, cities, roads). In this dataset, any duplicate tags (crashTag, partyTag, victimTag) are removed.
 
-   14.5. ***Create Combined Indicator Column***: The merged dataset is updated to include combined indicator columns for the crashes, parties, and victims datasets. This is done to facilitate the analysis of severe collisions.
+    14.5. ***Create Combined Indicator Column***: The merged dataset is updated to include combined indicator columns for the crashes, parties, and victims datasets. This is done to facilitate the analysis of severe collisions.
 
-   14.6. ***Add Column Attributes to the Merged Dataset***: The merged dataset is updated to include column attributes based on the codebook. This is done to facilitate the analysis of severe collisions.
+    14.6. ***Add Column Attributes to the Merged Dataset***: The merged dataset is updated to include column attributes based on the codebook. This is done to facilitate the analysis of severe collisions.
 
 15. #### Spatial Operations
 
-   15.1. ***Add X and Y Coodrinates***: Include X and Y coordinates based on the pointX and pointY fields from the crashes to the parties and victims datasets.
+    15.1. ***Add X and Y Coodrinates***: Include X and Y coordinates based on the pointX and pointY fields from the crashes to the parties and victims datasets.
 
-   15.2. ***Convert to spatial data frames***: Convert the merged dataset to a spatial data frame using the ArcGIS R Bridge. The XY data of the crashes, parties, victims and collisions datasets are bounded by the minimum rectangle bounding box frame of the boundaries layer (xmin, xmax, ymin, ymax). The spatial projection properties are set to CRS= 4326 (WGS 1984, ESPG: 4326). Transform existing data frames from 3857 to 4326.
+    15.2. ***Convert to spatial data frames***: Convert the merged dataset to a spatial data frame using the ArcGIS R Bridge. The XY data of the crashes, parties, victims and collisions datasets are bounded by the minimum rectangle bounding box frame of the boundaries layer (xmin, xmax, ymin, ymax). The spatial projection properties are set to CRS= 4326 (WGS 1984, ESPG: 4326). Transform existing data frames from 3857 to 4326.
 
 16. #### Wrapping Up
 
-   16.1. ***Sort the Data Frames by Datetime***: The merged dataset is sorted by the datetime variable.
+    16.1. ***Sort the Data Frames by Datetime***: The merged dataset is sorted by the datetime variable.
 
-   16.2. ***Collisions Data Frame Labeling***: The merged dataset is labeled as the collisions data frame (currently disabled, as the labeling interferes with ArcGIS operations).
+    16.2. ***Collisions Data Frame Labeling***: The merged dataset is labeled as the collisions data frame (currently disabled, as the labeling interferes with ArcGIS operations).
 
 17. #### Export to ArcGIS
 
-   17.1. ***Crashes Spatial Data Frame***: Create a new spatial data frame object, convert the date columns to datetime (POSIXct, compatible with ArcGIS), convert all the variables that have value labels to factors, and write the crashes spatial data frame to ArcGIS Pro project geodatabase in the disk.
+    17.1. ***Crashes Spatial Data Frame***: Create a new spatial data frame object, convert the date columns to datetime (POSIXct, compatible with ArcGIS), convert all the variables that have value labels to factors, and write the crashes spatial data frame to ArcGIS Pro project geodatabase in the disk.
 
-   17.2. ***Parties Spatial Data Frame***: Create a new spatial data frame object, convert the date columns to datetime (POSIXct, compatible with ArcGIS), convert all the variables that have value labels to factors, and write the parties spatial data frame to ArcGIS Pro project geodatabase in the disk.
+    17.2. ***Parties Spatial Data Frame***: Create a new spatial data frame object, convert the date columns to datetime (POSIXct, compatible with ArcGIS), convert all the variables that have value labels to factors, and write the parties spatial data frame to ArcGIS Pro project geodatabase in the disk.
 
-   17.3. ***Victims Spatial Data Frame***: Create a new spatial data frame object, convert the date columns to datetime (POSIXct, compatible with ArcGIS), convert all the variables that have value labels to factors, and write the victims spatial data frame to ArcGIS Pro project geodatabase in the disk.
+    17.3. ***Victims Spatial Data Frame***: Create a new spatial data frame object, convert the date columns to datetime (POSIXct, compatible with ArcGIS), convert all the variables that have value labels to factors, and write the victims spatial data frame to ArcGIS Pro project geodatabase in the disk.
 
-   17.4. ***Collisions Spatial Data Frame***: Create a new spatial data frame object, convert the date columns to datetime (POSIXct, compatible with ArcGIS), convert all the variables that have value labels to factors, and write the collisions spatial data frame to ArcGIS Pro project geodatabase in the disk.
+    17.4. ***Collisions Spatial Data Frame***: Create a new spatial data frame object, convert the date columns to datetime (POSIXct, compatible with ArcGIS), convert all the variables that have value labels to factors, and write the collisions spatial data frame to ArcGIS Pro project geodatabase in the disk.
 
-   17.5. ***Cities Spatial Data Frame***: Create a new spatial data frame object, convert all the variables that have value labels to factors, and write the cities spatial data frame to ArcGIS Pro project geodatabase in the disk.
+    17.5. ***Cities Spatial Data Frame***: Create a new spatial data frame object, convert all the variables that have value labels to factors, and write the cities spatial data frame to ArcGIS Pro project geodatabase in the disk.
 
-   17.6. ***Roads Spatial Data Frame***: Create a new spatial data frame object, convert all the variables that have value labels to factors, and write the roads spatial data frame to ArcGIS Pro project geodatabase in the disk.
+    17.6. ***Roads Spatial Data Frame***: Create a new spatial data frame object, convert all the variables that have value labels to factors, and write the roads spatial data frame to ArcGIS Pro project geodatabase in the disk.
 
-   17.7. ***Boundaries Spatial Data Frame***: Create a new spatial data frame object, convert all the variables that have value labels to factors, and write the boundaries spatial data frame to ArcGIS Pro project geodatabase in the disk.
+    17.7. ***Boundaries Spatial Data Frame***: Create a new spatial data frame object, convert all the variables that have value labels to factors, and write the boundaries spatial data frame to ArcGIS Pro project geodatabase in the disk.
 
 18. #### Save to Disk
+    
     Execute the `saveToDisk()` function to save the merged data frames (crashes, parties, victims, cities, roads) to disk in the `rData` folder. The function also saves the codebook and project functions to disk for future reference.
 
 </details>
