@@ -43,7 +43,7 @@ Below the main project folder structure is provided and described. The project i
 
 ### Not Synced Folders[^1]
 
-[^1]: The data, AGPSWITRS, layers, maps, layouts, and styles folders are not synced to the repository due to their large size. The content in these folders can, for the most part, be recreated from the scripts and notebooks in the repository.
+[^1]: The data, AGPSWITRS, layers, maps, layouts, and styles folders are not synced to the repository due to their large size. The content in these folders can, for the most part, be recreated from the scripts and notebooks in the repository. Instructions for setting up the project structure and folders are provided in the [Getting Started](#getting-started) section.
 
 - :file_folder: **data**: Contains the raw data files, including the original SWITRS raw data files, and data in different formats (codebook, python, R, Stata).
 - :file_folder: **AGPSWITRS**: Contains the ArcGIS Pro project data files.
@@ -51,6 +51,74 @@ Below the main project folder structure is provided and described. The project i
 - :file_folder: **maps**: Contains the maps generated in the ArcGIS Pro project.
 - :file_folder: **layouts**: Contains the layouts used in the ArcGIS Pro project.
 - :file_folder: **styles**: Contains the styles used in the ArcGIS Pro project.
+
+
+## Getting Started
+
+If you are creating a project from scratch, and need to setup the project structure for the non-synced folders, please follow the following instructions.
+
+### Setting up the Default ArcGIS Pro Project
+
+1. Create a new ArcGIS Pro project named `AGPSWITRS`. The ArcGIS Pro project should be created in the root folder of the repository. 
+   - Use the 'create folder' option in ArcGIS pro to create the project inside its own folder. The folder name should be `AGPSWITRS`.
+   - The folder structure should look like this (for ArcGIS Pro 3.4.x, currently using 3.4.3):
+     ```
+     /OCSWITRS
+       ├── AGPSWITRS
+       │   ├── .backups
+       │   ├── AGPSWITRS.gdb
+       │   ├── GpMessages
+       │   ├── ImportLog
+       │   ├── Index
+       │   ├── AGPSWITRS.aprx
+       │   └── AGPSWITRS.atbx
+     ```
+2. Once the ArcGIS pro project is created, open the project in ArcGIS Pro, and create four new feature datasets in the geodatabase. The feature datasets should be named `analysis`, `hotspots`, `raw`, and `supporting`. The feature datasets should be created in the `AGPSWITRS.gdb` geodatabase. Each of the feature datasets should use the [WGS 1984 Web Mercator (auxiliary sphere)](https://pro.arcgis.com/en/pro-app/latest/help/mapping/properties/mercator.htm) cooordinate system [(EPSG:3857)](https://epsg.io/3857) - default for ArcGIS online integration. The folder structure should look like this:
+   ```
+   /OCSWITRS
+     ├── AGPSWITRS
+     │   ├── (...)
+     │   ├── AGPSWITRS.gdb
+     │   │   ├── analysis
+     │   │   ├── hotspots
+     │   │   ├── raw
+     │   │   └── supporting
+     |   ├── (...)
+   ```
+3. (Optional) Add the OCSWITRS root repository folder to the ArcGIS Pro project (from the `Catalog` pane, right click on `Folders`, and select `Add Folder Connection`). This will allow you to easily access the repository files from within ArcGIS Pro.
+4. Add the notebooks Part1, Part2 and Part 3 from the `notebooks` folder to the ArcGIS Pro project. Instructions: right click any empty space in the `Catalog` pane, and select `Add` > `Add and Open Notebook`. Then find the notebooks folder in the OCSWITRS repository, and select the notebooks to add. The notebooks should be added to the `Notebooks` folder in the `Catalog` pane.
+5. Save and close the ArcGIS Pro project. The project is now ready to be used with the OCSWITRS repository.
+
+### Setting up the supporting ArcGIS Pro Project folders
+
+Add the `layers`, `maps`, `layouts`, and `styles` folders to the `AGPSWITRS` folder root. The folder structure should look like this:
+```
+/OCSWITRS
+  ├── (...)
+  ├── layers
+  ├── maps
+  ├── layouts
+  ├── styles
+  ├── (...)
+```
+These folders are used by the project scripts to store the layers, maps, layouts, and styles used in the ArcGIS Pro project. The folders are empty by default, and will be populated with files as the project is developed.
+
+### Setting up the Data Folder Structure
+
+Create the following folder structure in the `data` folder. The folder structure should look like this:
+```
+/OCSWITRS
+  ├── data
+  │   ├── gis
+  │   ├── python
+  │   └── raw
+```
+The SWITRS raw data files should be placed in the `raw` folder. The `gis` folder is used for the GIS data files stored by the scripts, and the `python` folder is used for the Python data files used in the project.
+The raw OCSWITRS data files are raw csv files organized by type and year, in the format `<type>_<year>.csv` (e.g., `Crashes_2020.csv`, `Parties_2020.csv`, `Victims_2020.csv`, etc.). If you download the data from the TIMS website, you have to run the query for each year separately (dates from 01/01/YYYY to 12/31/YYYY). Then download each of the crashes, parties and victims csv files, and rename them to the aforementioned format inside the `raw` data subfolder. Already prepared data files for the years 2012-2024, are available for download in a zip file here: [OCSWITRS Raw Data 2012-2024.zip](https://ocgov.box.com/s/gj2d1n66f8o8vcdidgkmlmnpgzzbi9y6).
+
+
+
+
 
 ## Processing Steps
 
@@ -127,7 +195,12 @@ flowchart TD
     style sp5 fill:#641e16
 ```
 
-## Getting Started
+To understand the project process and analysis, please review the documentation in this project. The two major code sections are the R scripts and the Python Jupyter notebooks. The R scripts are used for data preparation and processing, while the Python Jupyter notebooks are used for analysis and visualization of spatial data. The following sections provide an overview of the R scripts and Python Jupyter notebooks used in the project.
 
-To understand the project process and analysis, please review the documentation in this project. The starting point is the [**R Scripts**](scripts/rScripts) folder, where the data is cleaned and prepared for analysis. The [README.md](scripts/rScripts/README.md) file in this folder provides an overview of the data processing steps, and the sequence of the scripts to be applied. The scripts are organized in a way that allows for easy navigation and understanding of the data processing steps.
+### R Scripts Sequence
 
+The starting point is the [**R Scripts**](scripts/rScripts) folder, where the data is cleaned and prepared for analysis. The [README.md](scripts/rScripts/README.md) file in this folder provides an overview of the data processing steps, and the sequence of the scripts to be applied. The scripts are organized in a way that allows for easy navigation and understanding of the data processing steps.
+
+### Python Jupyter Notebooks Sequence
+
+The [**Python Jupyter Notebooks**](notebooks) folder contains the notebooks used for analysis and visualization of spatial data. The notebooks are organized into five main sections: part 1, part 2, part 3, part 4, and part 5. Review the [README.md](notebooks/README.md) section file that provides an overview of the spatial analysis and visualization process sequence. The notebooks are organized in a way that allows for easy navigation and understanding of the analysis steps.
