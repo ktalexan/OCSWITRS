@@ -52,10 +52,6 @@ Below the main project folder structure is provided and described. The project i
 - :file_folder: **layouts**: Contains the layouts used in the ArcGIS Pro project.
 - :file_folder: **styles**: Contains the styles used in the ArcGIS Pro project.
 
-## Getting Started
-
-To understand the project process and analysis, please review the documentation in this project. The starting point is the [**R Scripts**](scripts/rScripts) folder, where the data is cleaned and prepared for analysis. The [README.md](scripts/rScripts/README.md) file in this folder provides an overview of the data processing steps, and the sequence of the scripts to be applied. The scripts are organized in a way that allows for easy navigation and understanding of the data processing steps.
-
 ## Processing Steps
 
 The following mermaid diagram illustrates the processing steps of the project. The diagram shows the flow of data from the raw data files to the final analysis and visualization. The diagram contains two main sections: the R scripts and the Python Jupyter notebooks. 
@@ -130,4 +126,8 @@ flowchart TD
     style sp4 fill:#7d6608
     style sp5 fill:#641e16
 ```
+
+## Getting Started
+
+To understand the project process and analysis, please review the documentation in this project. The starting point is the [**R Scripts**](scripts/rScripts) folder, where the data is cleaned and prepared for analysis. The [README.md](scripts/rScripts/README.md) file in this folder provides an overview of the data processing steps, and the sequence of the scripts to be applied. The scripts are organized in a way that allows for easy navigation and understanding of the data processing steps.
 
