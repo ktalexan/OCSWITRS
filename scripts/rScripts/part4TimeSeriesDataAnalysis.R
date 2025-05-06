@@ -21,8 +21,8 @@ rm(list = ls())
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Open the R Libraries master file (located in Obsidian's library folder) - Already defined in the project_directories function
-#libmaster = file.path(Sys.getenv("HOME"), "Knowledge Management", "Documents", "Data Science", "RPackagesInstallation.R")
-#file.edit(libmaster)
+#libMaster = file.path(Sys.getenv("HOME"), "Knowledge Management", "Documents", "Data Science", "RPackagesInstallation.R")
+#file.edit(libMaster)
 
 # Load the pacman library. If not installed, install it first.
 if (!requireNamespace("pacman", quietly = TRUE)) {
@@ -94,7 +94,7 @@ getwd()
 
 ### Number of Crashes ####
 
-tslistCrashes <- list(
+tsListCrashes <- list(
     "quarter" = ts(tsQuarter$crashTagSum, frequency = 4, start = c(2012, 1)),
     "month" = ts(tsMonth$crashTagSum, frequency = 12, start = c(2012, 1)),
     "week" = ts(tsWeek$crashTagSum, frequency = 53, start = c(2012, 1)),
@@ -103,7 +103,7 @@ tslistCrashes <- list(
 
 ### Number of Victims ####
 
-tslistVictims <- list(
+tsListVictims <- list(
     "quarter" = ts(tsQuarter$victimCountSum, frequency = 4, start = c(2012, 1)),
     "month" = ts(tsMonth$victimCountSum, frequency = 12, start = c(2012, 1)),
     "week" = ts(tsWeek$victimCountSum, frequency = 53, start = c(2012, 1)),
@@ -112,7 +112,7 @@ tslistVictims <- list(
 
 ### Number of fatal accidents ####
 
-tslistFatal <- list(
+tsListFatal <- list(
     "quarter" = ts(tsQuarter$numberKilledSum, frequency = 4, start = c(2012, 1)),
     "month" = ts(tsMonth$numberKilledSum, frequency = 12, start = c(2012, 1)),
     "week" = ts(tsWeek$numberKilledSum, frequency = 53, start = c(2012, 1)),
@@ -122,7 +122,7 @@ tslistFatal <- list(
 
 ### Fatal or Severe Accidents ####
 
-tslistFatalSevere <- list(
+tsListFatalSevere <- list(
     "quarter" = ts(tsQuarter$countFatalSevereSum, frequency = 4, start = c(2012, 1)),
     "month" = ts(tsMonth$countFatalSevereSum, frequency = 12, start = c(2012, 1)),
     "week" = ts(tsWeek$countFatalSevereSum, frequency = 53, start = c(2012, 1)),
@@ -132,7 +132,7 @@ tslistFatalSevere <- list(
 
 ### Number of injuries ####
 
-tslistInj <- list(
+tsListInj <- list(
     "quarter" = ts(tsQuarter$numberInjSum, frequency = 4, start = c(2012, 1)),
     "month" = ts(tsMonth$numberInjSum, frequency = 12, start = c(2012, 1)),
     "week" = ts(tsWeek$numberInjSum, frequency = 53, start = c(2012, 1)),
@@ -141,7 +141,7 @@ tslistInj <- list(
 
 ### Mean collision severity ####
 
-tslistSev <- list(
+tsListSev <- list(
     "quarter" = ts(tsQuarter$collSeverityMean, frequency = 4, start = c(2012, 1)),
     "month" = ts(tsMonth$collSeverityMean, frequency = 12, start = c(2012, 1)),
     "week" = ts(tsWeek$collSeverityMean, frequency = 53, start = c(2012, 1)),
@@ -156,20 +156,20 @@ tslistSev <- list(
 
 # Create the STL decomposition for the monthly crashes time series using stlplus object
 stl.m.crashes <- createStlPlot(
-    tslistCrashes$month,
-    tscale = "month",
+    tsListCrashes$month,
+    tScale = "month",
     type = "stlplus",
-    lcolors = c("royalblue3", "darkolivegreen4", "brown", "mediumorchid"),
-    tcolors = c("royalblue4", "darkolivegreen", "brown4", "mediumorchid4")
+    lColors = c("royalblue3", "darkolivegreen4", "brown", "mediumorchid"),
+    tColors = c("royalblue4", "darkolivegreen", "brown4", "mediumorchid4")
 )
 
 # Create the STL decomposition for the weekly crashes time series using stl object
 stl.w.crashes <- createStlPlot(
-    tslistCrashes$week,
-    tscale = "week",
+    tsListCrashes$week,
+    tScale = "week",
     type = "stlplus",
-    lcolors = c("royalblue3", "darkolivegreen4", "brown", "mediumorchid"),
-    tcolors = c("royalblue4", "darkolivegreen", "brown4", "mediumorchid4")
+    lColors = c("royalblue3", "darkolivegreen4", "brown", "mediumorchid"),
+    tColors = c("royalblue4", "darkolivegreen", "brown4", "mediumorchid4")
 )
 
 
@@ -177,20 +177,20 @@ stl.w.crashes <- createStlPlot(
 
 # Create the STL decomposition for the monthly victims time series using stl object
 stl.m.victims <- createStlPlot(
-    tslistVictims$month,
-    tscale = "month",
+    tsListVictims$month,
+    tScale = "month",
     type = "stlplus",
-    lcolors = c("royalblue3", "darkolivegreen4", "brown", "mediumorchid"),
-    tcolors = c("royalblue4", "darkolivegreen", "brown4", "mediumorchid4")
+    lColors = c("royalblue3", "darkolivegreen4", "brown", "mediumorchid"),
+    tColors = c("royalblue4", "darkolivegreen", "brown4", "mediumorchid4")
 )
 
 # Create the STL decomposition for the weekly victims time series using stl object
 stl.w.victims <- createStlPlot(
-    tslistVictims$week,
-    tscale = "week",
+    tsListVictims$week,
+    tScale = "week",
     type = "stlplus",
-    lcolors = c("royalblue3", "darkolivegreen4", "brown", "mediumorchid"),
-    tcolors = c("royalblue4", "darkolivegreen", "brown4", "mediumorchid4")
+    lColors = c("royalblue3", "darkolivegreen4", "brown", "mediumorchid"),
+    tColors = c("royalblue4", "darkolivegreen", "brown4", "mediumorchid4")
 )
 
 
@@ -198,41 +198,41 @@ stl.w.victims <- createStlPlot(
 
 # Create the STL decomposition for the monthly fatal accidents time series using stl object
 stl.m.fatal <- createStlPlot(
-    tslistFatal$month,
-    tscale = "month",
+    tsListFatal$month,
+    tScale = "month",
     type = "stlplus",
-    lcolors = c("royalblue3", "darkolivegreen4", "brown", "mediumorchid"),
-    tcolors = c("royalblue4", "darkolivegreen", "brown4", "mediumorchid4")
+    lColors = c("royalblue3", "darkolivegreen4", "brown", "mediumorchid"),
+    tColors = c("royalblue4", "darkolivegreen", "brown4", "mediumorchid4")
 )
 
 # Create the STL decomposition for the weekly fatal accidents time series using stl object
 stl.w.fatal <- createStlPlot(
-    tslistFatal$week,
-    tscale = "week",
+    tsListFatal$week,
+    tScale = "week",
     type = "stlplus",
-    lcolors = c("royalblue3", "darkolivegreen4", "brown", "mediumorchid"),
-    tcolors = c("royalblue4", "darkolivegreen", "brown4", "mediumorchid4")
+    lColors = c("royalblue3", "darkolivegreen4", "brown", "mediumorchid"),
+    tColors = c("royalblue4", "darkolivegreen", "brown4", "mediumorchid4")
 )
 
 
 ### Fatal or Severe Accidents ####
 
 # Create the STL decomposition for the monthly fatal or severe accidents time series using stl object
-stl.m.fatalSevere <- createStlPlot(
-    tslistFatalSevere$month,
-    tscale = "month",
+stl.m.fatal.severe <- createStlPlot(
+    tsListFatalSevere$month,
+    tScale = "month",
     type = "stlplus",
-    lcolors = c("royalblue3", "darkolivegreen4", "brown", "mediumorchid"),
-    tcolors = c("royalblue4", "darkolivegreen", "brown4", "mediumorchid4")
+    lColors = c("royalblue3", "darkolivegreen4", "brown", "mediumorchid"),
+    tColors = c("royalblue4", "darkolivegreen", "brown4", "mediumorchid4")
 )
 
 # Create the STL decomposition for the weekly fatal or severe accidents time series using stl object
-stl.w.fatal_severe <- createStlPlot(
-    tslistFatalSevere$week,
-    tscale = "week",
+stl.w.fatal.severe <- createStlPlot(
+    tsListFatalSevere$week,
+    tScale = "week",
     type = "stlplus",
-    lcolors = c("royalblue3", "darkolivegreen4", "brown", "mediumorchid"),
-    tcolors = c("royalblue4", "darkolivegreen", "brown4", "mediumorchid4")
+    lColors = c("royalblue3", "darkolivegreen4", "brown", "mediumorchid"),
+    tColors = c("royalblue4", "darkolivegreen", "brown4", "mediumorchid4")
 )
 
 
@@ -240,20 +240,20 @@ stl.w.fatal_severe <- createStlPlot(
 
 # Create the STL decomposition for the monthly injury accidents time series using stl object
 stl.m.inj <- createStlPlot(
-    tslistInj$month,
-    tscale = "month",
+    tsListInj$month,
+    tScale = "month",
     type = "stlplus",
-    lcolors = c("royalblue3", "darkolivegreen4", "brown", "mediumorchid"),
-    tcolors = c("royalblue4", "darkolivegreen", "brown4", "mediumorchid4")
+    lColors = c("royalblue3", "darkolivegreen4", "brown", "mediumorchid"),
+    tColors = c("royalblue4", "darkolivegreen", "brown4", "mediumorchid4")
 )
 
 # Create the STL decomposition for the weekly injury accidents time series using stl object
 stl.w.inj <- createStlPlot(
-    tslistInj$week,
-    tscale = "week",
+    tsListInj$week,
+    tScale = "week",
     type = "stlplus",
-    lcolors = c("royalblue3", "darkolivegreen4", "brown", "mediumorchid"),
-    tcolors = c("royalblue4", "darkolivegreen", "brown4", "mediumorchid4")
+    lColors = c("royalblue3", "darkolivegreen4", "brown", "mediumorchid"),
+    tColors = c("royalblue4", "darkolivegreen", "brown4", "mediumorchid4")
 )
 
 
@@ -261,20 +261,20 @@ stl.w.inj <- createStlPlot(
 
 # Create the STL decomposition for the monthly mean collision severity time series using stl object
 stl.m.sev <- createStlPlot(
-    tslistSev$month,
-    tscale = "month",
+    tsListSev$month,
+    tScale = "month",
     type = "stlplus",
-    lcolors = c("royalblue3", "darkolivegreen4", "brown", "mediumorchid"),
-    tcolors = c("royalblue4", "darkolivegreen", "brown4", "mediumorchid4")
+    lColors = c("royalblue3", "darkolivegreen4", "brown", "mediumorchid"),
+    tColors = c("royalblue4", "darkolivegreen", "brown4", "mediumorchid4")
 )
 
 # Create the STL decomposition for the weekly mean collision severity time series using stl object
 stl.w.sev <- createStlPlot(
-    tslistSev$week,
-    tscale = "week",
+    tsListSev$week,
+    tScale = "week",
     type = "stlplus",
-    lcolors = c("royalblue3", "darkolivegreen4", "brown", "mediumorchid"),
-    tcolors = c("royalblue4", "darkolivegreen", "brown4", "mediumorchid4")
+    lColors = c("royalblue3", "darkolivegreen4", "brown", "mediumorchid"),
+    tColors = c("royalblue4", "darkolivegreen", "brown4", "mediumorchid4")
 )
 
 
@@ -284,43 +284,58 @@ stl.w.sev <- createStlPlot(
 ### Metadata ####
 
 # Add graphics metadata for Figure 4 (monthly fatalities time series)
-graphicsList <- graphicsEntry(listname = "graphicsList", type = 2, eid = 4, listattr = list(category = "time series", name = "Monthly Fatalities Time Series", description = "Time series plot of the number of fatal accidents in monthly data", caption = paste("Display of the monthly time series data for the number of killed victims, along with a local LOESS regression trend fit with its 95% confidence intervals. The data are reported over", nrow(tsMonth), "months time period, between", format(min(as.Date(collisions$dateDatetime)), "%B %d, %Y"), "and", format(max(as.Date(collisions$dateDatetime)), "%B %d, %Y")), type = "time series", method = "ggplot2", fileformat = ".png", file = "Time Series Monthly Fatalities", status = "final"))
+graphicsList <- graphicsEntry(listName = "graphicsList", type = 2, eid = 4, listAttr = list(category = "time series", name = "Monthly Fatalities Time Series", description = "Time series plot of the number of fatal accidents in monthly data", caption = paste("Display of the monthly time series data for the number of killed victims, along with a local LOESS regression trend fit with its 95% confidence intervals. The data are reported over", nrow(tsMonth), "months time period, between", format(min(as.Date(collisions$dateDatetime)), "%B %d, %Y"), "and", format(max(as.Date(collisions$dateDatetime)), "%B %d, %Y")), type = "time series", method = "ggplot2", fileFormat = ".png", file = "Time Series Monthly Fatalities", status = "final"))
 
 
 ### Definition ####
 
 # Define the time series data for Figure 4 (monthly number of killed victims)
-fig4data <- tsMonth[, c("dateMonth", "numberKilledSum")]
-colnames(fig4data) <- c("time", "fatalities")
+fig4Data <- tsMonth[, c("dateMonth", "numberKilledSum")]
+colnames(fig4Data) <- c("time", "fatalities")
 
 # Setting the plot parameters
 options(repr.plot.width = 12, repr.plot.height = 8, repr.plot.res = 300, repr.plot.quality = 100, repr.plot.pointsize = 13, repr.plot.unit = "in")
 
-# Create the time series ovelay plot for the monthly number of killed victims
-fig4 <- ggplot(fig4data, aes(x = time, y = fatalities)) +
+# Create the time series overlay plot for the monthly number of killed victims
+fig4 <- ggplot(fig4Data, aes(x = time, y = fatalities)) +
     # First, add the Covid-19 restrictions area of interest annotation layer (behind everything else)
     annotate(
-        'rect', 
-        xmin = as_date("2020-03-01"), xmax = as_date("2022-03-01"), 
-        ymin = -Inf, ymax = Inf, 
-        alpha =.2, fill = "green") +
+        'rect',
+        xmin = as_date("2020-03-01"), xmax = as_date("2022-03-01"),
+        ymin = -Inf, ymax = Inf,
+        alpha = .2, fill = "green"
+    ) +
     # Add the covid-19 reference lines (left and right)
-    geom_vline(xintercept = c(as_date("2020-03-01"), as_date("2022-03-01")),
-               linewidth = 0.5,
-               linetype = "dashed",
-               color = "darkgreen") +
+    geom_vline(
+        xintercept = c(as_date("2020-03-01"), as_date("2022-03-01")),
+        linewidth = 0.5,
+        linetype = "dashed",
+        color = "darkgreen"
+    ) +
     # Add the covid-19 reference text annotation
-    annotate("text", x = as_date("2020-03-01") + (as_date("2022-03-01") - as_date("2020-03-01")) / 2,
-             y = -2,
-             label = "COVID-19 Restrictions",
-             fontface = "bold.italic",
-             color = "darkgreen",
-             size = 3.5
-    ) + 
+    annotate(
+        "text",
+        x = as_date("2020-03-01") + (as_date("2022-03-01") - as_date("2020-03-01")) / 2,
+        y = -2,
+        label = "COVID-19 Restrictions",
+        fontface = "bold.italic",
+        color = "darkgreen",
+        size = 3.5
+    ) +
     # Add the time series line for the number of killed victims
     geom_line(aes(y = fatalities, color = "navy"), linewidth = 1, alpha = 0.6) +
     # Add the smoothed LOESS trend line and 95% confidence intervals for the number of killed victims
-    geom_smooth(method = "loess", se = TRUE, span = 0.2, formula = y ~ x, na.rm = TRUE, level = 0.95, aes(y = fatalities,  color = "red4"), fill = "darkorange", alpha = 0.4, linewidth = 2) +
+    geom_smooth(
+        method = "loess",
+        se = TRUE, span = 0.2,
+        formula = y ~ x,
+        na.rm = TRUE,
+        level = 0.95,
+        aes(y = fatalities,  color = "red4"),
+        fill = "darkorange",
+        alpha = 0.4,
+        linewidth = 2
+    ) +
     # Add the graph labels
     labs(x = "Date", y = "Number of Killed Victims") +
     # General graph theme
@@ -343,10 +358,10 @@ fig4 <- ggplot(fig4data, aes(x = time, y = fatalities)) +
         legend.title = element_text(color = "gray10", size = 13, face = "bold", hjust = 0, vjust = 0.5),
         #legend.title = element_blank(),
         legend.position = "inside",
-        legend.position.inside = c(.05, .12), 
+        legend.position.inside = c(.05, .12),
         legend.justification = "left",
-        legend.text=element_text(size = 12, face = "plain"),
-        legend.direction = "vertical", 
+        legend.text = element_text(size = 12, face = "plain"),
+        legend.direction = "vertical",
         legend.box = "horizontal",
         legend.background = element_rect(linetype = "solid", linewidth = 0.5, color = "gray50", fill = "whitesmoke"),
         # Adjust the grid lines for the graph
@@ -370,7 +385,7 @@ fig4
 ### Storage ####
 
 # Save Figure 4 (monthly fatalities time series) to disk
-ggsave(filename = file.path(graphicsList$graphics$fig4$path, paste0(graphicsList$graphics$fig4$file, graphicsList$graphics$fig4$fileformat)), plot = fig4, width = graphicsList$graphics$fig4$width, height = graphicsList$graphics$fig4$height, units = "in", dpi = graphicsList$graphics$fig4$resolution)
+ggsave(filename = file.path(graphicsList$graphics$fig4$path, paste0(graphicsList$graphics$fig4$file, graphicsList$graphics$fig4$fileFormat)), plot = fig4, width = graphicsList$graphics$fig4$width, height = graphicsList$graphics$fig4$height, units = "in", dpi = graphicsList$graphics$fig4$resolution)
 
 
 ## 2.4. Figure 5 - Weekly Crashes Decomposition Plots ####
@@ -379,7 +394,7 @@ ggsave(filename = file.path(graphicsList$graphics$fig4$path, paste0(graphicsList
 ### Metadata ####
 
 # Add graphics metadata for Figure 4 (weekly crashes STL decomposition)
-graphicsList <- graphicsEntry(listname = "graphicsList", type = 2, eid = 5, listattr = list(category = "stl decomposition", name = "STL decomposition of the number of crashes weekly data", description = "STL decomposition plot of the number of crash incidents in weekly time series data", caption = "STL decomposition of the number of collision incidents in the weekly time series data for Orange County, California", type = "decomposition", method = "ggplot2", fileformat = ".png", file = "STL Plot Weekly Crashes", status = "final"))
+graphicsList <- graphicsEntry(listName = "graphicsList", type = 2, eid = 5, listAttr = list(category = "stl decomposition", name = "STL decomposition of the number of crashes weekly data", description = "STL decomposition plot of the number of crash incidents in weekly time series data", caption = "STL decomposition of the number of collision incidents in the weekly time series data for Orange County, California", type = "decomposition", method = "ggplot2", fileFormat = ".png", file = "STL Plot Weekly Crashes", status = "final"))
 
 
 ### Definition ####
@@ -394,7 +409,7 @@ fig5
 ### Storage ####
 
 # Save Figure 5 (weekly crashes STL decomposition) to disk
-ggsave(filename = file.path(graphicsList$graphics$fig5$path, paste0(graphicsList$graphics$fig5$file, graphicsList$graphics$fig5$fileformat)), plot = fig5, width = graphicsList$graphics$fig5$width, height = graphicsList$graphics$fig5$height, units = "in", dpi = graphicsList$graphics$fig5$resolution)
+ggsave(filename = file.path(graphicsList$graphics$fig5$path, paste0(graphicsList$graphics$fig5$file, graphicsList$graphics$fig5$fileFormat)), plot = fig5, width = graphicsList$graphics$fig5$width, height = graphicsList$graphics$fig5$height, units = "in", dpi = graphicsList$graphics$fig5$resolution)
 
 
 ## 2.5. Figure 6 - Weekly Fatal Accidents Decomposition Plots ####
@@ -403,7 +418,7 @@ ggsave(filename = file.path(graphicsList$graphics$fig5$path, paste0(graphicsList
 ### Metadata ####
 
 # Add graphics metadata for Figure 5 (weekly fatal accidents STL decomposition)
-graphicsList <- graphicsEntry(listname = "graphicsList", type = 2, eid = 6, listattr = list(category = "stl decomposition", name = "STL decomposition of the number of fatal accidents weekly data", description = "STL decomposition plot of the number of fatal accidents in weekly time series data", caption = "STL decomposition of the number of fatal accidents in the weekly time series data for Orange County, California", type = "decomposition", method = "ggplot2", fileformat = ".png", file = "STL Plot Weekly Fatalities", status = "final"))
+graphicsList <- graphicsEntry(listName = "graphicsList", type = 2, eid = 6, listAttr = list(category = "stl decomposition", name = "STL decomposition of the number of fatal accidents weekly data", description = "STL decomposition plot of the number of fatal accidents in weekly time series data", caption = "STL decomposition of the number of fatal accidents in the weekly time series data for Orange County, California", type = "decomposition", method = "ggplot2", fileFormat = ".png", file = "STL Plot Weekly Fatalities", status = "final"))
 
 
 ### Definition ####
@@ -418,7 +433,7 @@ fig6
 ### Storage ####
 
 # Save Figure 6 (weekly fatal accidents STL decomposition) to disk
-ggsave(filename = file.path(graphicsList$graphics$fig6$path, paste0(graphicsList$graphics$fig6$file, graphicsList$graphics$fig6$fileformat)), plot = fig6, width = graphicsList$graphics$fig6$width, height = graphicsList$graphics$fig6$height, units = "in", dpi = graphicsList$graphics$fig6$resolution)
+ggsave(filename = file.path(graphicsList$graphics$fig6$path, paste0(graphicsList$graphics$fig6$file, graphicsList$graphics$fig6$fileFormat)), plot = fig6, width = graphicsList$graphics$fig6$width, height = graphicsList$graphics$fig6$height, units = "in", dpi = graphicsList$graphics$fig6$resolution)
 
 
 ## 2.6. Figure 7 - Mean Monthly Collision Severity Decomposition Plots ####
@@ -427,7 +442,7 @@ ggsave(filename = file.path(graphicsList$graphics$fig6$path, paste0(graphicsList
 ### Metadata ####
 
 # Add graphics metadata for Figure 6 (weekly mean collision severity STL decomposition)
-graphicsList <- graphicsEntry(listname = "graphicsList", type = 2, eid = 7, listattr = list(category = "stl decomposition", name = "STL decomposition of the mean collision severity weekly data", description = "STL decomposition plot of the mean collision severity in weekly time series data", caption = "STL decomposition of the mean collision severity in the weekly time series data for Orange County, California", type = "decomposition", method = "ggplot2", fileformat = ".png", file = "STL Plot Weekly Severity", status = "final"))
+graphicsList <- graphicsEntry(listName = "graphicsList", type = 2, eid = 7, listAttr = list(category = "stl decomposition", name = "STL decomposition of the mean collision severity weekly data", description = "STL decomposition plot of the mean collision severity in weekly time series data", caption = "STL decomposition of the mean collision severity in the weekly time series data for Orange County, California", type = "decomposition", method = "ggplot2", fileFormat = ".png", file = "STL Plot Weekly Severity", status = "final"))
 
 
 ### Definition ####
@@ -442,7 +457,7 @@ fig7
 ### Storage ####
 
 # Save Figure 7 (weekly mean collision severity STL decomposition) to disk
-ggsave(filename = file.path(graphicsList$graphics$fig7$path, paste0(graphicsList$graphics$fig7$file, graphicsList$graphics$fig7$fileformat)), plot = fig7, width = graphicsList$graphics$fig7$width, height = graphicsList$graphics$fig7$height, units = "in", dpi = graphicsList$graphics$fig7$resolution)
+ggsave(filename = file.path(graphicsList$graphics$fig7$path, paste0(graphicsList$graphics$fig7$file, graphicsList$graphics$fig7$fileFormat)), plot = fig7, width = graphicsList$graphics$fig7$width, height = graphicsList$graphics$fig7$height, units = "in", dpi = graphicsList$graphics$fig7$resolution)
 
 
 ## 2.7. Figure 8 - Number of Victims vs. Mean Severity ####
@@ -451,16 +466,16 @@ ggsave(filename = file.path(graphicsList$graphics$fig7$path, paste0(graphicsList
 ### Metadata ####
 
 # Add graphics metadata for Figure 7 (weekly mean collision severity vs. number of victims)
-graphicsList <- graphicsEntry(listname = "graphicsList", type = 2, eid = 8, listattr = list(category = "time series overlap", name = "", description = "Overlap plot of the number of victims vs. the mean severity rank in weekly time series data", caption = paste("Overlapping display of the weekly time series data for (a) the number of victims along with a Loess local regression trend line fit, and (b) the mean collision severity ordinal rank along with its Loess local regression trend line fit. Data was reported over", nrow(tsMonth), " months of weekly time intervals, from", format(min(as.Date(collisions$dateDatetime)), "%m/%d/%Y"), "to", format(max(as.Date(collisions$dateDatetime)), "%m/%d/%Y")), type = "time series", method = "ggplot2", fileformat = ".png", file = "Overlap Victims vs Severity", status = "final"))
+graphicsList <- graphicsEntry(listName = "graphicsList", type = 2, eid = 8, listAttr = list(category = "time series overlap", name = "", description = "Overlap plot of the number of victims vs. the mean severity rank in weekly time series data", caption = paste("Overlapping display of the weekly time series data for (a) the number of victims along with a Loess local regression trend line fit, and (b) the mean collision severity ordinal rank along with its Loess local regression trend line fit. Data was reported over", nrow(tsMonth), " months of weekly time intervals, from", format(min(as.Date(collisions$dateDatetime)), "%m/%d/%Y"), "to", format(max(as.Date(collisions$dateDatetime)), "%m/%d/%Y")), type = "time series", method = "ggplot2", fileFormat = ".png", file = "Overlap Victims vs Severity", status = "final"))
 
 
 ### Definition ####
 
 # Define the time series data for Figure 7 (weekly number of victims vs. mean collision severity)
 fig8data <- tsWeek[, c("dateWeek", "victimCountSum", "collSeverityMean")]
-fig8data$zvictims <- scale(fig8data$victimCountSum)
-fig8data$zseverity <- scale(fig8data$collSeverityMean)
-colnames(fig8data) <- c("time", "victims", "severity", "zvictims", "zseverity")
+fig8data$zVictims <- scale(fig8data$victimCountSum)
+fig8data$zSeverity <- scale(fig8data$collSeverityMean)
+colnames(fig8data) <- c("time", "victims", "severity", "zVictims", "zSeverity")
 
 # Note 1: The z-scores are calculated for the raw and trend values of the number of victims and mean collision severity. The reason is for enabling standardized scale comparison between the two variables in the plot.
 
@@ -469,35 +484,40 @@ colnames(fig8data) <- c("time", "victims", "severity", "zvictims", "zseverity")
 # Setting the plot parameters
 options(repr.plot.width = 12, repr.plot.height = 8, repr.plot.res = 300, repr.plot.quality = 100, repr.plot.pointsize = 13, repr.plot.unit = "in")
 
-# Create the time series ovelay plot for the weekly mean collision severity vs. number of victims
+# Create the time series overlay plot for the weekly mean collision severity vs. number of victims
 fig8 <- ggplot(fig8data, aes(x = time, y = victims)) +
     # First, add the Covid-19 restrictions area of interest annotation layer (behind everything else)
     annotate(
-        'rect', 
-        xmin = as_date("2020-03-01"), xmax = as_date("2022-03-01"), 
-        ymin = -Inf, ymax = Inf, 
-        alpha =.2, fill = "green") +
+        'rect',
+        xmin = as_date("2020-03-01"), xmax = as_date("2022-03-01"),
+        ymin = -Inf, ymax = Inf,
+        alpha = .2, fill = "green"
+    ) +
     # Add the covid-19 reference lines (left and right)
-    geom_vline(xintercept = c(as_date("2020-03-01"), as_date("2022-03-01")),
-               linewidth = 0.5,
-               linetype = "dashed",
-               color = "darkgreen") +
+    geom_vline(
+        xintercept = c(as_date("2020-03-01"), as_date("2022-03-01")),
+        linewidth = 0.5,
+        linetype = "dashed",
+        color = "darkgreen"
+    ) +
     # Add the covid-19 reference text annotation
-    annotate("text", x = as_date("2020-03-01") + (as_date("2022-03-01") - as_date("2020-03-01")) / 2,
-             y = -5,
-             label = "COVID-19 Restrictions",
-             fontface = "bold.italic",
-             color = "darkgreen",
-             size = 3.5
-    ) + 
+    annotate(
+        "text",
+        x = as_date("2020-03-01") + (as_date("2022-03-01") - as_date("2020-03-01")) / 2,
+        y = -5,
+        label = "COVID-19 Restrictions",
+        fontface = "bold.italic",
+        color = "darkgreen",
+        size = 3.5
+    ) +
     # Add the time series line for the number of victims
-    geom_line(aes(y = zvictims, color = "royalblue"), linewidth = 0.85, alpha = 0.4) +
+    geom_line(aes(y = zVictims, color = "royalblue"), linewidth = 0.85, alpha = 0.4) +
     # Add the time series line for the mean severity rank
-    geom_line(aes(y = zseverity, color = "darkorange"), linewidth = 0.85, alpha = 0.4) +
+    geom_line(aes(y = zSeverity, color = "darkorange"), linewidth = 0.85, alpha = 0.4) +
     # Add the smoothed LOESS trend line and 95% confidence intervals for the number of victims
-    geom_smooth(method = "loess", se = TRUE, span = 0.2, formula = y ~ x, na.rm = TRUE, level = 0.95, aes(y = zvictims,  color = "navy"), fill = "royalblue", alpha = 0.4, linewidth = 1.5) +
+    geom_smooth(method = "loess", se = TRUE, span = 0.2, formula = y ~ x, na.rm = TRUE, level = 0.95, aes(y = zVictims,  color = "navy"), fill = "royalblue", alpha = 0.4, linewidth = 1.5) +
     # Add the smoothed LOESS trend line and 95% confidence intervals for the mean severity rank
-    geom_smooth(method = "loess", se = TRUE, span = 0.2, formula = y ~ x, na.rm = TRUE, level = 0.95, aes(y = zseverity, color = "red4"), fill = "darkorange", alpha = 0.4, linewidth = 1.5) +
+    geom_smooth(method = "loess", se = TRUE, span = 0.2, formula = y ~ x, na.rm = TRUE, level = 0.95, aes(y = zSeverity, color = "red4"), fill = "darkorange", alpha = 0.4, linewidth = 1.5) +
     # Add the graph labels
     labs(x = "Date", y = "Number of Victims") +
     # General graph theme
@@ -523,10 +543,10 @@ fig8 <- ggplot(fig8data, aes(x = time, y = victims)) +
         legend.title = element_text(color = "gray10", size = 13, face = "bold", hjust = 0, vjust = 0.5),
         #legend.title = element_blank(),
         legend.position = "inside",
-        legend.position.inside = c(.03, .1), 
+        legend.position.inside = c(.03, .1),
         legend.justification = "left",
-        legend.text=element_text(size = 12, face = "plain"),
-        legend.direction = "vertical", 
+        legend.text = element_text(size = 12, face = "plain"),
+        legend.direction = "vertical",
         legend.box = "horizontal",
         legend.background = element_rect(linetype = "solid", linewidth = 0.5, color = "gray50", fill = "whitesmoke"),
         # Adjust the grid lines for the graph
@@ -535,8 +555,8 @@ fig8 <- ggplot(fig8data, aes(x = time, y = victims)) +
     ) +
     # Rescale the y-axis to the original scale (see Note 2 above)
     scale_y_continuous(
-        labels = ~ round_any((. * sd(fig8data$victims)) + mean(fig8data$victims), 10) , 
-        sec.axis = sec_axis(~ (. * sd(fig8data$severity)) + mean(fig8data$severity) , name = "Mean Severity Rank")) +
+        labels = ~ round_any((. * sd(fig8data$victims)) + mean(fig8data$victims), 10),
+        sec.axis = sec_axis(~ (. * sd(fig8data$severity)) + mean(fig8data$severity), name = "Mean Severity Rank")) +
     scale_x_date(date_breaks = "1 year", date_labels = "%b\n%Y") +
     # Add and adjust options for the time series and trends legend
     scale_color_identity(
@@ -555,7 +575,7 @@ fig8
 ### Storage ####
 
 # Save Figure 8 (weekly mean collision severity vs. number of victims) to disk
-ggsave(filename = file.path(graphicsList$graphics$fig8$path, paste0(graphicsList$graphics$fig8$file, graphicsList$graphics$fig8$fileformat)), plot = fig8, width = graphicsList$graphics$fig8$width, height = graphicsList$graphics$fig8$height, units = "in", dpi = graphicsList$graphics$fig8$resolution)
+ggsave(filename = file.path(graphicsList$graphics$fig8$path, paste0(graphicsList$graphics$fig8$file, graphicsList$graphics$fig8$fileFormat)), plot = fig8, width = graphicsList$graphics$fig8$width, height = graphicsList$graphics$fig8$height, units = "in", dpi = graphicsList$graphics$fig8$resolution)
 
 
 ## 2.8. Figure 9 - Median Age for Parties and Victims ####
@@ -564,7 +584,7 @@ ggsave(filename = file.path(graphicsList$graphics$fig8$path, paste0(graphicsList
 ### Metadata ####
 
 # Add graphics metadata for Figure 8 (weekly median age for parties and victims)
-graphicsList <- graphicsEntry(listname = "graphicsList", type = 2, eid = 9, listattr = list(category = "Median Age Pyramid", name = "Median Age Pyramid and Correlation for Parties and Victims", description = "Pyramid plot and correlation matrix for median age for parties and victims in collision incidents", caption = "Visual representation of median age distribution for parties and victims of collision incidents. Left subgraph (a): median age pyramid plot for parties and victims of collision accidents. Right subgraph (b): Pearson correlation matrix between party and victim age groups in the collision incident data.", type = "time series", method = "ggplot2", fileformat = ".png", file = "Median Age Distribution", status = "final"))
+graphicsList <- graphicsEntry(listName = "graphicsList", type = 2, eid = 9, listAttr = list(category = "Median Age Pyramid", name = "Median Age Pyramid and Correlation for Parties and Victims", description = "Pyramid plot and correlation matrix for median age for parties and victims in collision incidents", caption = "Visual representation of median age distribution for parties and victims of collision incidents. Left subgraph (a): median age pyramid plot for parties and victims of collision accidents. Right subgraph (b): Pearson correlation matrix between party and victim age groups in the collision incident data.", type = "time series", method = "ggplot2", fileFormat = ".png", file = "Median Age Distribution", status = "final"))
 
 
 ### Definition ####
@@ -573,48 +593,48 @@ graphicsList <- graphicsEntry(listname = "graphicsList", type = 2, eid = 9, list
 # Left Subplot ~~~~~~~~~~~~~~~~~~~~~~
 
 # Select the party and victim age from he collision data
-fig9adata <- select(collisions, partyAge, victimAge)
+fig9a.data <- select(collisions, partyAge, victimAge)
 # Create a table of the party and victim age
-fig9adata <- data.frame(table(fig9adata$partyAge, fig9adata$victimAge))
+fig9a.data <- data.frame(table(fig9a.data$partyAge, fig9a.data$victimAge))
 # Change the column names
-colnames(fig9adata) <- c("Party", "Victim", "Freq")
+colnames(fig9a.data) <- c("Party", "Victim", "Freq")
 # Convert the party and victim columns to integers
-fig9adata$Party <- as.integer(as.character(fig9adata$Party))
-fig9adata$Victim <- as.integer(as.character(fig9adata$Victim))
+fig9a.data$Party <- as.integer(as.character(fig9a.data$Party))
+fig9a.data$Victim <- as.integer(as.character(fig9a.data$Victim))
 # Remove all rows that are NA
-fig9adata <- fig9adata[!is.na(fig9adata$Party),]
-fig9adata <- fig9adata[!is.na(fig9adata$Victim),]
+fig9a.data <- fig9a.data[!is.na(fig9a.data$Party), ]
+fig9a.data <- fig9a.data[!is.na(fig9a.data$Victim), ]
 # Remove all rows with party or victim age > 100
-fig9adata <- fig9adata[fig9adata$Party <= 100 | fig9adata$Victim <= 100,]
+fig9a.data <- fig9a.data[fig9a.data$Party <= 100 | fig9a.data$Victim <= 100, ]
 
 # Stack the party and victim columns into a single column with the type indicator
-fig9adata <- melt(fig9adata, id.var = "Freq", variable.name = "Type")
+fig9a.data <- melt(fig9a.data, id.var = "Freq", variable.name = "Type")
 # Change the column names
-colnames(fig9adata) <- c("Freq", "Type", "Age")
+colnames(fig9a.data) <- c("Freq", "Type", "Age")
 
-abs_comma <- function (x, ...) {
+absComma <- function(x, ...) {
     format(abs(x), ..., big.mark = ",", scientific = FALSE, trim = TRUE)
 }
 
 fig9a <- ggplot(
-    fig9adata, 
+    fig9a.data,
     aes(
-        x = Age, 
-        fill = Type, 
+        x = Age,
+        fill = Type,
         y = ifelse(
-            test = Type == "Party", 
-            yes = -Freq, 
+            test = Type == "Party",
+            yes = -Freq,
             no = Freq
         )
     )
-) + 
-    geom_bar(stat = "identity") + 
+) +
+    geom_bar(stat = "identity") +
     scale_y_continuous(
-        labels = abs_comma,
-        #limits = max(fig9adata$Freq) * c(-1,1)
-    ) + 
-    scale_x_continuous(limits = c(0, 100), breaks = seq(0, 100, by=20)) +
-    coord_flip() + 
+        labels = absComma,
+        #limits = max(fig9a.data$Freq) * c(-1,1)
+    ) +
+    scale_x_continuous(limits = c(0, 100), breaks = seq(0, 100, by = 20)) +
+    coord_flip() +
     theme_hc() +
     theme(
         text = element_text(color = "black", size = 12),
@@ -629,9 +649,9 @@ fig9a <- ggplot(
         legend.position.inside = c(0.9, 0.9)
     ) +
     labs(
-        x = "Age", 
-        y = "Collisions", 
-        fill = "Age", 
+        x = "Age",
+        y = "Collisions",
+        fill = "Age",
         title = "Median Age Pyramid for Parties and Victims of Collisions"
     ) +
     scale_color_identity(
@@ -647,49 +667,52 @@ fig9a
 # Right Subplot ~~~~~~~~~~~~~~~~~~~~~~
 
 # correlation matrix between partyAgeGroup and victimAgeGroup in the collisions data
-fig9bdata <- data.frame(collisions.agp$partyAgeGroup, collisions.agp$victimAgeGroup)
+fig9b.data <- data.frame(collisions.agp$partyAgeGroup, collisions.agp$victimAgeGroup)
 
 # Change the column names
-colnames(fig9bdata) <- c("party", "victim")
+colnames(fig9b.data) <- c("party", "victim")
 
 # Create a table of the party and victim age
-fig9bdata <- table(fig9bdata$party, fig9bdata$victim)
-head(fig9bdata)
+fig9b.data <- table(fig9b.data$party, fig9b.data$victim)
+head(fig9b.data)
 
 # Get lower triangle of the correlation matrix
-getLowerTri<-function(cormat){
-    cormat[upper.tri(cormat)] <- NA
-    return(cormat)
+getLowerTri <- function(corr.matrix) {
+    corr.matrix[upper.tri(corr.matrix)] <- NA
+    return(corr.matrix)
 }
 
 # Get upper triangle of the correlation matrix
-getUpperTri <- function(cormat){
-    cormat[lower.tri(cormat)]<- NA
-    return(cormat)
+getUpperTri <- function(corr.matrix) {
+    corr.matrix[lower.tri(corr.matrix)] <- NA
+    return(corr.matrix)
 }
 
 # Create a correlation matrix
-fig9bcormat <- round(cor(fig9bdata), 2)
+fig9b.corr.matrix <- round(cor(fig9b.data), 2)
 
 # Melt the correlation matrix
-fig9bmeltedCormat <- melt(getUpperTri(fig9bcormat), na.rm = TRUE)
+fig9b.melted.corr.matrix <- melt(getUpperTri(fig9b.corr.matrix), na.rm = TRUE)
 
 # Change the column names
-colnames(fig9bmeltedCormat) <- c("Party", "Victim", "Correlation")
-head(fig9bmeltedCormat)
+colnames(fig9b.melted.corr.matrix) <- c("Party", "Victim", "Correlation")
+head(fig9b.melted.corr.matrix)
 
 
-# Create a ggheatmap
-fig9b <- ggplot(fig9bmeltedCormat, aes(x = Victim, Party, fill = Correlation))+
-    geom_tile(color = "white")+
+# Create a heatmap
+fig9b <- ggplot(fig9b.melted.corr.matrix, aes(x = Victim, Party, fill = Correlation)) +
+    geom_tile(color = "white") +
     labs(
         title = "Correlation Matrix of Party and Victim Age Groups",
-         x = "Victim Age Group",
-         y = "Party Age Group") +
-    scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
-                         midpoint = 0, limit = c(-1,1), space = "Lab", 
-                         name="Pearson\nCorrelation") +
-    theme_hc()+
+        x = "Victim Age Group",
+        y = "Party Age Group"
+    ) +
+    scale_fill_gradient2(
+        low = "blue", high = "red", mid = "white",
+        midpoint = 0, limit = c(-1, 1), space = "Lab",
+        name = "Pearson\nCorrelation"
+    ) +
+    theme_hc() +
     coord_fixed() +
     geom_text(aes(x = Victim, y = Party, label = Correlation), color = "black", size = 4) +
     theme(
@@ -709,7 +732,8 @@ fig9b <- ggplot(fig9bmeltedCormat, aes(x = Victim, Party, fill = Correlation))+
         legend.justification = c(1, 0),
         legend.position = "inside",
         legend.position.inside = c(0.6, 0.7),
-        legend.direction = "horizontal") +
+        legend.direction = "horizontal"
+    ) +
     guides(fill = guide_colorbar(barwidth = 7, barheight = 1, title.position = "top", title.hjust = 0.5))
 
 fig9b
@@ -728,7 +752,7 @@ fig9
 ### Storage ####
 
 # Save Figure 9 (weekly median age for parties and victims) to disk
-ggsave(filename = file.path(graphicsList$graphics$fig9$path, paste0(graphicsList$graphics$fig9$file, graphicsList$graphics$fig9$fileformat)), plot = fig9, width = graphicsList$graphics$fig9$width, height = graphicsList$graphics$fig9$height, units = "in", dpi = graphicsList$graphics$fig9$resolution)
+ggsave(filename = file.path(graphicsList$graphics$fig9$path, paste0(graphicsList$graphics$fig9$file, graphicsList$graphics$fig9$fileFormat)), plot = fig9, width = graphicsList$graphics$fig9$width, height = graphicsList$graphics$fig9$height, units = "in", dpi = graphicsList$graphics$fig9$resolution)
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
