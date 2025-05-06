@@ -20,8 +20,8 @@ rm(list = ls())
 #dev.new(width = 6, height = 4, unit="in")
 
 # Open the R Libraries master file (located in Obsidian's library folder) - Already defined in the project_directories function
-#libmaster = file.path(Sys.getenv("HOME"), "Knowledge Management", "Documents", "Data Science", "RPackagesInstallation.R")
-#file.edit(libmaster)
+#libMaster = file.path(Sys.getenv("HOME"), "Knowledge Management", "Documents", "Data Science", "RPackagesInstallation.R")
+#file.edit(libMaster)
 
 
 ## 1.2. Import Libraries ####
@@ -85,41 +85,41 @@ load(file = file.path(prjDirs$codebookPath, "cb.RData"))
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # List of sum columns
-fsumlist <- names(collisions)[sapply(collisions, function(x) attributes(x)$tsAggr$fSum == 1)]
-names(fsumlist) <- paste0(fsumlist, "Sum")
+fSumList <- names(collisions)[sapply(collisions, function(x) attributes(x)$tsAggr$fSum == 1)]
+names(fSumList) <- paste0(fSumList, "Sum")
 
 # List of min columns
-fminlist <- names(collisions)[sapply(collisions, function(x) attributes(x)$tsAggr$fMin == 1)]
-names(fminlist) <- paste0(fminlist, "Min")
+fMinList <- names(collisions)[sapply(collisions, function(x) attributes(x)$tsAggr$fMin == 1)]
+names(fMinList) <- paste0(fMinList, "Min")
 
 # List of max columns
-fmaxlist <- names(collisions)[sapply(collisions, function(x) attributes(x)$tsAggr$fMax == 1)]
-names(fmaxlist) <- paste0(fmaxlist, "Max")
+fMaxList <- names(collisions)[sapply(collisions, function(x) attributes(x)$tsAggr$fMax == 1)]
+names(fMaxList) <- paste0(fMaxList, "Max")
 
 # List of mean columns
-fmeanlist <- names(collisions)[sapply(collisions, function(x) attributes(x)$tsAggr$fMean == 1)]
-names(fmeanlist) <- paste0(fmeanlist, "Mean")
+fMeanList <- names(collisions)[sapply(collisions, function(x) attributes(x)$tsAggr$fMean == 1)]
+names(fMeanList) <- paste0(fMeanList, "Mean")
 
 # List of standard deviation columns
-fsdlist <- names(collisions)[sapply(collisions, function(x) attributes(x)$tsAggr$fSd == 1)]
-names(fsdlist) <- paste0(fsdlist, "Sd")
+fSdList <- names(collisions)[sapply(collisions, function(x) attributes(x)$tsAggr$fSd == 1)]
+names(fSdList) <- paste0(fSdList, "Sd")
 
 # List of median columns
-fmedianlist <- names(collisions)[sapply(collisions, function(x) attributes(x)$tsAggr$fMedian == 1)]
-names(fmedianlist) <- paste0(fmedianlist, "Median")
+fMedianList <- names(collisions)[sapply(collisions, function(x) attributes(x)$tsAggr$fMedian == 1)]
+names(fMedianList) <- paste0(fMedianList, "Median")
 
 
 ## 2.2. Collisions Aggregation List ####
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Combine the lists into a single list for the collisions aggregates
-flistCollisions = list(
-    fsum = fsumlist,
-    fmin = fminlist,
-    fmax = fmaxlist,
-    fmean = fmeanlist,
-    fsd = fsdlist,
-    fmedian = fmedianlist
+fListCollisions <- list(
+    fsum = fSumList,
+    fmin = fMinList,
+    fmax = fMaxList,
+    fmean = fMeanList,
+    fsd = fSdList,
+    fmedian = fMedianList
 )
 
 
@@ -127,24 +127,24 @@ flistCollisions = list(
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Combine the lists into a single list for the crashes aggregates
-flistCrashes <- list()
-if (length(fsumlist[fsumlist %in% names(crashes)]) > 0) {
-    flistCrashes$fsum <- fsumlist[fsumlist %in% names(crashes)]
+fListCrashes <- list()
+if (length(fSumList[fSumList %in% names(crashes)]) > 0) {
+    fListCrashes$fsum <- fSumList[fSumList %in% names(crashes)]
 }
-if (length(fminlist[fminlist %in% names(crashes)]) > 0) {
-    flistCrashes$fmin <- fminlist[fminlist %in% names(crashes)]
+if (length(fMinList[fMinList %in% names(crashes)]) > 0) {
+    fListCrashes$fmin <- fMinList[fMinList %in% names(crashes)]
 }
-if (length(fmaxlist[fmaxlist %in% names(crashes)]) > 0) {
-    flistCrashes$fmax <- fmaxlist[fmaxlist %in% names(crashes)]
+if (length(fMaxList[fMaxList %in% names(crashes)]) > 0) {
+    fListCrashes$fmax <- fMaxList[fMaxList %in% names(crashes)]
 }
-if (length(fmeanlist[fmeanlist %in% names(crashes)]) > 0) {
-    flistCrashes$fmean <- fmeanlist[fmeanlist %in% names(crashes)]
+if (length(fMeanList[fMeanList %in% names(crashes)]) > 0) {
+    fListCrashes$fmean <- fMeanList[fMeanList %in% names(crashes)]
 }
-if (length(fsdlist[fsdlist %in% names(crashes)]) > 0) {
-    flistCrashes$fsd <- fsdlist[fsdlist %in% names(crashes)]
+if (length(fSdList[fSdList %in% names(crashes)]) > 0) {
+    fListCrashes$fsd <- fSdList[fSdList %in% names(crashes)]
 }
-if (length(fmedianlist[fmedianlist %in% names(crashes)]) > 0) {
-    flistCrashes$fmedian <- fmedianlist[fmedianlist %in% names(crashes)]
+if (length(fMedianList[fMedianList %in% names(crashes)]) > 0) {
+    fListCrashes$fmedian <- fMedianList[fMedianList %in% names(crashes)]
 }
 
 
@@ -152,24 +152,24 @@ if (length(fmedianlist[fmedianlist %in% names(crashes)]) > 0) {
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Combine the lists into a single list for the parties aggregates
-flistParties <- list()
-if (length(fsumlist[fsumlist %in% names(parties)]) > 0) {
-    flistParties$fsum <- fsumlist[fsumlist %in% names(parties)]
+fListParties <- list()
+if (length(fSumList[fSumList %in% names(parties)]) > 0) {
+    fListParties$fsum <- fSumList[fSumList %in% names(parties)]
 }
-if (length(fminlist[fminlist %in% names(parties)]) > 0) {
-    flistParties$fmin <- fminlist[fminlist %in% names(parties)]
+if (length(fMinList[fMinList %in% names(parties)]) > 0) {
+    fListParties$fmin <- fMinList[fMinList %in% names(parties)]
 }
-if (length(fmaxlist[fmaxlist %in% names(parties)]) > 0) {
-    flistParties$fmax <- fmaxlist[fmaxlist %in% names(parties)]
+if (length(fMaxList[fMaxList %in% names(parties)]) > 0) {
+    fListParties$fmax <- fMaxList[fMaxList %in% names(parties)]
 }
-if (length(fmeanlist[fmeanlist %in% names(parties)]) > 0) {
-    flistParties$fmean <- fmeanlist[fmeanlist %in% names(parties)]
+if (length(fMeanList[fMeanList %in% names(parties)]) > 0) {
+    fListParties$fmean <- fMeanList[fMeanList %in% names(parties)]
 }
-if (length(fsdlist[fsdlist %in% names(parties)]) > 0) {
-    flistParties$fsd <- fsdlist[fsdlist %in% names(parties)]
+if (length(fSdList[fSdList %in% names(parties)]) > 0) {
+    fListParties$fsd <- fSdList[fSdList %in% names(parties)]
 }
-if (length(fmedianlist[fmedianlist %in% names(parties)]) > 0) {
-    flistParties$fmedian <- fmedianlist[fmedianlist %in% names(parties)]
+if (length(fMedianList[fMedianList %in% names(parties)]) > 0) {
+    fListParties$fmedian <- fMedianList[fMedianList %in% names(parties)]
 }
 
 
@@ -177,24 +177,24 @@ if (length(fmedianlist[fmedianlist %in% names(parties)]) > 0) {
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Combine the lists into a single list for the victims aggregates
-flistVictims <- list()
-if (length(fsumlist[fsumlist %in% names(victims)]) > 0) {
-    flistVictims$fsum <- fsumlist[fsumlist %in% names(victims)]
+fListVictims <- list()
+if (length(fSumList[fSumList %in% names(victims)]) > 0) {
+    fListVictims$fsum <- fSumList[fSumList %in% names(victims)]
 }
-if (length(fminlist[fminlist %in% names(victims)]) > 0) {
-    flistVictims$fmin <- fminlist[fminlist %in% names(victims)]
+if (length(fMinList[fMinList %in% names(victims)]) > 0) {
+    fListVictims$fmin <- fMinList[fMinList %in% names(victims)]
 }
-if (length(fmaxlist[fmaxlist %in% names(victims)]) > 0) {
-    flistVictims$fmax <- fmaxlist[fmaxlist %in% names(victims)]
+if (length(fMaxList[fMaxList %in% names(victims)]) > 0) {
+    fListVictims$fmax <- fMaxList[fMaxList %in% names(victims)]
 }
-if (length(fmeanlist[fmeanlist %in% names(victims)]) > 0) {
-    flistVictims$fmean <- fmeanlist[fmeanlist %in% names(victims)]
+if (length(fMeanList[fMeanList %in% names(victims)]) > 0) {
+    fListVictims$fmean <- fMeanList[fMeanList %in% names(victims)]
 }
-if (length(fsdlist[fsdlist %in% names(victims)]) > 0) {
-    flistVictims$fsd <- fsdlist[fsdlist %in% names(victims)]
+if (length(fSdList[fSdList %in% names(victims)]) > 0) {
+    fListVictims$fsd <- fSdList[fSdList %in% names(victims)]
 }
-if (length(fmedianlist[fmedianlist %in% names(victims)]) > 0) {
-    flistVictims$fmedian <- fmedianlist[fmedianlist %in% names(victims)]
+if (length(fMedianList[fMedianList %in% names(victims)]) > 0) {
+    fListVictims$fmedian <- fMedianList[fMedianList %in% names(victims)]
 }
 
 
@@ -202,24 +202,24 @@ if (length(fmedianlist[fmedianlist %in% names(victims)]) > 0) {
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Combine the lists into a single list for the cities aggregates
-flistCities <- list()
-if (length(fsumlist[fsumlist %in% names(cities)]) > 0) {
-    flistCities$fsum <- fsumlist[fsumlist %in% names(cities)]
+fListCities <- list()
+if (length(fSumList[fSumList %in% names(cities)]) > 0) {
+    fListCities$fsum <- fSumList[fSumList %in% names(cities)]
 }
-if (length(fminlist[fminlist %in% names(cities)]) > 0) {
-    flistCities$fmin <- fminlist[fminlist %in% names(cities)]
+if (length(fMinList[fMinList %in% names(cities)]) > 0) {
+    fListCities$fmin <- fMinList[fMinList %in% names(cities)]
 }
-if (length(fmaxlist[fmaxlist %in% names(cities)]) > 0) {
-    flistCities$fmax <- fmaxlist[fmaxlist %in% names(cities)]
+if (length(fMaxList[fMaxList %in% names(cities)]) > 0) {
+    fListCities$fmax <- fMaxList[fMaxList %in% names(cities)]
 }
-if (length(fmeanlist[fmeanlist %in% names(cities)]) > 0) {
-    flistCities$fmean <- fmeanlist[fmeanlist %in% names(cities)]
+if (length(fMeanList[fMeanList %in% names(cities)]) > 0) {
+    fListCities$fmean <- fMeanList[fMeanList %in% names(cities)]
 }
-if (length(fsdlist[fsdlist %in% names(cities)]) > 0) {
-    flistCities$fsd <- fsdlist[fsdlist %in% names(cities)]
+if (length(fSdList[fSdList %in% names(cities)]) > 0) {
+    fListCities$fsd <- fSdList[fSdList %in% names(cities)]
 }
-if (length(fmedianlist[fmedianlist %in% names(cities)]) > 0) {
-    flistCities$fmedian <- fmedianlist[fmedianlist %in% names(cities)]
+if (length(fMedianList[fMedianList %in% names(cities)]) > 0) {
+    fListCities$fmedian <- fMedianList[fMedianList %in% names(cities)]
 }
 
 
@@ -227,100 +227,100 @@ if (length(fmedianlist[fmedianlist %in% names(cities)]) > 0) {
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # # Combine the lists into a single list for the roads aggregates
-flistRoads <- list()
-if (length(fsumlist[fsumlist %in% names(roads)]) > 0) {
-    flistRoads$fsum <- fsumlist[fsumlist %in% names(roads)]
+fListRoads <- list()
+if (length(fSumList[fSumList %in% names(roads)]) > 0) {
+    fListRoads$fsum <- fSumList[fSumList %in% names(roads)]
 }
-if (length(fminlist[fminlist %in% names(roads)]) > 0) {
-    flistRoads$fmin <- fminlist[fminlist %in% names(roads)]
+if (length(fMinList[fMinList %in% names(roads)]) > 0) {
+    fListRoads$fmin <- fMinList[fMinList %in% names(roads)]
 }
-if (length(fmaxlist[fmaxlist %in% names(roads)]) > 0) {
-    flistRoads$fmax <- fmaxlist[fmaxlist %in% names(roads)]
+if (length(fMaxList[fMaxList %in% names(roads)]) > 0) {
+    fListRoads$fmax <- fMaxList[fMaxList %in% names(roads)]
 }
-if (length(fmeanlist[fmeanlist %in% names(roads)]) > 0) {
-    flistRoads$fmean <- fmeanlist[fmeanlist %in% names(roads)]
+if (length(fMeanList[fMeanList %in% names(roads)]) > 0) {
+    fListRoads$fmean <- fMeanList[fMeanList %in% names(roads)]
 }
-if (length(fsdlist[fsdlist %in% names(roads)]) > 0) {
-    flistRoads$fsd <- fsdlist[fsdlist %in% names(roads)]
+if (length(fSdList[fSdList %in% names(roads)]) > 0) {
+    fListRoads$fsd <- fSdList[fSdList %in% names(roads)]
 }
-if (length(fmedianlist[fmedianlist %in% names(roads)]) > 0) {
-    flistRoads$fmedian <- fmedianlist[fmedianlist %in% names(roads)]
+if (length(fMedianList[fMedianList %in% names(roads)]) > 0) {
+    fListRoads$fmedian <- fMedianList[fMedianList %in% names(roads)]
 }
 
 
 ## 2.8. Cleaning Aggregation Lists ####
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# Delete the PartyNumberMax element from the flistVictims$fmax list
-flistVictims$fmax <- flistVictims$fmax[!names(flistVictims$fmax) %in% "partyNumberMax"]
+# Delete the PartyNumberMax element from the fListVictims$fMax list
+fListVictims$fmax <- fListVictims$fmax[!names(fListVictims$fmax) %in% "partyNumberMax"]
 
-# Delete the PartyNumberMean element from the flistVictims$fmean list
-flistVictims$fmean <- flistVictims$fmean[!names(flistVictims$fmean) %in% "partyNumberMean"]
+# Delete the PartyNumberMean element from the fListVictims$fMean list
+fListVictims$fmean <- fListVictims$fmean[!names(fListVictims$fmean) %in% "partyNumberMean"]
 
-# Delete the PartyNumberSd element from the flistVictims$fsd list
-flistVictims$fsd <- flistVictims$fsd[!names(flistVictims$fsd) %in% "partyNumberSd"]
+# Delete the PartyNumberSd element from the fListVictims$fSd list
+fListVictims$fsd <- fListVictims$fsd[!names(fListVictims$fsd) %in% "partyNumberSd"]
 
 # Remove the individual stats lists
-rm(fsumlist, fminlist, fmaxlist, fmeanlist, fsdlist, fmedianlist)
+rm(fSumList, fMinList, fMaxList, fMeanList, fSdList, fMedianList)
 
 
 ## 2.9. Prepare Aggregation Temp Dataset ####
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Create a temporary data frame for the time series aggregation
-tscollisions <- collisions
-tscollisions$dateYear <- as.Date(tscollisions$dateYear)
-tscollisions$dateQuarter <- as.Date(tscollisions$dateQuarter)
-tscollisions$dateMonth <- as.Date(tscollisions$dateMonth)
-tscollisions$dateWeek <- as.Date(tscollisions$dateWeek)
-tscollisions$dateDay <- as.Date(tscollisions$dateDay)
+tsCollisions <- collisions
+tsCollisions$dateYear <- as.Date(tsCollisions$dateYear)
+tsCollisions$dateQuarter <- as.Date(tsCollisions$dateQuarter)
+tsCollisions$dateMonth <- as.Date(tsCollisions$dateMonth)
+tsCollisions$dateWeek <- as.Date(tsCollisions$dateWeek)
+tsCollisions$dateDay <- as.Date(tsCollisions$dateDay)
 
-tscrashes <- crashes
-tscrashes$dateYear <- as.Date(tscrashes$dateYear)
-tscrashes$dateQuarter <- as.Date(tscrashes$dateQuarter)
-tscrashes$dateMonth <- as.Date(tscrashes$dateMonth)
-tscrashes$dateWeek <- as.Date(tscrashes$dateWeek)
-tscrashes$dateDay <- as.Date(tscrashes$dateDay)
+tsCrashes <- crashes
+tsCrashes$dateYear <- as.Date(tsCrashes$dateYear)
+tsCrashes$dateQuarter <- as.Date(tsCrashes$dateQuarter)
+tsCrashes$dateMonth <- as.Date(tsCrashes$dateMonth)
+tsCrashes$dateWeek <- as.Date(tsCrashes$dateWeek)
+tsCrashes$dateDay <- as.Date(tsCrashes$dateDay)
 
-tsparties <- parties
-tsparties$dateYear <- as.Date(tsparties$dateYear)
-tsparties$dateQuarter <- as.Date(tsparties$dateQuarter)
-tsparties$dateMonth <- as.Date(tsparties$dateMonth)
-tsparties$dateWeek <- as.Date(tsparties$dateWeek)
-tsparties$dateDay <- as.Date(tsparties$dateDay)
+tsParties <- parties
+tsParties$dateYear <- as.Date(tsParties$dateYear)
+tsParties$dateQuarter <- as.Date(tsParties$dateQuarter)
+tsParties$dateMonth <- as.Date(tsParties$dateMonth)
+tsParties$dateWeek <- as.Date(tsParties$dateWeek)
+tsParties$dateDay <- as.Date(tsParties$dateDay)
 
-tsvictims <- victims
-tsvictims$dateYear <- as.Date(tsvictims$dateYear)
-tsvictims$dateQuarter <- as.Date(tsvictims$dateQuarter)
-tsvictims$dateMonth <- as.Date(tsvictims$dateMonth)
-tsvictims$dateWeek <- as.Date(tsvictims$dateWeek)
-tsvictims$dateDay <- as.Date(tsvictims$dateDay)
+tsVictims <- victims
+tsVictims$dateYear <- as.Date(tsVictims$dateYear)
+tsVictims$dateQuarter <- as.Date(tsVictims$dateQuarter)
+tsVictims$dateMonth <- as.Date(tsVictims$dateMonth)
+tsVictims$dateWeek <- as.Date(tsVictims$dateWeek)
+tsVictims$dateDay <- as.Date(tsVictims$dateDay)
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # 3. Aggregation by Year ####
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-tsMerge <- function(t1, t2, t3, t4, t5, byvar) {
+tsMerge <- function(t1, t2, t3, t4, t5, byVar) {
     # merge the first two data frames
-    merge1 <- merge(t1, t2, by = byvar)
+    merge1 <- merge(t1, t2, by = byVar)
     # if the column name in test includes ".y", delete set the column to NULL
     merge1 <- merge1[, !grepl("[.]y$", colnames(merge1))]
     # if the column name in test includes ".x", remove the ".x" from the column name
     colnames(merge1) <- gsub("[.]x$", "", colnames(merge1))
     
     # merge the third data frame
-    merge2 <- merge(merge1, t3, by = byvar)
+    merge2 <- merge(merge1, t3, by = byVar)
     merge2 <- merge2[, !grepl("[.]y$", colnames(merge2))]
     colnames(merge2) <- gsub("[.]x$", "", colnames(merge2))
     
     # merge the fourth data frame
-    merge3 <- merge(merge2, t4, by = byvar)
+    merge3 <- merge(merge2, t4, by = byVar)
     merge3 <- merge3[, !grepl("[.]y$", colnames(merge3))]
     colnames(merge3) <- gsub("[.]x$", "", colnames(merge3))
     
     # merge the fifth data frame
-    merge4 <- merge(merge3, t5, by = byvar)
+    merge4 <- merge(merge3, t5, by = byVar)
     merge4 <- merge4[, !grepl("[.]y$", colnames(merge4))]
     colnames(merge4) <- gsub("[.]x$", "", colnames(merge4))
     
@@ -332,19 +332,19 @@ tsMerge <- function(t1, t2, t3, t4, t5, byvar) {
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Aggregate selected columns of the crashes data frame by year
-t1 <- data.frame(collap(tscrashes, ~dateYear, custom = flistCrashes, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
+t1 <- data.frame(collap(tsCrashes, ~dateYear, custom = fListCrashes, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
 
 # Aggregate selected columns of the parties data frame by year
-t2 <- data.frame(collap(tsparties, ~dateYear, custom = flistParties, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
+t2 <- data.frame(collap(tsParties, ~dateYear, custom = fListParties, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
 
 # Aggregate selected columns of the victims data frame by year
-t3 <- data.frame(collap(tsvictims, ~dateYear, custom = flistVictims, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
+t3 <- data.frame(collap(tsVictims, ~dateYear, custom = fListVictims, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
 
 # Aggregate selected columns of the cities data frame by year
-t4 <- data.frame(collap(tscollisions[tscollisions$crashTag == 1,], ~dateYear, custom = flistCities, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
+t4 <- data.frame(collap(tsCollisions[tsCollisions$crashTag == 1, ], ~dateYear, custom = fListCities, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
 
 # Aggregate selected columns of the roads data frame by year
-t5 <- data.frame(collap(tscollisions[tscollisions$crashTag == 1,], ~dateYear, custom = flistRoads, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
+t5 <- data.frame(collap(tsCollisions[tsCollisions$crashTag == 1, ], ~dateYear, custom = fListRoads, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
 
 
 ## 3.2. Compile Year Time Series ####
@@ -356,7 +356,7 @@ tsYear <- tsMerge(t1, t2, t3, t4, t5, "dateYear")
 # Remove the rows with missing values
 tsYear <- tsYear[!is.na(tsYear$dateYear), ]
 
-# for each column in the tsyear_collisions data frame, replace the column with a time series object
+# for each column in the tsYear_collisions data frame, replace the column with a time series object
 for (i in 2:ncol(tsYear)) {
     tsYear[[i]] <- ts(tsYear[[i]], frequency = 1, start = c(2012))
 }
@@ -402,19 +402,19 @@ tsYear <- add_frame_lab(tsYear, frame.lab = "OCSWITRS Annual Time Series")
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Aggregate selected columns of the crashes data frame by quarter
-t1 <- data.frame(collap(tscrashes, ~dateQuarter, custom = flistCrashes, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
+t1 <- data.frame(collap(tsCrashes, ~dateQuarter, custom = fListCrashes, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
 
 # Aggregate selected columns of the parties data frame by quarter
-t2 <- data.frame(collap(tsparties, ~dateQuarter, custom = flistParties, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
+t2 <- data.frame(collap(tsParties, ~dateQuarter, custom = fListParties, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
 
 # Aggregate selected columns of the victims data frame by quarter
-t3 <- data.frame(collap(tsvictims, ~dateQuarter, custom = flistVictims, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
+t3 <- data.frame(collap(tsVictims, ~dateQuarter, custom = fListVictims, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
 
 # Aggregate selected columns of the cities data frame by quarter
-t4 <- data.frame(collap(tscollisions[tscollisions$crashTag == 1,], ~dateQuarter, custom = flistCities, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
+t4 <- data.frame(collap(tsCollisions[tsCollisions$crashTag == 1, ], ~dateQuarter, custom = fListCities, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
 
 # Aggregate selected columns of the roads data frame by quarter
-t5 <- data.frame(collap(tscollisions[tscollisions$crashTag == 1,], ~dateQuarter, custom = flistRoads, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
+t5 <- data.frame(collap(tsCollisions[tsCollisions$crashTag == 1, ], ~dateQuarter, custom = fListRoads, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
 
 
 ## 4.2. Compile Quarter Time Series ####
@@ -426,7 +426,7 @@ tsQuarter <- tsMerge(t1, t2, t3, t4, t5, "dateQuarter")
 # Remove the rows with missing values
 tsQuarter <- tsQuarter[!is.na(tsQuarter$dateQuarter), ]
 
-# for each column in the tsquarter_collisions data frame, replace the column with a time series object
+# for each column in the tsQuarter_collisions data frame, replace the column with a time series object
 for (i in 3:ncol(tsQuarter)) {
     tsQuarter[[i]] <- ts(tsQuarter[[i]], frequency = 4, start = c(2013, 1))
 }
@@ -472,19 +472,19 @@ tsQuarter <- add_frame_lab(tsQuarter, frame.lab = "OCSWITRS Quarterly Time Serie
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Aggregate selected columns of the crashes data frame by month
-t1 <- data.frame(collap(tscrashes, ~dateMonth, custom = flistCrashes, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
+t1 <- data.frame(collap(tsCrashes, ~dateMonth, custom = fListCrashes, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
 
 # Aggregate selected columns of the parties data frame by month
-t2 <- data.frame(collap(tsparties, ~dateMonth, custom = flistParties, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
+t2 <- data.frame(collap(tsParties, ~dateMonth, custom = fListParties, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
 
 # Aggregate selected columns of the victims data frame by month
-t3 <- data.frame(collap(tsvictims, ~dateMonth, custom = flistVictims, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
+t3 <- data.frame(collap(tsVictims, ~dateMonth, custom = fListVictims, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
 
 # Aggregate selected columns of the cities data frame by month
-t4 <- data.frame(collap(tscollisions[tscollisions$crashTag == 1,], ~dateMonth, custom = flistCities, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
+t4 <- data.frame(collap(tsCollisions[tsCollisions$crashTag == 1, ], ~dateMonth, custom = fListCities, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
 
 # Aggregate selected columns of the roads data frame by month
-t5 <- data.frame(collap(tscollisions[tscollisions$crashTag == 1,], ~dateMonth, custom = flistRoads, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
+t5 <- data.frame(collap(tsCollisions[tsCollisions$crashTag == 1, ], ~dateMonth, custom = fListRoads, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
 
 
 ## 5.2. Compile Month Time Series ####
@@ -496,7 +496,7 @@ tsMonth <- tsMerge(t1, t2, t3, t4, t5, "dateMonth")
 # Remove the rows with missing values
 tsMonth <- tsMonth[!is.na(tsMonth$dateMonth), ]
 
-# for each column in the tsmonth_collisions data frame, replace the column with a time series object
+# for each column in the tsMonth_collisions data frame, replace the column with a time series object
 for (i in 3:ncol(tsMonth)) {
     tsMonth[[i]] <- ts(tsMonth[[i]], frequency = 12, start = c(2013, 1))
 }
@@ -542,19 +542,19 @@ tsMonth <- add_frame_lab(tsMonth, frame.lab = "OCSWITRS Monthly Time Series")
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Aggregate selected columns of the crashes data frame by week
-t1 <- data.frame(collap(tscrashes, ~dateWeek, custom = flistCrashes, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
+t1 <- data.frame(collap(tsCrashes, ~dateWeek, custom = fListCrashes, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
 
 # Aggregate selected columns of the parties data frame by week
-t2 <- data.frame(collap(tsparties, ~dateWeek, custom = flistParties, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
+t2 <- data.frame(collap(tsParties, ~dateWeek, custom = fListParties, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
 
 # Aggregate selected columns of the victims data frame by week
-t3 <- data.frame(collap(tsvictims, ~dateWeek, custom = flistVictims, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
+t3 <- data.frame(collap(tsVictims, ~dateWeek, custom = fListVictims, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
 
 # Aggregate selected columns of the cities data frame by week
-t4 <- data.frame(collap(tscollisions[tscollisions$crashTag == 1,], ~dateWeek, custom = flistCities, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
+t4 <- data.frame(collap(tsCollisions[tsCollisions$crashTag == 1, ], ~dateWeek, custom = fListCities, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
 
 # Aggregate selected columns of the roads data frame by week
-t5 <- data.frame(collap(tscollisions[tscollisions$crashTag == 1,], ~dateWeek, custom = flistRoads, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
+t5 <- data.frame(collap(tsCollisions[tsCollisions$crashTag == 1, ], ~dateWeek, custom = fListRoads, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
 
 
 ## 6.2. Compile Week Time Series ####
@@ -566,7 +566,7 @@ tsWeek <- tsMerge(t1, t2, t3, t4, t5, "dateWeek")
 # Remove the rows with missing values
 tsWeek <- tsWeek[!is.na(tsWeek$dateWeek), ]
 
-# for each column in the tsweek_collisions data frame, replace the column with a time series object
+# for each column in the tsWeek_collisions data frame, replace the column with a time series object
 for (i in 3:ncol(tsWeek)) {
     tsWeek[[i]] <- ts(tsWeek[[i]], frequency = 53, start = c(2013, 1))
 }
@@ -612,19 +612,19 @@ tsWeek <- add_frame_lab(tsWeek, frame.lab = "OCSWITRS Weekly Time Series")
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Aggregate selected columns of the crashes data frame by day
-t1 <- data.frame(collap(tscrashes, ~dateDay, custom = flistCrashes, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
+t1 <- data.frame(collap(tsCrashes, ~dateDay, custom = fListCrashes, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
 
 # Aggregate selected columns of the parties data frame by day
-t2 <- data.frame(collap(tsparties, ~dateDay, custom = flistParties, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
+t2 <- data.frame(collap(tsParties, ~dateDay, custom = fListParties, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
 
 # Aggregate selected columns of the victims data frame by day
-t3 <- data.frame(collap(tsvictims, ~dateDay, custom = flistVictims, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
+t3 <- data.frame(collap(tsVictims, ~dateDay, custom = fListVictims, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
 
 # Aggregate selected columns of the cities data frame by day
-t4 <- data.frame(collap(tscollisions[tscollisions$crashTag == 1,], ~dateDay, custom = flistCities, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
+t4 <- data.frame(collap(tsCollisions[tsCollisions$crashTag == 1, ], ~dateDay, custom = fListCities, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
 
 # Aggregate selected columns of the roads data frame by day
-t5 <- data.frame(collap(tscollisions[tscollisions$crashTag == 1,], ~dateDay, custom = flistRoads, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
+t5 <- data.frame(collap(tsCollisions[tsCollisions$crashTag == 1, ], ~dateDay, custom = fListRoads, keep.col.order = FALSE, give.names = FALSE, keep.by = TRUE))
 
 
 ## 7.2. Compile Day Time Series ####
@@ -636,7 +636,7 @@ tsDay <- tsMerge(t1, t2, t3, t4, t5, "dateDay")
 # Remove the rows with missing values
 tsDay <- tsDay[!is.na(tsDay$dateDay), ]
 
-# for each column in the tsday_collisions data frame, replace the column with a time series object
+# for each column in the tsDay_collisions data frame, replace the column with a time series object
 for (i in 3:ncol(tsDay)) {
     tsDay[[i]] <- ts(tsDay[[i]], frequency = 365, start = c(2013, 1))
 }
@@ -679,7 +679,7 @@ tsDay <- add_frame_lab(tsDay, frame.lab = "OCSWITRS Daily Time Series")
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Remove the temporary data frame
-rm(tscollisions, tscrashes, tsparties, tsvictims)
+rm(tsCollisions, tsCrashes, tsParties, tsVictims)
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -688,23 +688,23 @@ rm(tscollisions, tscrashes, tsparties, tsvictims)
 
 # Sort the tsYear data frame by the dateYear column
 tsYear <- tsYear[order(tsYear$dateYear), ]
-rownames(tsYear) <- 1:nrow(tsYear)
+rownames(tsYear) <- seq_len(nrow(tsYear))
 
 # Sort the tsQuarter data frame by the dateQuarter column
 tsQuarter <- tsQuarter[order(tsQuarter$dateQuarter), ]
-rownames(tsQuarter) <- 1:nrow(tsQuarter)
+rownames(tsQuarter) <- seq_len(nrow(tsQuarter))
 
 # Sort the tsMonth data frame by the dateMonth column
 tsMonth <- tsMonth[order(tsMonth$dateMonth), ]
-rownames(tsMonth) <- 1:nrow(tsMonth)
+rownames(tsMonth) <- seq_len(nrow(tsMonth))
 
 # Sort the tsWeek data frame by the dateWeek column
 tsWeek <- tsWeek[order(tsWeek$dateWeek), ]
-rownames(tsWeek) <- 1:nrow(tsWeek)
+rownames(tsWeek) <- seq_len(nrow(tsWeek))
 
 # Sort the tsDay data frame by the coll_date column
 tsDay <- tsDay[order(tsDay$dateDay), ]
-rownames(tsDay) <- 1:nrow(tsDay)
+rownames(tsDay) <- seq_len(nrow(tsDay))
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
