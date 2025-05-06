@@ -1,3 +1,4 @@
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # OCSWITRS R Data Processing #
 # PART 0: MERGING RAW DATA ####
@@ -17,8 +18,8 @@
 rm(list = ls())
 
 # Open the R Libraries master file (located in Obsidian's library folder) - Already defined in the project_directories function
-#libmaster = file.path(Sys.getenv("HOME"), "Knowledge Management", "Documents", "Data Science", "RPackagesInstallation.R")
-#file.edit(libmaster)
+#libMaster = file.path(Sys.getenv("HOME"), "Knowledge Management", "Documents", "Data Science", "RPackagesInstallation.R")
+#file.edit(libMaster)
 
 
 ## 1.2. Import Libraries ####
@@ -81,7 +82,7 @@ getwd()
 dataDict <- data.frame(matrix(ncol = 6, nrow = 0))
 colnames(dataDict) <- c("year", "dateStart", "dateEnd", "countCrashes", "countParties", "countVictims")
 
-i = 1
+i <- 1
 for (year in metadata$projectYears) {
     dataDict[i, "year"] <- year
     for (set in c("Crashes", "Parties", "Victims")) {
@@ -94,12 +95,10 @@ for (year in metadata$projectYears) {
             dataDict[i, "dateEnd"] <- dateEnd
             countCrashes <- nrow(data)
             dataDict[i, "countCrashes"] <- countCrashes
-        }
-        else if (set == "Parties") {
+        } else if (set == "Parties") {
             countParties <- nrow(data)
             dataDict[i, "countParties"] <- countParties
-        }
-        else if (set == "Victims") {
+        } else if (set == "Victims") {
             countVictims <- nrow(data)
             dataDict[i, "countVictims"] <- countVictims
         }
@@ -137,7 +136,7 @@ for (year in metadata$projectYears) {
 ## 3.3. Save the Merged Data ####
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# Change the working directiry to the R data directory
+# Change the working directly to the R data directory
 setwd(prjDirs$rDataPath)
 getwd()
 

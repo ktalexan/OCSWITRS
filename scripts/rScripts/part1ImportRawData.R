@@ -17,8 +17,8 @@
 rm(list = ls())
 
 # Open the R Libraries master file (located in Obsidian's library folder) - Already defined in the project_directories function
-#libmaster = file.path(Sys.getenv("HOME"), "Knowledge Management", "Documents", "Data Science", "RPackagesInstallation.R")
-#file.edit(libmaster)
+#libMaster = file.path(Sys.getenv("HOME"), "Knowledge Management", "Documents", "Data Science", "RPackagesInstallation.R")
+#file.edit(libMaster)
 
 
 ## 1.2. Import Libraries ####
@@ -34,7 +34,7 @@ library(pacman)
 pacman::p_load(RColorBrewer, lubridate, jsonlite, dplyr, magrittr, R6, haven, labelr, plyr, stringr, purrr, glue, Hmisc, psych, tibble, here, tidyr, chattr, knitr, labelled, collapse, formattable, sf, sp, arcgisbinding, ggthemes, arcgisutils)
 
 
-# Check the licences for the ArcGIS binding
+# Check the licence for the ArcGIS binding
 arc.check_product()
 
 
@@ -88,7 +88,7 @@ load(file = file.path(prjDirs$rDataPath, "parties.RData"))
 load(file = file.path(prjDirs$rDataPath, "victims.RData"))
 
 # import cities from ArcGIS pro geodatabase
-cities.agp <- arc.open(file.path(prjDirs$agpPath, "AGPSWITRS.gdb", "SupportingData", "cities"))
+cities.agp <- arc.open(file.path(prjDirs$agpPath, "AGPSWITRS.gdb", "supporting", "cities"))
 cities <- arc.data2sf(arc.select(object = cities.agp))
 rm(cities.agp)
 
@@ -97,7 +97,7 @@ st_crs(cities) <- 3857
 st_crs(cities)$proj4string
 
 # import roads from ArcGIS pro geodatabase
-roads.agp <- arc.open(file.path(prjDirs$agpPath, "AGPSWITRS.gdb", "SupportingData", "roads"))
+roads.agp <- arc.open(file.path(prjDirs$agpPath, "AGPSWITRS.gdb", "supporting", "roads"))
 roads <- arc.data2sf(arc.select(object = roads.agp))
 rm(roads.agp)
 
@@ -106,7 +106,7 @@ st_crs(roads) <- 3857
 st_crs(roads)$proj4string
 
 # import boundaries from ArcGIS pro geodatabase
-boundaries.agp <- arc.open(file.path(prjDirs$agpPath, "AGPSWITRS.gdb", "SupportingData", "boundaries"))
+boundaries.agp <- arc.open(file.path(prjDirs$agpPath, "AGPSWITRS.gdb", "supporting", "boundaries"))
 boundaries <- arc.data2sf(arc.select(object = boundaries.agp))
 rm(boundaries.agp)
 
@@ -214,8 +214,8 @@ cbTable <- tibble(
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # for each of the data frames below, process their data by:
-# 1. Creating a list of names for the crashes dataframe (contains newname as name and oldname as value)
-# 2. Renaming the columns in the crashes data frame using the newnames from the list
+# 1. Creating a list of names for the crashes data frame (contains newName as name and oldName as value)
+# 2. Renaming the columns in the crashes data frame using the newNames from the list
 # 3. Removing all the deprecated and unused columns from the crashes data frame
 
 
@@ -470,7 +470,7 @@ crashes <- crashes %>% relocate(crashesCaseTag, .after = caseId)
 
 
 ### Parties Tag ####
-#parties <- parties %>% add_ount(cid, name = "partiesCaseTag")
+#parties <- parties %>% add_count(cid, name = "partiesCaseTag")
 
 # Create count of parties per cid in the parties data frame
 parties <- parties %>% group_by(cid) %>% dplyr::mutate(partiesCaseTag = n())
@@ -553,7 +553,7 @@ formatCollTime <- function(x) {
         paste0("00:", x, ":00")
     } else if (nchar(x) == 3) {
         paste0("0", substr(x, 1, 1), ":", substr(x, 2, 3), ":00")
-    } else if (nchar(x) == 4 & x < 2400) {
+    } else if (nchar(x) == 4 && x < 2400) {
         paste0(substr(x, 1, 2), ":", substr(x, 3, 4), ":00")
     } else {
         "00:00:00"
@@ -697,7 +697,7 @@ crashes <- crashes %>% relocate(dtZone, .after = dtDst)
 # Create a new column in the crashes data frame called collTimeIntervals
 crashes$collTimeIntervals <- NA
 
-# Create a new collumn in the crashes data frame called collTimeIntervals that has value of 1 if the collTime is between 00:00 and 06:00, 2 if it is between 06:00 and 12:00, 3 if it is between 12:00 and 18:00, 4 if it is between 18:00 and 24:00
+# Create a new column in the crashes data frame called collTimeIntervals that has value of 1 if the collTime is between 00:00 and 06:00, 2 if it is between 06:00 and 12:00, 3 if it is between 12:00 and 18:00, 4 if it is between 18:00 and 24:00
 crashes$collTimeIntervals[which(crashes$dtHour >= 0 & crashes$dtHour <= 6)] <- 1
 crashes$collTimeIntervals[which(crashes$dtHour > 6 & crashes$dtHour <= 12)] <- 2
 crashes$collTimeIntervals[which(crashes$dtHour > 12 & crashes$dtHour <= 18)] <- 3
@@ -719,7 +719,7 @@ crashes <- crashes %>% relocate(collTimeIntervals, .after = collTime)
 
 ### Rush Hours Intervals ####
 
-# create a new column in the crashes dataframe called rushHours that has value of 1 if the dtWeekDay is between 2 and 6 (Monday to Friday) and the collTime is between 07:00 and 10:00, 2 if the dtWeekDay is between 2 and 6 (Monday to Friday) and the collTime is between 16:00 and 19:00,9 if the collTime is greater than 2400, and 3 otherwise.
+# create a new column in the crashes data frame called rushHours that has value of 1 if the dtWeekDay is between 2 and 6 (Monday to Friday) and the collTime is between 07:00 and 10:00, 2 if the dtWeekDay is between 2 and 6 (Monday to Friday) and the collTime is between 16:00 and 19:00,9 if the collTime is greater than 2400, and 3 otherwise.
 crashes$rushHours <- as.integer(ifelse(
     crashes$dtWeekDay >= 2 & crashes$dtWeekDay <= 6 & crashes$dtHour >= 7 & crashes$dtHour <= 10,
     1,
@@ -743,7 +743,7 @@ crashes <- crashes %>% relocate(rushHours, .after = collTimeIntervals)
 
 ### Rush Hours Indicators ####
 
-# create a new column in the crashes dataframe called rushHoursBin that has value of 1 if the rushHours is 1 or 2, and 0 otherwise
+# create a new column in the crashes data frame called rushHoursBin that has value of 1 if the rushHours is 1 or 2, and 0 otherwise
 crashes$rushHoursBin <- as.integer(ifelse(crashes$rushHours == 1 | crashes$rushHours == 2, 1, 0))
 
 # label the rushHoursBin column
@@ -766,7 +766,7 @@ crashes <- crashes %>% relocate(rushHoursBin, .after = rushHours)
 # Convert the collision severity to an integer
 crashes$collSeverity <- as.integer(crashes$collSeverity)
 
-# recode the collision seveirity from values from 0 to 0, 4 to 1, 3 to 2, 2 to 3, and 1 to 4
+# recode the collision severity from values from 0 to 0, 4 to 1, 3 to 2, 2 to 3, and 1 to 4
 crashes$collSeverity <- as.integer(recode(crashes$collSeverity, `0` = 0, `4` = 1, `3` = 2, `2` = 3, `1` = 4, .missing = NULL, .default = 999))
 crashes$collSeverity[crashes$collSeverity == 999] <- NA
 
@@ -790,7 +790,7 @@ crashes <- crashes %>% relocate(collSeverityBin, .after = collSeverity)
 ## 7.3. Ranked Collision Severity ####
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# Generate a new column in the crashes data frame called collseverityranked that ranks the collision severity based on the number of killed and severe injuries
+# Generate a new column in the crashes data frame called collSeverityRank that ranks the collision severity based on the number of killed and severe injuries
 crashes$collSeverityRank <- as.integer(ifelse(
     crashes$numberKilled == 0 & crashes$countSevereInj == 0, 0,
     ifelse(
@@ -822,7 +822,7 @@ crashes$collSeverityRank <- as.integer(ifelse(
 # Label the collSeverityRank column
 val_labels(crashes$collSeverityRank) <- cb$collSeverityRank$labels[cb$collSeverityRank$labels %in% unique(crashes$collSeverityRank)]
 
-# Order the collseverityranked column after the collSeverityBin column
+# Order the collSeverityRank column after the collSeverityBin column
 crashes <- crashes %>% relocate(collSeverityRank, .after = collSeverityBin)
 
 
@@ -832,7 +832,7 @@ crashes <- crashes %>% relocate(collSeverityRank, .after = collSeverityBin)
 # Generate a new column in the crashes data frame called collSeverityNum that is the integer value of the collSeverity column
 crashes$collSeverityNum <- as.integer(crashes$collSeverity)
 
-# Generate a new column in the craashes data frame called collSeverityRankNum that is the integer value of the collSeverityRank column
+# Generate a new column in the crashes data frame called collSeverityRankNum that is the integer value of the collSeverityRank column
 crashes$collSeverityRankNum <- as.integer(crashes$collSeverityRank)
 
 # Relocate the collSeverityNum column after the collSeverity column
@@ -1570,14 +1570,14 @@ parties$oaf2[parties$oaf2 == 999] <- NA
 val_labels(parties$oaf2) <- cb$oaf2$labels[cb$oaf2$labels %in% unique(parties$oaf2)]
 
 
-## 10.16. Movement Preceeding Accident ####
+## 10.16. Movement Preceding Accident ####
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# Recode the movement preceeding accident to numeric
+# Recode the movement preceding accident to numeric
 parties$movePreAcc <- as.integer(recode(parties$movePreAcc, "A" = 1, "B" = 2, "C" = 3, "D" = 4, "E" = 5, "F" = 6, "G" = 7, "H" = 8, "I" = 9, "J" = 10, "K" = 11, "L" = 12, "M" = 13, "N" = 14, "O" = 15, "P" = 16, "Q" = 17, "R" = 18, "S" = 19, "-" = 0, .missing = NULL, .default = 999))
 parties$movePreAcc[parties$movePreAcc == 999] <- NA
 
-# Label the movement preceeding accident
+# Label the movement preceding accident
 val_labels(parties$movePreAcc) <- cb$movePreAcc$labels[cb$movePreAcc$labels %in% unique(parties$movePreAcc)]
 
 
@@ -2089,7 +2089,7 @@ st_crs(boundaries)$proj4string
 # 16. Wrapping Up ####
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-## 16.1. Sort the Dataframes by Datetime ####
+## 16.1. Sort the Data Frames by Datetime ####
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Sort the rows of the crashes data frame by the cid column
@@ -2152,7 +2152,7 @@ for (var in names(crashes.agp)) {
 }
 
 # Write the crashes spatial data frame to the ArcGIS Pro project geodatabase
-arc.write(file.path(prjDirs$agpPath, "AGPSWITRS.gdb", "RawData", "crashes"), crashes.agp, overwrite = TRUE)
+arc.write(file.path(prjDirs$agpPath, "AGPSWITRS.gdb", "raw", "crashes"), crashes.agp, overwrite = TRUE)
 
 
 ## 17.2. Parties Spatial Data Frame ####
@@ -2179,7 +2179,7 @@ for (var in names(parties.agp)) {
 }
 
 # Write the parties spatial data frame to the ArcGIS Pro project geodatabase
-arc.write(file.path(prjDirs$agpPath, "AGPSWITRS.gdb", "RawData", "parties"), parties.agp, overwrite = TRUE)
+arc.write(file.path(prjDirs$agpPath, "AGPSWITRS.gdb", "raw", "parties"), parties.agp, overwrite = TRUE)
 
 
 ## 17.3. Victims Spatial Data Frame ####
@@ -2206,7 +2206,7 @@ for (var in names(victims.agp)) {
 }
 
 # Write the victims spatial data frame to the ArcGIS Pro project geodatabase
-arc.write(file.path(prjDirs$agpPath, "AGPSWITRS.gdb", "RawData", "victims"), victims.agp, overwrite = TRUE)
+arc.write(file.path(prjDirs$agpPath, "AGPSWITRS.gdb", "raw", "victims"), victims.agp, overwrite = TRUE)
 
 
 ## 17.4. Collisions Spatial Data Frame ####
@@ -2233,7 +2233,7 @@ for (var in names(collisions.agp)) {
 }
 
 # Write the collisions spatial data frame to the ArcGIS Pro project geodatabase
-arc.write(file.path(prjDirs$agpPath, "AGPSWITRS.gdb", "RawData", "collisions"), collisions.agp, overwrite = TRUE)
+arc.write(file.path(prjDirs$agpPath, "AGPSWITRS.gdb", "raw", "collisions"), collisions.agp, overwrite = TRUE)
 
 
 ## 17.5. Cities Spatial Data Frame ####
@@ -2251,7 +2251,7 @@ for (var in names(cities.agp)) {
 }
 
 # Write the cities spatial data frame to the ArcGIS Pro project geodatabase
-arc.write(file.path(prjDirs$agpPath, "AGPSWITRS.gdb", "SupportingData", "cities"), cities.agp, validate = TRUE, overwrite = TRUE)
+arc.write(file.path(prjDirs$agpPath, "AGPSWITRS.gdb", "supporting", "cities"), cities.agp, validate = TRUE, overwrite = TRUE)
 
 
 ## 17.6. Roads Spatial Data Frame ####
@@ -2269,7 +2269,7 @@ for (var in names(roads.agp)) {
 }
 
 # Write the roads spatial data frame to the ArcGIS Pro project geodatabase
-arc.write(file.path(prjDirs$agpPath, "AGPSWITRS.gdb", "SupportingData", "roads"), roads.agp, validate = TRUE, overwrite = TRUE)
+arc.write(file.path(prjDirs$agpPath, "AGPSWITRS.gdb", "supporting", "roads"), roads.agp, validate = TRUE, overwrite = TRUE)
 
 
 ## 17.7. Boundaries Spatial Data Frame ####
@@ -2287,7 +2287,7 @@ for (var in names(boundaries.agp)) {
 }
 
 # Write the boundaries spatial data frame to the ArcGIS Pro project geodatabase
-arc.write(file.path(prjDirs$agpPath, "AGPSWITRS.gdb", "SupportingData", "boundaries"), boundaries.agp, validate = TRUE, overwrite = TRUE)
+arc.write(file.path(prjDirs$agpPath, "AGPSWITRS.gdb", "supporting", "boundaries"), boundaries.agp, validate = TRUE, overwrite = TRUE)
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

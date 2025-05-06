@@ -18,13 +18,13 @@ library(glue)
 projectMetadata <- function(part) {
     # Set the title based on the part
     if (part == 1) {
-        step = "Part 1: Merging and Combining Datasets"
+        step <- "Part 1: Merging and Combining Datasets"
     } else if (part == 2) {
-        step = "Part 2: Creating Time Series Data"
+        step <- "Part 2: Creating Time Series Data"
     } else if (part == 3) {
-        step = "Part 3: Analyzing and Visualizing Main Data"
+        step <- "Part 3: Analyzing and Visualizing Main Data"
     } else if (part == 4) {
-        step = "Part 4: Time Series Data Analysis and Visualization"
+        step <- "Part 4: Time Series Data Analysis and Visualization"
     }
     
     # create a new list
@@ -144,8 +144,8 @@ addAttributes <- function(df, codebook) {
 # Define a function that adds attributes to the time series data frames
 addTsAttributes <- function(tsFile, codebook) {
     for (i in names(tsFile)) {
-        j = sub("^[^_]*_", "", i)
-        k = sub("_.*", "", i)
+        j <- sub("^[^_]*_", "", i)
+        k <- sub("_.*", "", i)
         if (j %in% names(codebook)) {
             if (k == "sum") {
                 attr(tsFile[[i]], "label") <- paste("Sum of", codebook[[j]][["label"]])
@@ -180,28 +180,28 @@ addTsAttributes <- function(tsFile, codebook) {
 # 5. Graphics and Tables ####
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-graphicsEntry <- function(listname, type, eid, listattr, ...) {
+graphicsEntry <- function(listName, type, eid, listAttr, ...) {
     # Arguments:
-    #   listname: The name of the list to add the entry to
+    #   listName: The name of the list to add the entry to
     #   type: The type of entry (1=Table, 2=Graphic)
-    #   listattr: A list of attributes for the entry (depends on the type)
+    #   listAttr: A list of attributes for the entry (depends on the type)
     
     # Check if the list exists.
-    if (!exists(listname)) {
+    if (!exists(listName)) {
         # If it does not exist, add a new list
-        listname <- list(
+        listName <- list(
             "tables" = list(),
             "graphics" = list()
         )
         # Reset the counters
-        n = 0
-        nt = 0
-        ng = 0
+        n <- 0
+        nt <- 0
+        ng <- 0
     } else {
         # If it exists, get the list and row counters
-        listname <- get(listname)
-        nt <- length(listname$tables)
-        ng <- length(listname$graphics)
+        listName <- get(listName)
+        nt <- length(listName$tables)
+        ng <- length(listName$graphics)
     }
     # Get the type from the user
     t <- as.integer(type)
@@ -213,13 +213,13 @@ graphicsEntry <- function(listname, type, eid, listattr, ...) {
         if (eid <= nt) {
             cat("Table", eid, "already exists. Exiting function...")
             # exit the function
-            return(listname)
+            return(listName)
         } else {
             # If it is a table, create a new table entry
-            entryname = paste("Table", glue("tbl{nt + 1}"))
+            entryName <- paste("Table", glue("tbl{nt + 1}"))
             # Add the table fields from the attributes list provided
-            # for the table entry the attributes must have the following entries provided: name, description, caption, method, fileformat, file, status
-            listname$tables[[glue("tbl{nt + 1}")]] = list(
+            # for the table entry the attributes must have the following entries provided: name, description, caption, method, fileFormat, file, status
+            listName$tables[[glue("tbl{nt + 1}")]] <- list(
                 # ID (auto from the length of the list)
                 "id" = as.character(glue("Tbl{nt + 1}")),
                 # Category (auto as "Table")
@@ -227,62 +227,60 @@ graphicsEntry <- function(listname, type, eid, listattr, ...) {
                 # Category Number (auto from the length of the tables list)
                 "categoryNo" = as.integer(nt + 1),
                 # Name (text from attributes)
-                "name" = as.character(listattr$name),
+                "name" = as.character(listAttr$name),
                 # Description (text from attributes)
-                "description" = as.character(listattr$description),
+                "description" = as.character(listAttr$description),
                 # Caption (text from attributes)
-                "caption" = as.character(listattr$caption),
+                "caption" = as.character(listAttr$caption),
                 "type" = "Table",
                 # Method (from attributes any of: describe, summary, gtsummary, stat.desc, table.Stats, other)
-                "method" = as.character(listattr$method),
+                "method" = as.character(listAttr$method),
                 # Path (auto as "Overleaf - LaTeX")
                 "path" = "Overleaf - LaTeX",
                 # File Format (from attributes any of: native, tabular, latex, other)
-                "fileformat" = as.character(listattr$fileformat),
+                "fileFormat" = as.character(listAttr$fileFormat),
                 # File (text from attributes)
-                "file" = as.character(paste0("Tbl", nt + 1, "-", listattr$file)),
+                "file" = as.character(paste0("Tbl", nt + 1, "-", listAttr$file)),
                 # Status (from attributes any of: draft, final, archived)
-                "status" = as.character(listattr$status),
+                "status" = as.character(listAttr$status),
                 # Date (auto as the current date)
                 "date" = as.character(Sys.Date())
             )
         }
-    }
-    
-    # Check if the entry is a graphic
-    # For the graphic entry the attributes must have the following entries provided: category, name, description, caption, type, method, path, fileformat, file, resolution, width, height, status
-    else if (t == 2) {
+    } else if (t == 2) {
+        # Check if the entry is a graphic
+        # For the graphic entry the attributes must have the following entries provided: category, name, description, caption, type, method, path, fileFormat, file, resolution, width, height, status
         # check if eid is smaller or equal to ng
         if (eid <= ng) {
             cat("Figure", eid, "already exists. Exiting function...")
             # exit the function
-            return(listname)
+            return(listName)
         } else {
             # If it is a graphic, create a new graphic entry
-            entryname = paste("Graphic", glue("fig{ng + 1}"))
-            listname$graphics[[glue("fig{ng + 1}")]] = list(
+            entryName <- paste("Graphic", glue("fig{ng + 1}"))
+            listName$graphics[[glue("fig{ng + 1}")]] <- list(
                 # ID (auto from the length of the graphics list)
                 "id" = as.character(glue("Fig{ng + 1}")),
                 # Category (from attributes any of: histogram, bar, line, scatter, box, pie, heatmap, bubble, map, other)
-                "category" = as.character(listattr$category),
+                "category" = as.character(listAttr$category),
                 # Category Number (auto from the length of the graphics list)
                 "categoryNo" = as.integer(ng + 1),
                 # Name (text from attributes)
-                "name" = as.character(listattr$name),
+                "name" = as.character(listAttr$name),
                 # Description (text from attributes)
-                "description" = as.character(listattr$description),
+                "description" = as.character(listAttr$description),
                 # Caption (text from attributes)
-                "caption" = as.character(listattr$caption),
+                "caption" = as.character(listAttr$caption),
                 # Type (from attributes any of: frequency, distribution, trend, forecast, correlation, comparison, composition, relationship, spatial, other)
-                "type" = as.character(listattr$type),
+                "type" = as.character(listAttr$type),
                 # Method (from attributes any of: ggplot2, plotly, base, lattice, other)
-                "method" = as.character(listattr$method),
+                "method" = as.character(listAttr$method),
                 # Path (auto from graphics project path)
                 "path" = as.character(prjDirs$graphicsPath),
                 # File Format (from attributes any of: png, jpg, tif, pdf, svg, other)
-                "fileformat" = as.character(listattr$fileformat),
+                "fileFormat" = as.character(listAttr$fileFormat),
                 # File (text from attributes)
-                "file" = as.character(paste0("Fig", ng + 1, "-", listattr$file)),
+                "file" = as.character(paste0("Fig", ng + 1, "-", listAttr$file)),
                 # Resolution (auto integer 300)
                 "resolution" = as.integer(300),
                 # Width (auto integer 12)
@@ -290,14 +288,14 @@ graphicsEntry <- function(listname, type, eid, listattr, ...) {
                 # Height (auto integer 8)
                 "height" = as.integer(8),
                 # Status (from attributes any of: draft, final, archived)
-                "status" = as.character(listattr$status),
+                "status" = as.character(listAttr$status),
                 # Date (auto as the current date)
                 "date" = as.character(Sys.Date())
             )
         }
     }
-    print(entryname)
-    return(listname)
+    print(entryName)
+    return(listName)
 }
 
 
@@ -306,15 +304,15 @@ graphicsEntry <- function(listname, type, eid, listattr, ...) {
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Define a function to display p-values in a more readable format
-pvalueDisplay <- function(pvalue) {
-    if (pvalue < 0.001) {
+pValueDisplay <- function(pValue) {
+    if (pValue < 0.001) {
         return("<0.001")
-    } else if (pvalue >= 0.001 & pvalue < 0.01) {
+    } else if (pValue >= 0.001 && pValue < 0.01) {
         return("<0.01")
-    } else if (pvalue >= 0.01 & pvalue < 0.05) {
+    } else if (pValue >= 0.01 && pValue < 0.05) {
         return("<0.05")
     } else {
-        return(pvalue)
+        return(pValue)
     }
 }
 
@@ -324,40 +322,40 @@ pvalueDisplay <- function(pvalue) {
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Create a function to plot the STL decomposition
-createStlPlot <- function(tsdata, tscale = "month", type = "stlplus", lcolors = c("royalblue3", "darkolivegreen4", "brown", "mediumorchid"), tcolors = c("royalblue4", "darkolivegreen", "brown4", "mediumorchid4")) {
+createStlPlot <- function(tsData, tScale = "month", type = "stlplus", lColors = c("royalblue3", "darkolivegreen4", "brown", "mediumorchid"), tColors = c("royalblue4", "darkolivegreen", "brown4", "mediumorchid4")) {
     
     # Determine the scale of the sub-labels
-    if (tscale == "quarter") {
-        sublab = paste("Quarter", 1:4)
-    } else if (tscale == "month") {
-        sublab = substr(month.name, 1, 3)
-    } else if (tscale == "week") {
-        sublab = paste("Week", 1:53)
-    } else if (tscale == "day") {
-        sublab = paste("Day", 1:365)
+    if (tScale == "quarter") {
+        subLab <- paste("Quarter", 1:4)
+    } else if (tScale == "month") {
+        subLab <- substr(month.name, 1, 3)
+    } else if (tScale == "week") {
+        subLab <- paste("Week", 1:53)
+    } else if (tScale == "day") {
+        subLab <- paste("Day", 1:365)
     }
     
     # Create the stl object
     if (type == "stlplus") {
         # create the stlplus object
-        stldata <- stlplus(tsdata, s.window = "periodic", sub.labels = sublab)
-        stlraw <- data.frame(time = time(stldata), value = getraw(stldata))
-        stlseasonal <- data.frame(time = time(stldata), value = seasonal(stldata))
-        stltrend <- data.frame(time = time(stldata), value = trend(stldata))
-        stlremainder <- data.frame(time = time(stldata), value = remainder(stldata))
+        stlData <- stlplus(tsData, s.window = "periodic", sub.labels = subLab)
+        stlRaw <- data.frame(time = time(stlData), value = getraw(stlData))
+        stlSeasonal <- data.frame(time = time(stlData), value = seasonal(stlData))
+        stlTrend <- data.frame(time = time(stlData), value = trend(stlData))
+        stlRemainder <- data.frame(time = time(stlData), value = remainder(stlData))
     } else if (type == "stl") {
-        stldata <- stl(tsdata, s.window = "periodic")
-        stlraw <- data.frame(time = time(tsdata), value = tsdata)
-        stlseasonal <- data.frame(time = time(stldata), value = stldata$time.series[, "seasonal"])
-        stltrend <- data.frame(time = time(stldata), value = stldata$time.series[, "trend"])
-        stlremainder <- data.frame(time = time(stldata), value = stldata$time.series[, "remainder"])
+        stlData <- stl(tsData, s.window = "periodic")
+        stlRaw <- data.frame(time = time(tsData), value = tsData)
+        stlSeasonal <- data.frame(time = time(stlData), value = stlData$time.series[, "seasonal"])
+        stlTrend <- data.frame(time = time(stlData), value = stlData$time.series[, "trend"])
+        stlRemainder <- data.frame(time = time(stlData), value = stlData$time.series[, "remainder"])
     }
     
     # create the raw subplot
-    praw <- ggplot(
-        stlraw,
+    pRaw <- ggplot(
+        stlRaw,
         aes(x = time, y = value)) +
-        geom_line(color = lcolors[1], linewidth = 0.75) +
+        geom_line(color = lColors[1], linewidth = 0.75) +
         labs(x = "Time", y = "Raw") +
         theme_hc() +
         theme(
@@ -365,16 +363,16 @@ createStlPlot <- function(tsdata, tscale = "month", type = "stlplus", lcolors = 
             axis.text.x = element_blank(),
             axis.title.x = element_blank(),
             axis.text.y = element_text(color = "black", size = 13, angle = 0, hjust = 1, vjust = 0, face = "plain"),
-            axis.title.y = element_text(color = tcolors[1], size = 15, angle = 90, hjust = 0.5, vjust = 1, face = "bold"),
+            axis.title.y = element_text(color = tColors[1], size = 15, angle = 90, hjust = 0.5, vjust = 1, face = "bold"),
             axis.line.x = element_blank(),
             axis.ticks.x = element_blank()
         )
     
     # Create the seasonal subplot
-    pseasonal <- ggplot(
-        stlseasonal,
+    pSeasonal <- ggplot(
+        stlSeasonal,
         aes(x = time, y = value)) +
-        geom_line(color = lcolors[2], linewidth = 0.75) +
+        geom_line(color = lColors[2], linewidth = 0.75) +
         labs(x = "Time", y = "Seasonal") +
         theme_hc() +
         theme(
@@ -382,16 +380,16 @@ createStlPlot <- function(tsdata, tscale = "month", type = "stlplus", lcolors = 
             axis.text.x = element_blank(),
             axis.title.x = element_blank(),
             axis.text.y = element_text(color = "black", size = 13, angle = 0, hjust = 1, vjust = 0, face = "plain"),
-            axis.title.y = element_text(color = tcolors[2], size = 15, angle = 90, hjust = .5, vjust = 1, face = "bold"),
+            axis.title.y = element_text(color = tColors[2], size = 15, angle = 90, hjust = .5, vjust = 1, face = "bold"),
             axis.line.x = element_blank(),
             axis.ticks.x = element_blank()
         )
     
     # Create the trend subplot
-    ptrend <- ggplot(
-        stltrend,
+    pTrend <- ggplot(
+        stlTrend,
         aes(x = time, y = value)) +
-        geom_line(color = lcolors[3], linewidth = 1.5) +
+        geom_line(color = lColors[3], linewidth = 1.5) +
         labs(x = "Time", y = "Trend") +
         theme_hc() +
         theme(
@@ -399,16 +397,16 @@ createStlPlot <- function(tsdata, tscale = "month", type = "stlplus", lcolors = 
             axis.text.x = element_blank(),
             axis.title.x = element_blank(),
             axis.text.y = element_text(color = "black", size = 13, angle = 0, hjust = 1, vjust = 0, face = "plain"),
-            axis.title.y = element_text(color = tcolors[3], size = 15, angle = 90, hjust = .5, vjust = 1, face = "bold"),
+            axis.title.y = element_text(color = tColors[3], size = 15, angle = 90, hjust = .5, vjust = 1, face = "bold"),
             axis.line.x = element_blank(),
             axis.ticks.x = element_blank()
         )
     
     # Create the remainder subplot
-    premainder <- ggplot(
-        stlremainder,
+    pRemainder <- ggplot(
+        stlRemainder,
         aes(x = time, y = value)) +
-        geom_line(color = lcolors[4], linewidth = 0.75) +
+        geom_line(color = lColors[4], linewidth = 0.75) +
         labs(x = "Time", y = "Remainder") +
         theme_hc() +
         theme(
@@ -416,17 +414,17 @@ createStlPlot <- function(tsdata, tscale = "month", type = "stlplus", lcolors = 
             axis.text.x = element_text(color = "black", size = 13, angle = 0, hjust = 1, vjust = 0, face = "plain"),
             axis.title.x = element_text(color = "black", size = 15, angle = 0, hjust = .5, vjust = -0.5, face = "plain"),
             axis.text.y = element_text(color = "black", size = 13, angle = 0, hjust = 1, vjust = 0, face = "plain"),
-            axis.title.y = element_text(color = tcolors[4], size = 15, angle = 90, hjust = .5, vjust = 1, face = "bold"),
+            axis.title.y = element_text(color = tColors[4], size = 15, angle = 90, hjust = .5, vjust = 1, face = "bold"),
             axis.line.x.bottom = element_line(color = "black", size = 0.5)
         ) +
-        scale_x_continuous(breaks = seq(floor(min(time(stldata))), ceiling(max(time(stldata))), by = 1))
+        scale_x_continuous(breaks = seq(floor(min(time(stlData))), ceiling(max(time(stlData))), by = 1))
     
     # combine the subplots
-    pcombined <- ggarrange(
-        praw, pseasonal, ptrend, premainder, 
-        ncol = 1, nrow = 4, align = "v", 
-        widths = c(0.5, 0.5, 0.5, 0.5), heights = c(1, 1, 1, 1.35), 
-        hjust = 0, vjust = -5) + 
+    pCombined <- ggarrange(
+        pRaw, pSeasonal, pTrend, pRemainder,
+        ncol = 1, nrow = 4, align = "v",
+        widths = c(0.5, 0.5, 0.5, 0.5), heights = c(1, 1, 1, 1.35),
+        hjust = 0, vjust = -5) +
         theme_hc() +
         theme(
             axis.title = element_blank(),
@@ -436,16 +434,16 @@ createStlPlot <- function(tsdata, tscale = "month", type = "stlplus", lcolors = 
             panel.grid.major = element_blank(),
             panel.grid.minor = element_blank(),
             panel.border = element_blank()
-        ) + 
-        geom_segment(aes(x=0.637, y=0.02, xend=0.637, yend=1), linetype = "dashed", color = "forestgreen", linewidth = 0.7) +
-        geom_segment(aes(x=0.78, y=0.02, xend=0.78, yend=1), linetype = "dashed", color = "forestgreen", linewidth = 0.7) +
-        annotate('rect', xmin = 0.637, xmax = 0.78, ymin = 0.02, ymax = Inf, alpha =.2, fill = "green") +
+        ) +
+        geom_segment(aes(x = 0.637, y = 0.02, xend = 0.637, yend = 1), linetype = "dashed", color = "forestgreen", linewidth = 0.7) +
+        geom_segment(aes(x = 0.78, y = 0.02, xend = 0.78, yend = 1), linetype = "dashed", color = "forestgreen", linewidth = 0.7) +
+        annotate('rect', xmin = 0.637, xmax = 0.78, ymin = 0.02, ymax = Inf, alpha = .2, fill = "green") +
         annotate("text", x = 0.71, y = 0.01, label = "COVID-19 Restrictions", fontface = "italic", color = "darkgreen", size = 3.5)
     
     # Create the final output object
     result <- list(
-        "data" = list("stl" = stldata, "raw" = stlraw, "seasonal" = stlseasonal, "trend" = stltrend, "remainder" = stlremainder),
-        "graphics" = list("stl" = pcombined, "raw" = praw, "seasonal" = pseasonal, "trend" = ptrend, "remainder" = premainder)
+        "data" = list("stl" = stlData, "raw" = stlRaw, "seasonal" = stlSeasonal, "trend" = stlTrend, "remainder" = stlRemainder),
+        "graphics" = list("stl" = pCombined, "raw" = pRaw, "seasonal" = pSeasonal, "trend" = pTrend, "remainder" = pRemainder)
     )
     # return the combined plot
     return(result)
@@ -470,40 +468,40 @@ saveToDisk <- function() {
     rm(i)
 
     # Save the codebook and reference table
-    flist <- c()
+    fList <- c()
     for (i in c("cb", "cbTable")) {
         if (exists(i)) {
-            # add i to flist
-            flist <- c(flist, i)
+            # add i to fList
+            fList <- c(fList, i)
         }
     }
-    if (length(flist) > 0) {
+    if (length(fList) > 0) {
         cat("  ", "- Saving the codebook and reference table to cb.RData", "\n")
-        save(list = flist, file = file.path(prjDirs$codebookPath, "cb.RData"))
+        save(list = fList, file = file.path(prjDirs$codebookPath, "cb.RData"))
     }
-    rm(i, flist)
+    rm(i, fList)
 
     # Export and save the codebook to disk as a JSON file
     if (exists("cb")) {
         cat("  ", "- Exporting the codebook to a JSON file:", "cb.json", "\n")
-        cb.json <- toJSON(cb, pretty = TRUE, auto_unbox = TRUE)
+        cb.json <- toJSON(cb, pretty = TRUE, auto_unbox = TRUE) # nolint: object_name_linter.
         write(cb.json, file = file.path(prjDirs$codebookPath, "cb.json"))
         rm(cb.json)
     }
 
     # Save the functions to disk
-    flist <- c()
-    for (i in c("projectMetadata", "projectDirectories", "addAttributes", "addTsAttributes", "graphicsEntry", "pvalueDisplay", "createStlPlot", "saveToDisk")) {
+    fList <- c()
+    for (i in c("projectMetadata", "projectDirectories", "addAttributes", "addTsAttributes", "graphicsEntry", "pValueDisplay", "createStlPlot", "saveToDisk")) {
         if (exists(i)) {
-            # add i to flist
-            flist <- c(flist, i)
+            # add i to fList
+            fList <- c(fList, i)
         }
     }
-    if (length(flist) > 0) {
+    if (length(fList) > 0) {
         cat("  ", "- Saving the project functions to project_functions.RData", "\n")
-        save(list = flist, file = file.path(prjDirs$rDataPath, "projectFunctions.RData"))
+        save(list = fList, file = file.path(prjDirs$rDataPath, "projectFunctions.RData"))
     }
-    rm(i, flist)
+    rm(i, fList)
 
     # Save the time series data frames to disk
     for (i in c("tsYear", "tsQuarter", "tsMonth", "tsWeek", "tsDay")) {
@@ -530,4 +528,3 @@ setwd(prjDirs$prjPath)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # END OF SCRIPT ####
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
