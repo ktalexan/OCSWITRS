@@ -11,6 +11,32 @@
 			"Aggr",
 			"AGPSWITRS",
 			"OCSWITRS"
-		]
+		],
+		"workbench.colorCustomizations": {
+			"activityBar.activeBackground": "#530286",
+			"activityBar.background": "#530286",
+			"activityBar.foreground": "#e7e7e7",
+			"activityBar.inactiveForeground": "#e7e7e799",
+			"activityBarBadge.background": "#9d6102",
+			"activityBarBadge.foreground": "#e7e7e7",
+			"commandCenter.border": "#e7e7e799",
+			"sash.hoverBorder": "#530286",
+			"sideBar.border": "#530286",
+			"statusBar.background": "#340154",
+			"statusBar.border": "#340154",
+			"statusBar.debuggingBackground": "#215401",
+			"statusBar.debuggingBorder": "#215401",
+			"statusBar.debuggingForeground": "#e7e7e7",
+			"statusBar.foreground": "#e7e7e7",
+			"statusBarItem.hoverBackground": "#530286",
+			"statusBarItem.remoteBackground": "#340154",
+			"statusBarItem.remoteForeground": "#e7e7e7",
+			"titleBar.activeBackground": "#340154",
+			"titleBar.activeForeground": "#e7e7e7",
+			"titleBar.border": "#340154",
+			"titleBar.inactiveBackground": "#34015499",
+			"titleBar.inactiveForeground": "#e7e7e799"
+		},
+		"peacock.color": "#340154"
 	}
 }
